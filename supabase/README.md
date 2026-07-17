@@ -30,7 +30,7 @@ Dans Supabase → **SQL Editor**, copie-colle le contenu de `sql/schema.sql` et 
 | `NEXT_PUBLIC_SUPABASE_URL` | Ton URL Supabase |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Ta clé anon |
 | `SITE_URL` | `https://faistonsdalle.fr` |
-| `CONTACT_EMAIL` | `contact@faistonsdalle.fr` |
+| `CONTACT_EMAIL` | `contact@faistonsdalle.com` |
 | `WHATSAPP_NUMBER` | `33672044875` |
 
 ## 5. Variables optionnelles

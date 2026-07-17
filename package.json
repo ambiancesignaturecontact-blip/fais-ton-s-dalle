@@ -1,0 +1,8 @@
+{
+  "name": "faistonsdalle",
+  "version": "1.0.0",
+  "description": "FAIS TON S'DALLE - Sandwichs sur mesure",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}

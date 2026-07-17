@@ -1,10 +1,8 @@
 -- =============================================================
 -- SCHÉMA PostgreSQL — FAIS TON S'DALLE
--- Compatible Vercel Postgres / Supabase / Neon.tech
--- Menu RÉEL basé sur les infos du commerce (juillet 2026)
+-- Menu réel (juillet 2026)
 -- =============================================================
 
--- 1. CATÉGORIES
 CREATE TABLE IF NOT EXISTS categories (
     id          SERIAL PRIMARY KEY,
     slug        VARCHAR(50) UNIQUE NOT NULL,
@@ -13,7 +11,6 @@ CREATE TABLE IF NOT EXISTS categories (
     sort_order  INT NOT NULL DEFAULT 0
 );
 
--- 2. ARTICLES DU MENU
 CREATE TABLE IF NOT EXISTS menu_items (
     id              SERIAL PRIMARY KEY,
     category_id     INT REFERENCES categories(id) ON DELETE CASCADE,
@@ -27,7 +24,6 @@ CREATE TABLE IF NOT EXISTS menu_items (
     created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- 3. OPTIONS DE PERSONNALISATION
 CREATE TABLE IF NOT EXISTS customization_options (
     id          SERIAL PRIMARY KEY,
     group_key   VARCHAR(50) NOT NULL,
@@ -38,7 +34,6 @@ CREATE TABLE IF NOT EXISTS customization_options (
     is_active   BOOLEAN NOT NULL DEFAULT true
 );
 
--- 4. COMMANDES
 CREATE TABLE IF NOT EXISTS orders (
     id              SERIAL PRIMARY KEY,
     uuid            UUID NOT NULL DEFAULT gen_random_uuid(),
@@ -47,6 +42,9 @@ CREATE TABLE IF NOT EXISTS orders (
     customer_name   VARCHAR(200),
     customer_phone  VARCHAR(20),
     customer_email  VARCHAR(200),
+    delivery_type   VARCHAR(30) DEFAULT 'pickup'
+                    CHECK (delivery_type IN ('pickup','delivery','uber_eats')),
+    delivery_address TEXT,
     total           DECIMAL(10,2) NOT NULL CHECK (total >= 0),
     notes           TEXT,
     source          VARCHAR(50) DEFAULT 'web',
@@ -54,7 +52,6 @@ CREATE TABLE IF NOT EXISTS orders (
     created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- 5. LIGNES DE COMMANDE
 CREATE TABLE IF NOT EXISTS order_items (
     id              SERIAL PRIMARY KEY,
     order_id        INT NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
@@ -66,7 +63,6 @@ CREATE TABLE IF NOT EXISTS order_items (
     subtotal        DECIMAL(10,2) NOT NULL
 );
 
--- 6. NEWSLETTER
 CREATE TABLE IF NOT EXISTS newsletter_subscribers (
     id          SERIAL PRIMARY KEY,
     email       VARCHAR(200) UNIQUE NOT NULL,
@@ -74,7 +70,6 @@ CREATE TABLE IF NOT EXISTS newsletter_subscribers (
     subscribed_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- 7. FIDÉLITÉ
 CREATE TABLE IF NOT EXISTS loyalty_points (
     id              SERIAL PRIMARY KEY,
     customer_phone  VARCHAR(20) NOT NULL UNIQUE,
@@ -84,7 +79,6 @@ CREATE TABLE IF NOT EXISTS loyalty_points (
     updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- 8. ADMIN
 CREATE TABLE IF NOT EXISTS admins (
     id          SERIAL PRIMARY KEY,
     email       VARCHAR(200) UNIQUE NOT NULL,
@@ -93,52 +87,42 @@ CREATE TABLE IF NOT EXISTS admins (
     created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- =============================================================
--- INDEX
--- =============================================================
 CREATE INDEX IF NOT EXISTS idx_menu_items_category ON menu_items(category_id);
 CREATE INDEX IF NOT EXISTS idx_orders_status ON orders(status);
 CREATE INDEX IF NOT EXISTS idx_orders_phone ON orders(customer_phone);
 CREATE INDEX IF NOT EXISTS idx_orders_uuid ON orders(uuid);
-CREATE INDEX IF NOT EXISTS idx_newsletter_email ON newsletter_subscribers(email);
-CREATE INDEX IF NOT EXISTS idx_loyalty_phone ON loyalty_points(customer_phone);
 
--- =============================================================
--- NETTOYAGE AVANT SEED (supprime les anciennes données erronées)
--- =============================================================
-DELETE FROM customization_options WHERE group_key IN ('viande','crudite','sauce','cuisson','supplement');
+-- CLEAN + SEED
+DELETE FROM customization_options;
 DELETE FROM menu_items;
 DELETE FROM categories;
 
--- =============================================================
--- SEED DATA — MENU RÉEL (juillet 2026)
--- =============================================================
 INSERT INTO categories (slug, name, icon, sort_order) VALUES
   ('menus',    'Menus Sandwichs', '🥪', 1),
   ('desserts', 'Desserts',        '🍰', 2),
   ('boissons', 'Boissons',        '🥤', 3);
 
 INSERT INTO menu_items (category_id, name, description, price, is_customizable, is_popular, sort_order) VALUES
-  ((SELECT id FROM categories WHERE slug='menus'),    'Menu Léger',    'Sandwich (viande + crudités + sauce au choix)', 6.90, true,  true,  1),
-  ((SELECT id FROM categories WHERE slug='menus'),    'Menu Classique','Sandwich + boisson',                              7.90, true,  true,  2),
-  ((SELECT id FROM categories WHERE slug='menus'),    'Menu Gourmand', 'Sandwich + boisson + dessert',                     9.90, true,  true,  3),
-  ((SELECT id FROM categories WHERE slug='desserts'), 'Tiramisu Maison','Fait maison',                                      3.00, false, false, 1),
-  ((SELECT id FROM categories WHERE slug='desserts'), 'Milkshake',     'Crémeux et rafraîchissant',                       5.00, false, false, 2),
-  ((SELECT id FROM categories WHERE slug='boissons'), 'Coca-Cola',     '',                                                  1.00, false, false, 1),
-  ((SELECT id FROM categories WHERE slug='boissons'), 'Coca Zéro',     '',                                                  1.00, false, false, 2),
-  ((SELECT id FROM categories WHERE slug='boissons'), 'Pepsi',         '',                                                  1.00, false, false, 3),
-  ((SELECT id FROM categories WHERE slug='boissons'), 'Oasis Tropical','',                                                  1.00, false, false, 4),
-  ((SELECT id FROM categories WHERE slug='boissons'), 'Ice Tea',       '',                                                  1.00, false, false, 5),
-  ((SELECT id FROM categories WHERE slug='boissons'), 'Orangina',      '',                                                  1.00, false, false, 6),
-  ((SELECT id FROM categories WHERE slug='boissons'), 'Cristaline',    '',                                                  1.00, false, false, 7),
-  ((SELECT id FROM categories WHERE slug='boissons'), 'San Pellegrino','',                                                  1.00, false, false, 8);
+  ((SELECT id FROM categories WHERE slug='menus'),    'Menu Léger',    'Sandwich (viande + crudités + sauce)',    6.90, true,  true, 1),
+  ((SELECT id FROM categories WHERE slug='menus'),    'Menu Classique','Sandwich + boisson',                       7.90, true,  true, 2),
+  ((SELECT id FROM categories WHERE slug='menus'),    'Menu Gourmand', 'Sandwich + boisson + dessert',              9.90, true,  true, 3),
+  ((SELECT id FROM categories WHERE slug='desserts'), 'Tiramisu',      'Caramel, Chocolat ou Spéculos',             3.00, false, false,1),
+  ((SELECT id FROM categories WHERE slug='desserts'), 'Milkshake',     'Snickers, M&Ms, KitKat + coulis 0,50€',    5.00, false, false,2),
+  ((SELECT id FROM categories WHERE slug='boissons'), 'Coca-Cola',     '',                                         1.00, false, false,1),
+  ((SELECT id FROM categories WHERE slug='boissons'), 'Coca Zéro',     '',                                         1.00, false, false,2),
+  ((SELECT id FROM categories WHERE slug='boissons'), 'Pepsi',         '',                                         1.00, false, false,3),
+  ((SELECT id FROM categories WHERE slug='boissons'), 'Oasis Tropical','',                                         1.00, false, false,4),
+  ((SELECT id FROM categories WHERE slug='boissons'), 'Ice Tea',       '',                                         1.00, false, false,5),
+  ((SELECT id FROM categories WHERE slug='boissons'), 'Orangina',      '',                                         1.00, false, false,6),
+  ((SELECT id FROM categories WHERE slug='boissons'), 'Cristaline',    '',                                         1.00, false, false,7),
+  ((SELECT id FROM categories WHERE slug='boissons'), 'San Pellegrino','',                                         1.00, false, false,8);
 
 -- CUISSON
 INSERT INTO customization_options (group_key, group_label, name, is_required, sort_order) VALUES
   ('cuisson', 'Cuisson', 'Froid', true, 1),
   ('cuisson', 'Cuisson', 'Chaud', true, 2);
 
--- VIANDES RÉELLES
+-- VIANDES
 INSERT INTO customization_options (group_key, group_label, name, is_required, sort_order) VALUES
   ('viande', 'Viande', 'Tenders',          true, 1),
   ('viande', 'Viande', 'Emincé de poulet', true, 2),
@@ -148,7 +132,7 @@ INSERT INTO customization_options (group_key, group_label, name, is_required, so
   ('viande', 'Viande', 'Rosette',          true, 6),
   ('viande', 'Viande', 'Thon',             true, 7);
 
--- CRUDITÉS RÉELLES
+-- CRUDITÉS
 INSERT INTO customization_options (group_key, group_label, name, is_required, sort_order) VALUES
   ('crudite', 'Crudités', 'Salade',          false, 1),
   ('crudite', 'Crudités', 'Tomate',          false, 2),
@@ -159,19 +143,36 @@ INSERT INTO customization_options (group_key, group_label, name, is_required, so
   ('crudite', 'Crudités', 'Carottes râpées', false, 7),
   ('crudite', 'Crudités', 'Avocat',          false, 8);
 
--- SUPPLÉMENTS FROMAGES
+-- SUPPLÉMENTS
 INSERT INTO customization_options (group_key, group_label, name, is_required, sort_order) VALUES
   ('supplement', 'Suppléments', 'Cheddar',   false, 1),
   ('supplement', 'Suppléments', 'Mozzarella', false, 2),
   ('supplement', 'Suppléments', 'Feta',      false, 3);
 
--- SAUCES
+-- SAUCES (9)
 INSERT INTO customization_options (group_key, group_label, name, is_required, sort_order) VALUES
   ('sauce', 'Sauce', 'Mayo',       true, 1),
   ('sauce', 'Sauce', 'Ketchup',    true, 2),
-  ('sauce', 'Sauce', 'Moutarde',   true, 3),
-  ('sauce', 'Sauce', 'Blanche',    true, 4),
-  ('sauce', 'Sauce', 'Algérienne', true, 5),
-  ('sauce', 'Sauce', 'Andalouse',  true, 6),
-  ('sauce', 'Sauce', 'Samouraï',   true, 7),
-  ('sauce', 'Sauce', 'Huile olive',true, 8);
+  ('sauce', 'Sauce', 'Algérienne', true, 3),
+  ('sauce', 'Sauce', 'Samouraï',   true, 4),
+  ('sauce', 'Sauce', 'Blanche',    true, 5),
+  ('sauce', 'Sauce', 'Moutarde',   true, 6),
+  ('sauce', 'Sauce', 'Brasil',     true, 7),
+  ('sauce', 'Sauce', 'Chili',      true, 8),
+  ('sauce', 'Sauce', 'Thai',       true, 9);
+
+-- TIRAMISU PARFUMS
+INSERT INTO customization_options (group_key, group_label, name, is_required, sort_order) VALUES
+  ('tiramisu', 'Tiramisu', 'Caramel',   true, 1),
+  ('tiramisu', 'Tiramisu', 'Chocolat',  true, 2),
+  ('tiramisu', 'Tiramisu', 'Spéculos',  true, 3);
+
+-- MILKSHAKE OPTIONS
+INSERT INTO customization_options (group_key, group_label, name, is_required, sort_order) VALUES
+  ('milkshake', 'Milkshake', 'Snickers',     true, 1),
+  ('milkshake', 'Milkshake', 'M&Ms',         true, 2),
+  ('milkshake', 'Milkshake', 'KitKat',       true, 3),
+  ('milkshake', 'Milkshake', 'KitKat White', true, 4),
+  ('coulis', 'Coulis (+0,50€)', 'Chocolat',  false, 1),
+  ('coulis', 'Coulis (+0,50€)', 'Caramel',   false, 2),
+  ('coulis', 'Coulis (+0,50€)', 'Fraise',    false, 3);
