@@ -1,7 +1,9 @@
-# robots.txt pour FAIS TON S'DALLE
-User-agent: *
-Allow: /
-Sitemap: https://faistonsdalle.fr/sitemap.xml
-
-# Disallow admin paths
-Disallow: /admin/
+{
+  "name": "faistonsdalle",
+  "version": "1.0.0",
+  "description": "FAIS TON S'DALLE - Sandwichs sur mesure Halal | Les Pavillons-sous-Bois",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.109.0",
+    "stripe": "^14.0.0"
+  }
+}

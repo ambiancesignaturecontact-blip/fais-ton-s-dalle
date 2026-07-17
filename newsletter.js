@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://faistonsdalle.fr/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://faistonsdalle.fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://faistonsdalle.fr/"/>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
