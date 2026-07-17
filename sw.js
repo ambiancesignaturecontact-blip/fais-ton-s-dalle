@@ -1,16 +1,12 @@
-{
-  "name": "FAIS TON S'DALLE — Sandwichs sur mesure",
-  "short_name": "FTS Dalle",
-  "description": "Crée ton sandwich sur mesure à Les Pavillons-sous-Bois. Viandes froides, crudités fraîches, sauces. Livraison jour & nuit.",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#f8f6f3",
-  "theme_color": "#c73b2b",
-  "orientation": "portrait-primary",
-  "lang": "fr-FR",
-  "icons": [
-    { "src": "/logo.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/logo.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" }
-  ],
-  "categories": ["food", "restaurant", "delivery", "shopping"]
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://faistonsdalle.fr/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://faistonsdalle.fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://faistonsdalle.fr/"/>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
