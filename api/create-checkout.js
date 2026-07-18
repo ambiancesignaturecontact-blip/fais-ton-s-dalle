@@ -29,7 +29,7 @@ module.exports = async (req, res) => {
         currency: 'eur',
         product_data: {
           name: item.name,
-          description: item.custom ? item.custom.substring(0, 100) : undefined,
+          description: (item.custom && typeof item.custom==='string') ? item.custom.substring(0, 100) : undefined,
         },
         unit_amount: Math.round(item.price * 100),
       },
@@ -43,7 +43,6 @@ module.exports = async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',
-      customer_name: customerName || undefined,
       line_items: lineItems,
       success_url: successUrl,
       cancel_url: cancelUrl,

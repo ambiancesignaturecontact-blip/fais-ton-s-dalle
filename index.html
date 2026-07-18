@@ -1,213 +1,567 @@
 <!DOCTYPE html>
 <html lang="fr" data-theme="light">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>FAIS TON S'DALLE — Sandwichs sur mesure Halal | Les Pavillons-sous-Bois 93320</title><meta name="description" content="Crée ton sandwich sur mesure chez FAIS TON S'DALLE. Halal. Tenders, poulet, dinde, pastrami, rosette, thon. Livraison 23h-06h."><meta name="robots" content="index,follow"><link rel="canonical" href="https://www.faistonsdalle.com"><meta property="og:type" content="restaurant.menu"><meta property="og:site_name" content="FAIS TON S'DALLE"><meta property="og:locale" content="fr_FR"><meta property="og:url" content="https://www.faistonsdalle.com"><meta property="og:title" content="FAIS TON S'DALLE"><meta property="og:image" content="https://www.faistonsdalle.com/images/logo.jpg"><meta property="og:description" content="Crée ton sandwich sur mesure chez FAIS TON S'DALLE. Halal."><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#c73b2b"><link rel="manifest" href="/manifest.json"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png"><link rel="icon" type="image/jpeg" sizes="48x48" href="/images/favicon.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon.jpg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"><script src="https://js.stripe.com/v3/"></script><style>:root{--p:#c73b2b;--p2:#a52a1c;--s:#f5a623;--bg:#f8f6f3;--c:#fff;--t:#1a1a1a;--t2:#6b6b6b;--b:#e8e2db;--r:16px;--f:"Inter","Segoe UI",sans-serif;--sh:0 2px 16px rgba(0,0,0,.06);--sh2:0 8px 30px rgba(0,0,0,.1)}
-[data-theme="dark"]{--bg:#121212;--c:#1a1a1a;--t:#eee;--t2:#999;--b:#2a2a2a}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;transition:background-color .25s,border-color .25s,color .25s}
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>FAIS TON S'DALLE — Sandwichs sur mesure Halal | Les Pavillons-sous-Bois 93320</title><meta name="description" content="Crée ton sandwich sur mesure chez FAIS TON S'DALLE. Halal. Tenders, poulet, dinde, pastrami, rosette, thon. Livraison 23h-06h."><meta name="robots" content="index,follow"><link rel="canonical" href="https://www.faistonsdalle.com"><meta property="og:type" content="restaurant.menu"><meta property="og:site_name" content="FAIS TON S'DALLE"><meta property="og:locale" content="fr_FR"><meta property="og:url" content="https://www.faistonsdalle.com"><meta property="og:title" content="FAIS TON S'DALLE"><meta property="og:image" content="https://www.faistonsdalle.com/images/logo.jpg"><meta property="og:description" content="Crée ton sandwich sur mesure chez FAIS TON S'DALLE. Halal."><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#c73b2b"><link rel="manifest" href="/manifest.json"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png"><link rel="icon" type="image/jpeg" sizes="48x48" href="/images/favicon.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon.jpg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet"><script src="https://js.stripe.com/v3/"></script><style>/* ============================================================
+   FAIS TON S'DALLE — SPECTACULAR 3D UI
+   ============================================================ */
+
+/* === ROOT VARIABLES — Premium Dark Theme === */
+:root {
+  --p: #d6402b;
+  --p2: #b82e1a;
+  --p3: #ff6b4a;
+  --p4: #ff8a6e;
+  --s: #f5a623;
+  --s2: #ffd166;
+  --s3: #ffe08a;
+  --bg: #0a0a0f;
+  --bg2: #111118;
+  --c: #16161f;
+  --c2: #1e1e2a;
+  --c3: #2a2a3a;
+  --t: #f0eeeb;
+  --t2: #9e9cab;
+  --t3: #6b6978;
+  --b: #2a2838;
+  --b2: #3a3848;
+  --r: 18px;
+  --r2: 14px;
+  --r3: 10px;
+  --f: "Inter","Segoe UI",sans-serif;
+  --fh: "Oswald","Impact",sans-serif;
+  --sh: 0 8px 32px rgba(0,0,0,.4);
+  --sh2: 0 16px 48px rgba(0,0,0,.5);
+  --sh3: 0 30px 80px rgba(0,0,0,.6);
+  --glow: 0 0 30px rgba(214,64,43,.3);
+  --glow2: 0 0 60px rgba(214,64,43,.15);
+  --glow3: 0 0 80px rgba(245,166,35,.1);
+  --g1: linear-gradient(135deg,#d6402b,#ff6b4a);
+  --g2: linear-gradient(135deg,#f5a623,#ffd166);
+  --g3: linear-gradient(135deg,#d6402b,#f5a623);
+  --g4: linear-gradient(135deg,#1e1b4b,#312e81);
+  --glass: rgba(22,22,31,.85);
+  --glass2: rgba(22,22,31,.65);
+  --perspective: 1200px;
+}
+[data-theme="light"] {
+  --bg: #f0ede8;
+  --bg2: #e8e5e0;
+  --c: #ffffff;
+  --c2: #f8f6f3;
+  --c3: #f0ede8;
+  --t: #1a1a1a;
+  --t2: #6b6b6b;
+  --t3: #9e9e9e;
+  --b: #ddd8d0;
+  --b2: #d0cbc3;
+  --sh: 0 8px 32px rgba(0,0,0,.08);
+  --sh2: 0 16px 48px rgba(0,0,0,.12);
+  --sh3: 0 30px 80px rgba(0,0,0,.15);
+  --glow: 0 0 30px rgba(214,64,43,.15);
+  --glow2: 0 0 60px rgba(214,64,43,.08);
+  --glass: rgba(255,255,255,.85);
+  --glass2: rgba(255,255,255,.65);
+}
+
+/* === BASE === */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;transition:background .3s,border .3s,color .3s,box-shadow .3s,transform .3s}
 html{scroll-behavior:smooth}
-body{font-family:var(--f);background:var(--bg);color:var(--t);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:var(--f);background:var(--bg);background-image:radial-gradient(ellipse at 50% 0%,rgba(214,64,43,.03),transparent 60%);color:var(--t);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6;min-height:100vh}
 img{max-width:100%;display:block;height:auto}
 a{color:inherit;text-decoration:none}
 button,input,textarea{font-family:var(--f);cursor:pointer;touch-action:manipulation}
-.bar{background:#1a1a1a;color:#fff;padding:5px 14px;padding-top:calc(5px + env(safe-area-inset-top,0px));font-size:.65rem;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;font-weight:600}
-.bar .n{background:linear-gradient(135deg,#1e1b4b,#312e81);color:#c7d2fe;padding:2px 10px;border-radius:12px;font-size:.55rem}
-.h-badge{background:linear-gradient(135deg,#059669,#047857);color:#d1fae5;padding:2px 10px;border-radius:12px;font-size:.55rem}
-.pg{display:block;animation:fadeIn .25s ease;-webkit-animation:fadeIn .25s ease;padding-bottom:20px}
-@keyframes fadeIn
-@-webkit-keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* === ANIMATED BACKGROUND GRID === */
+body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:60px 60px;z-index:-1;pointer-events:none}
+[data-theme="light"] body::before{background-image:linear-gradient(rgba(0,0,0,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.03) 1px,transparent 1px)}
+
+/* === TOP BAR === */
+.bar{background:linear-gradient(180deg,#0a0a0f,#111118);color:#fff;padding:6px 14px;padding-top:calc(6px + env(safe-area-inset-top,0px));font-size:.6rem;text-align:center;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;font-weight:600;letter-spacing:.5px;border-bottom:1px solid rgba(255,255,255,.04);position:relative;overflow:hidden}
+.bar::after{content:'';position:absolute;bottom:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(214,64,43,.3),transparent)}
+.bar .n{background:linear-gradient(135deg,#1e1b4b,#312e81);color:#c7d2fe;padding:3px 14px;border-radius:20px;font-size:.5rem;font-weight:700;letter-spacing:.8px;border:1px solid rgba(199,210,254,.1)}
+.h-badge{background:linear-gradient(135deg,#059669,#047857);color:#d1fae5;padding:3px 14px;border-radius:20px;font-size:.5rem;font-weight:700;letter-spacing:.8px;border:1px solid rgba(209,250,229,.1)}
+
+/* === HEADER — Glassmorphism 3D === */
+header{background:var(--glass);-webkit-backdrop-filter:blur(30px) saturate(1.5);backdrop-filter:blur(30px) saturate(1.5);position:-webkit-sticky;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,.05);transform:translateZ(0)}
+[data-theme="light"] header{background:rgba(255,255,255,.85);border-bottom:1px solid var(--b)}
+.hd{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.lg{display:flex;align-items:center;gap:12px;color:#fff;position:relative;transform:translateZ(0);transition:transform .3s}
+[data-theme="light"] .lg{color:#1a1a1a}
+.lg:hover{transform:translateZ(2px) scale(1.02)}@media(hover:hover){}
+.lg img{height:34px;width:auto;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.3);transform:translateZ(0);transition:transform .3s}
+.br{font-family:var(--fh);font-weight:600;font-size:1rem;text-transform:uppercase;letter-spacing:2px;line-height:1.1;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+[data-theme="light"] .br{color:#1a1a1a;text-shadow:none}
+.br .sub{display:block;font-family:var(--f);font-weight:400;font-size:.38rem;letter-spacing:3px;text-transform:uppercase;opacity:.35;margin-top:2px;color:#fff}
+[data-theme="light"] .br .sub{color:#1a1a1a}
+.nv{display:flex;gap:4px;align-items:center}
+.nv a{padding:8px 18px;border-radius:30px;font-size:.68rem;font-weight:600;color:var(--t2);cursor:pointer;min-height:44px;display:flex;align-items:center;letter-spacing:.5px;position:relative;transform:translateZ(0);transition:all .3s}
+@media(hover:hover){.nv a:hover{background:rgba(255,255,255,.06);color:#fff;transform:translateZ(1px)}}
+[data-theme="light"] .nv a:hover{background:var(--bg);color:var(--p)}
+.nv a.sl{background:var(--g1);color:#fff;font-weight:700;box-shadow:0 4px 20px rgba(214,64,43,.3)}
+.tg{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.85rem;color:var(--t2);min-width:44px;min-height:44px;transition:all .3s;transform:translateZ(0)}
+@media(hover:hover){.tg:hover{border-color:var(--s);transform:rotate(15deg) scale(1.1)}}
+.ct{padding:7px 16px;border-radius:30px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:.68rem;cursor:pointer;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.05);color:var(--t);min-height:44px;transform:translateZ(0);transition:all .3s;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+[data-theme="light"] .ct{background:var(--c);border-color:var(--b)}
+@media(hover:hover){.ct:hover{border-color:var(--p3);background:rgba(214,64,43,.08);transform:translateZ(1px);box-shadow:0 0 20px rgba(214,64,43,.15)}}
+.cb{background:var(--g1);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.52rem;font-weight:800;box-shadow:0 0 20px rgba(214,64,43,.4);position:relative}
+.cb::after{content:'';position:absolute;inset:-3px;border-radius:50%;background:inherit;opacity:.3;animation:pulseBadge 1.5s ease-in-out infinite}
+.ham{display:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;font-size:1.3rem;cursor:pointer;color:var(--t2);min-width:44px;min-height:44px;align-items:center;justify-content:center;transition:all .3s}
+.mn{display:none;position:fixed;top:64px;left:0;right:0;background:var(--glass);backdrop-filter:blur(30px) saturate(1.5);-webkit-backdrop-filter:blur(30px) saturate(1.5);z-index:99;flex-direction:column;box-shadow:var(--sh2);border-bottom:1px solid var(--b)}
+.mn.on{display:flex;animation:modalSlide .3s ease}
+.mn a{padding:18px 28px;font-family:var(--fh);font-weight:500;font-size:1rem;text-transform:uppercase;letter-spacing:2px;color:var(--t2);border-bottom:1px solid var(--b);cursor:pointer;transition:all .25s;position:relative}
+@media(hover:hover){.mn a:hover{background:rgba(214,64,43,.05);color:var(--p);padding-left:36px}}
+.mn a::after{content:'→';position:absolute;right:28px;opacity:0;transition:all .25s}
+@media(hover:hover){.mn a:hover::after{opacity:1;right:24px;color:var(--p)}}
+
+/* === HERO — 3D SPECTACULAR === */
+.hero{perspective:var(--perspective);background:#0a0a0f;background-image:radial-gradient(ellipse at 20% 40%,rgba(214,64,43,.12) 0%,transparent 60%),radial-gradient(ellipse at 80% 60%,rgba(245,166,35,.08) 0%,transparent 60%),radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.03) 0%,transparent 50%);color:#fff;padding:72px 16px 64px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.04)}
+.hero::before{content:'';position:absolute;top:-60%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg at 50% 50%,rgba(214,64,43,.06),rgba(245,166,35,.03),rgba(214,64,43,.06),rgba(245,166,35,.03),rgba(214,64,43,.06));animation:heroRotate 25s linear infinite;z-index:0}
+@keyframes heroRotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@-webkit-keyframes heroRotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--p),var(--s),var(--p),transparent);.hero::after{animation:heroScan 4s ease-in-out infinite}}
+@keyframes heroScan{0%,100%{opacity:.3}50%{opacity:1}}
+@-webkit-keyframes heroScan{0%,100%{opacity:.3}50%{opacity:1}}
+.hero-c{position:relative;z-index:2;max-width:720px;margin:0 auto;transform:translateZ(0);transition:transform .5s;animation:heroFloat 6s ease-in-out infinite}
+@keyframes heroFloat{0%,100%{transform:translateZ(0) translateY(0)}50%{transform:translateZ(10px) translateY(-8px)}}
+@-webkit-keyframes heroFloat{0%,100%{transform:translateZ(0) translateY(0)}50%{transform:translateZ(10px) translateY(-8px)}}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:7px 22px;border-radius:30px;font-size:.55rem;font-weight:600;letter-spacing:1px;margin-bottom:24px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);text-transform:uppercase;position:relative}
+.hero-badge::before{content:'';position:absolute;inset:-1px;border-radius:30px;background:linear-gradient(135deg,var(--p),var(--s));z-index:-1;opacity:.4;animation:badgePulse 3s ease-in-out infinite}
+@keyframes badgePulse{0%,100%{opacity:.3}50%{opacity:.6}}
+@-webkit-keyframes badgePulse{0%,100%{opacity:.3}50%{opacity:.6}}
+.hero h1{font-family:var(--fh);font-size:clamp(2.4rem,7vw,4.2rem);font-weight:700;line-height:1.02;margin-bottom:16px;letter-spacing:-.5px;text-transform:uppercase;text-shadow:0 4px 60px rgba(0,0,0,.4);filter:drop-shadow(0 2px 30px rgba(214,64,43,.1));transform:translateZ(5px)}
+.hero h1 .h{background:var(--g1);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:inline-block;position:relative;animation:gradientShift 4s ease infinite}
+@keyframes gradientShift{0%,100%{background-position:0% center}50%{background-position:100% center}}
+@-webkit-keyframes gradientShift{0%,100%{background-position:0% center}50%{background-position:100% center}}
+.hero h1 .h::after{content:'';position:absolute;bottom:-6px;left:0;right:0;height:4px;background:var(--g1);border-radius:4px;transform:scaleX(0);animation:heroUnderline 1.5s ease forwards .5s;box-shadow:0 0 20px rgba(214,64,43,.4)}
+@keyframes heroUnderline{to{transform:scaleX(1)}}
+@-webkit-keyframes heroUnderline{to{transform:scaleX(1)}}
+.hero-p{font-size:.82rem;opacity:.55;margin-bottom:32px;letter-spacing:.5px;max-width:520px;margin-left:auto;margin-right:auto;transform:translateZ(2px)}
+.hero-acts{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;transform:translateZ(3px)}
+.hero-btn{background:var(--g1);color:#fff;padding:16px 40px;border-radius:60px;font-weight:700;font-size:.8rem;cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;gap:8px;letter-spacing:1px;box-shadow:0 4px 30px rgba(214,64,43,.35),0 0 60px rgba(214,64,43,.1);text-transform:uppercase;position:relative;overflow:hidden;transform:translateZ(0)}
+.hero-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);transform:translateX(-100%);transition:transform .5s}
+@media(hover:hover){.hero-btn:hover::before{transform:translateX(100%)}}
+@media(hover:hover){.hero-btn:hover{transform:translateZ(5px) translateY(-4px) scale(1.02);box-shadow:0 8px 50px rgba(214,64,43,.5),0 0 80px rgba(214,64,43,.2)}}
+.hero-btn2{background:rgba(255,255,255,.06);color:#fff;padding:16px 40px;border-radius:60px;font-weight:600;font-size:.76rem;cursor:pointer;border:1px solid rgba(255,255,255,.1);display:inline-flex;align-items:center;gap:8px;transition:all .3s;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);letter-spacing:.5px;transform:translateZ(0)}
+@media(hover:hover){.hero-btn2:hover{background:rgba(255,255,255,.12);transform:translateZ(3px) translateY(-4px);border-color:rgba(255,255,255,.2);box-shadow:0 8px 30px rgba(0,0,0,.3)}}
+.hero-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;perspective:var(--perspective)}
+.hero-particle{position:absolute;font-size:clamp(1.4rem,3vw,2.5rem);opacity:0;bottom:-50px;animation:floatUp 12s ease-in-out infinite;filter:drop-shadow(0 0 15px rgba(214,64,43,.3));transform-style:preserve-3d}
+.hero-particle:nth-child(1){left:8%;animation-delay:0s;animation-duration:14s}
+.hero-particle:nth-child(2){left:28%;animation-delay:3s;animation-duration:16s}
+.hero-particle:nth-child(3){left:52%;animation-delay:6s;animation-duration:13s}
+.hero-particle:nth-child(4){left:76%;animation-delay:1.5s;animation-duration:15s}
+@keyframes floatUp{0%{opacity:0;transform:translateY(80px) scale(.8) rotateX(20deg)}10%{opacity:.8;transform:translateY(40px) scale(1) rotateX(0deg)}90%{opacity:.5;transform:translateY(-200px) scale(1.1) rotateY(360deg)}100%{opacity:0;transform:translateY(-350px) rotate(720deg) scale(.5)}}
+@-webkit-keyframes floatUp{0%{opacity:0;transform:translateY(80px) scale(.8)}10%{opacity:.8;transform:translateY(40px) scale(1)}90%{opacity:.5}100%{opacity:0;transform:translateY(-350px) rotate(720deg) scale(.5)}}
+
+/* === NIGHT BANNER === */
+.nb{background:linear-gradient(135deg,#1e1b4b,#312e81);padding:10px 14px;text-align:center;color:#c7d2fe;display:none;font-size:.68rem;font-weight:600;letter-spacing:.8px;border-bottom:1px solid rgba(199,210,254,.1);position:relative}
+.nb::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(199,210,254,.2),transparent)}
+
+/* === PAGE === */
+.pg{display:block;animation:fadeIn .5s ease;-webkit-animation:fadeIn .5s ease;padding-bottom:24px;perspective:var(--perspective)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px) rotateX(2deg)}to{opacity:1;transform:translateY(0) rotateX(0deg)}}
+@-webkit-keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .pg.h{display:none}
-header{background:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);position:-webkit-sticky;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--b)}
-[data-theme="dark"] header{background:rgba(26,26,26,.95);border-bottom-color:#2a2a2a}
-.hd{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:56px}
-.lg{display:flex;align-items:center;gap:10px;color:#1a1a1a}
-.lg img{height:30px;width:auto;border-radius:4px}
-.br{font-weight:700;font-size:.85rem;color:#1a1a1a;line-height:1.2}
-.br .sub{display:block;font-weight:500;font-size:.42rem;letter-spacing:1.2px;text-transform:uppercase;color:#1a1a1a;opacity:.5}
-[data-theme="dark"] .br{color:#eee}[data-theme="dark"] .br .sub{color:#eee}[data-theme="dark"] .lg{color:#eee}
-@media(min-width:769px){.br .sub{display:block}}
-.nv{display:flex;gap:2px;align-items:center}
-.nv a{padding:8px 14px;border-radius:30px;font-size:.72rem;font-weight:600;color:var(--t2);cursor:pointer;min-height:44px;display:flex;align-items:center}
-@media(hover:hover){.nv a:hover{background:var(--bg);color:var(--p)}}
-.nv a.sl{background:var(--p);color:#fff}
-.tg{background:none;border:1.5px solid var(--b);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.85rem;color:var(--t2);min-width:44px;min-height:44px}
-@media(hover:hover){.tg:hover{border-color:var(--s);transform:rotate(15deg)}}
-.ct{padding:7px 12px;border-radius:30px;display:flex;align-items:center;gap:5px;font-weight:700;font-size:.72rem;cursor:pointer;border:1.5px solid var(--b);background:var(--c);min-height:44px}
-@media(hover:hover){.ct:hover{border-color:var(--p)}}
-.cb{background:var(--p);color:#fff;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:700}
-.ham{display:none;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--t2);min-width:44px;min-height:44px;align-items:center;justify-content:center}
-.mn{display:none;position:fixed;top:56px;left:0;right:0;background:var(--c);z-index:99;flex-direction:column;box-shadow:0 8px 30px rgba(0,0,0,.1);border-bottom:1px solid var(--b)}
-.mn.on{display:flex}.mn a{padding:14px 20px;font-weight:600;font-size:.82rem;color:var(--t2);border-bottom:1px solid var(--b);cursor:pointer}
-@media(hover:hover){@media(hover:hover){.mn a:hover{background:var(--bg);color:var(--p)}}}[data-theme="dark"] .mn{background:#1a1a1a;border-bottom-color:#2a2a2a}[data-theme="dark"] .mn a{color:#bbb}
-.hero{background:linear-gradient(135deg,#1a1a1a,#2d2d2d);color:#fff;padding:48px 16px 40px;text-align:center;position:relative;overflow:hidden}
-.hero-c{position:relative;max-width:620px;margin:0 auto;z-index:1}
-.hero-badge{display:inline-block;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:5px 16px;border-radius:30px;font-size:.6rem;margin-bottom:14px}
-.hero h1{font-size:clamp(1.5rem,5vw,2.4rem);font-weight:900;margin-bottom:8px;letter-spacing:-.5px}
-.hero h1 .h{background:linear-gradient(135deg,var(--s),#fbc96a);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero-p{font-size:.78rem;opacity:.75;margin-bottom:22px}
-.hero-acts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.hero-btn{background:var(--p);color:#fff;padding:11px 28px;border-radius:30px;font-weight:700;font-size:.78rem;cursor:pointer;transition:all .25s;display:inline-block}
-@media(hover:hover){.hero-btn:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(199,59,43,.25)}}
-.hero-btn2{background:rgba(255,255,255,.1);color:#fff;padding:11px 28px;border-radius:30px;font-weight:600;font-size:.78rem;cursor:pointer;border:1px solid rgba(255,255,255,.1);display:inline-block;transition:all .25s}
-@media(hover:hover){.hero-btn2:hover{background:rgba(255,255,255,.15);transform:translateY(-2px)}}
-.hero-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-.hero-particle{position:absolute;font-size:clamp(1rem,3vw,1.8rem);opacity:0;bottom:-30px;animation:floatUp 8s ease-in-out infinite;-webkit-animation:floatUp 8s ease-in-out infinite}
-.hero-particle:nth-child(1){left:5%;animation-delay:0s;animation-duration:9s}
-.hero-particle:nth-child(2){left:25%;animation-delay:2s;animation-duration:11s}
-.hero-particle:nth-child(3){left:50%;animation-delay:4s;animation-duration:8s}
-.hero-particle:nth-child(4){left:78%;animation-delay:1s;animation-duration:10s}
-@keyframes floatUp
-@-webkit-keyframes floatUp{0%{opacity:0;transform:translateY(60px)}10%{opacity:.6}90%{opacity:.4}100%{opacity:0;transform:translateY(-250px) rotate(360deg)}}
-.nb{background:linear-gradient(135deg,#1e1b4b,#312e81);padding:7px 14px;text-align:center;color:#c7d2fe;display:none}
-.w{max-width:1100px;margin:0 auto;padding:0 16px}
-.sec{font-size:1.15rem;font-weight:700;margin:28px 0 4px;padding-bottom:8px;border-bottom:2px solid rgba(245,166,35,.2)}
-.hl{color:var(--p)}
-.tabs{display:flex;gap:6px;overflow-x:auto;padding:2px 0 16px}
-.tabs button{padding:8px 20px;border-radius:30px;border:1.5px solid var(--b);background:var(--c);font-weight:600;font-size:.68rem;cursor:pointer;white-space:nowrap;color:var(--t2);flex-shrink:0;transition:all .2s}
-@media(hover:hover){.tabs button:hover{border-color:var(--s)}}.tabs button.on{background:var(--p);color:#fff;border-color:var(--p)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-bottom:28px}
-.crd{background:var(--c);border-radius:var(--r);overflow:hidden;border:1px solid var(--b);cursor:pointer;transition:all .3s ease;box-shadow:var(--sh);animation:cardIn .4s ease both;-webkit-animation:cardIn .4s ease both;touch-action:manipulation}
+
+/* === SECTIONS === */
+.w{max-width:1100px;margin:0 auto;padding:0 20px}
+.sec{font-size:1.4rem;font-weight:700;margin:40px 0 8px;padding-bottom:12px;font-family:var(--fh);text-transform:uppercase;letter-spacing:2px;position:relative;display:flex;align-items:center;gap:16px}
+.sec::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--b),transparent)}
+.hl{color:var(--p);position:relative}
+.hl::after{content:'';position:absolute;bottom:-12px;left:0;width:60px;height:3px;background:var(--g1);border-radius:4px;box-shadow:0 0 20px rgba(214,64,43,.3)}
+
+/* === TABS === */
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 24px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{padding:10px 26px;border-radius:60px;border:1px solid var(--b);background:var(--c);font-weight:600;font-size:.66rem;cursor:pointer;white-space:nowrap;color:var(--t2);flex-shrink:0;transition:all .3s;letter-spacing:.5px;position:relative;transform:translateZ(0)}
+@media(hover:hover){.tabs button:hover{border-color:var(--s);color:var(--t);transform:translateZ(1px);box-shadow:0 4px 20px rgba(245,166,35,.08)}}
+.tabs button.on{background:var(--g1);color:#fff;border-color:transparent;box-shadow:0 4px 25px rgba(214,64,43,.3);transform:translateZ(2px)}
+.tabs button:active{transform:scale(.96)}
+
+/* === CARDS — 3D TILT === */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px;margin-bottom:40px;perspective:var(--perspective)}
+.crd{background:var(--c);border-radius:var(--r);overflow:hidden;border:1px solid var(--b);cursor:pointer;transition:all .4s cubic-bezier(.34,1.56,.64,1);box-shadow:var(--sh);animation:cardIn .6s ease both;-webkit-animation:cardIn .6s ease both;touch-action:manipulation;position:relative;transform-style:preserve-3d;transform:translateZ(0) rotateX(0deg);will-change:transform}
+.crd::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border-radius:var(--r);background:linear-gradient(135deg,transparent 60%,rgba(214,64,43,.03));pointer-events:none;z-index:1;opacity:0;transition:opacity .4s}
+@media(hover:hover){.crd:hover::before{opacity:1}}
 .crd:nth-child(2){animation-delay:.05s}.crd:nth-child(3){animation-delay:.1s}.crd:nth-child(4){animation-delay:.15s}.crd:nth-child(5){animation-delay:.2s}.crd:nth-child(6){animation-delay:.25s}.crd:nth-child(7){animation-delay:.3s}.crd:nth-child(8){animation-delay:.35s}.crd:nth-child(9){animation-delay:.4s}.crd:nth-child(10){animation-delay:.45s}.crd:nth-child(11){animation-delay:.5s}.crd:nth-child(12){animation-delay:.55s}.crd:nth-child(13){animation-delay:.6s}
-@keyframes cardIn
-@-webkit-keyframes cardIn{from{opacity:0;transform:translateY(20px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
-@media(hover:hover){.crd:hover{transform:translateY(-4px);box-shadow:var(--sh2);border-color:rgba(199,59,43,.2)}}
-.crd-img{width:100%;height:190px;background-size:cover;background-position:center;background-color:var(--b);position:relative}
-.pop-badge{position:absolute;top:8px;left:8px;background:var(--s);color:#fff;padding:3px 10px;border-radius:30px;font-size:.5rem;font-weight:700;z-index:2}
-.crd-body{padding:14px 16px 16px}.crd-body h3{font-size:.9rem;font-weight:700;margin-bottom:3px;color:var(--t)}
-.crd-desc{color:var(--t2);font-size:.66rem;margin-bottom:10px}.crd-ft{display:flex;align-items:center;justify-content:space-between}
-.crd-pr{font-weight:800;font-size:1.05rem;color:var(--p);background:rgba(199,59,43,.08);padding:2px 10px;border-radius:20px;display:inline-block}
-.add-btn{background:var(--p);color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-size:1.3rem;display:flex;align-items:center;justify-content:center;cursor:pointer}
-@media(hover:hover){.add-btn:hover{background:var(--p2);transform:scale(1.12)}}
-.rv{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:28px}
-.rv-card{background:var(--c);border-radius:var(--r);padding:16px;border:1px solid var(--b)}
-.rv-stars{color:#f5a623;font-size:.82rem;margin-bottom:4px}.rv-txt{font-size:.7rem;color:var(--t2);font-style:italic;margin-bottom:4px}.rv-auth{font-size:.65rem;font-weight:600}
-.ap{max-width:680px;margin:0 auto;padding:20px 0}
-.cd{background:var(--c);border-radius:var(--r);padding:18px 22px;margin:14px 0;border:1px solid var(--b);box-shadow:var(--sh)}
-.ap h2{font-size:1.15rem;font-weight:700;margin-bottom:10px}.ap h3{font-size:.85rem;font-weight:700;color:var(--p);margin-bottom:6px}.ap p{color:var(--t2);font-size:.76rem;line-height:1.6}
-.store-img{width:100%;max-height:220px;object-fit:cover;border-radius:var(--r);margin-bottom:16px;border:1px solid var(--b)}
-.ap-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:16px 0}
-.ap-gallery img{width:100%;height:100px;object-fit:cover;border-radius:var(--r);border:1px solid var(--b);cursor:pointer;transition:all .3s ease}
-@media(hover:hover){.ap-gallery img:hover{transform:scale(1.04)}}
-.inf{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:28px 0}
-.inf div{background:var(--c);padding:16px;border-radius:var(--r);border:1px solid var(--b)}
-.inf h3{font-weight:700;font-size:.76rem;margin-bottom:4px}.inf p{color:var(--t2);font-size:.66rem}
-.cmd-toggle{display:flex;gap:8px;background:var(--b);border-radius:var(--r);padding:4px;max-width:360px;margin-bottom:16px}
-.cmd-toggle button{flex:1;padding:10px 16px;border:none;border-radius:12px;background:transparent;font-weight:600;font-size:.78rem;color:var(--t2);cursor:pointer}
-.cmd-toggle button.on{background:var(--p);color:#fff}.cmd-addr{margin-bottom:16px;max-width:480px}
-.cp-mode-inline{padding:8px 20px;border-bottom:1px solid var(--b)}.cp-mode-inline .cmd-toggle{margin-bottom:0;max-width:100%}
-.mod-ta{width:100%;padding:10px 14px;border:1.5px solid var(--b);border-radius:12px;font-size:.72rem;font-family:var(--f);color:var(--t);background:var(--c);resize:none;outline:none}
-.mod-ta:focus{border-color:var(--p)}
-.ub{background:#06c;color:#fff;padding:9px 20px;border-radius:30px;font-weight:700;font-size:.72rem;display:inline-block;cursor:pointer;border:none;transition:all .2s}
-@media(hover:hover){.ub:hover{transform:translateY(-1px)}}.ub2{background:var(--p);color:#fff;padding:12px 28px;border-radius:30px;font-weight:700;font-size:.8rem;display:inline-block;cursor:pointer;transition:all .2s}@media(hover:hover){.ub2:hover{transform:translateY(-2px)}}
-.nl{background:linear-gradient(135deg,var(--p),#8a2216);border-radius:var(--r);padding:24px;color:#fff;text-align:center;margin-bottom:28px;position:relative;overflow:hidden}
-.nl h3{font-size:.95rem;font-weight:700;margin-bottom:3px}.nl p{opacity:.8;font-size:.72rem;margin-bottom:12px}.nl form{display:flex;gap:6px;max-width:300px;margin:0 auto}
-.nl input{flex:1;padding:11px 16px;border-radius:30px;border:none;font-size:.75rem;outline:none}
-.nl button{padding:11px 22px;background:#fff;color:var(--p);border:none;border-radius:30px;font-weight:700;font-size:.75rem;cursor:pointer}
-.mod{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);z-index:200;align-items:center;justify-content:center;padding:14px}
-.mod.on{display:flex}.mod-bx{background:var(--c);border-radius:var(--r);max-width:460px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 25px 80px rgba(0,0,0,.2)}
-.mod-hd{padding:16px 20px 12px;border-bottom:1px solid var(--b);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--c)}
-.mod-hd h2{font-size:.82rem;font-weight:700}
-.mod-cl{background:var(--b);border:none;width:28px;height:28px;border-radius:50%;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--t2);transition:all .2s}
-@media(hover:hover){.mod-cl:hover{background:var(--p);color:#fff;transform:rotate(90deg)}}
-.mod-bd{padding:14px 20px 10px}.cs{margin-bottom:16px}.cs h4{font-size:.75rem;font-weight:700;margin-bottom:5px;color:var(--t)}
-.chips{display:flex;flex-wrap:wrap;gap:6px}.chips button{padding:6px 14px;border:1.5px solid var(--b);border-radius:20px;background:var(--c);cursor:pointer;font-size:.63rem;font-weight:500;color:var(--t)}
-@media(hover:hover){.chips button:hover{border-color:var(--s)}}.chips button.sel{border-color:var(--p);background:rgba(199,59,43,.08);color:var(--p);font-weight:600}
-.chips button.sel::before{content:"✓";font-size:.5rem;margin-right:2px}
-.mod-inst{padding:4px 20px 14px}.mod-ft{padding:12px 20px 14px;border-top:1px solid var(--b);display:flex;justify-content:space-between;align-items:center;background:var(--c);position:sticky;bottom:0}
-.mod-pr{font-weight:800;font-size:1rem;color:var(--p)}
-.mod-ok{background:var(--p);color:#fff;border:none;padding:9px 24px;border-radius:30px;font-weight:700;font-size:.74rem;cursor:pointer;transition:all .2s}
-@media(hover:hover){.mod-ok:hover{background:var(--p2);transform:scale(1.04)}}
-.co{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.4);z-index:300}.co.on{display:block}
-.cp{position:fixed;top:0;right:-380px;width:380px;max-width:100vw;height:100vh;background:var(--c);z-index:301;transition:right .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-4px 0 30px rgba(0,0,0,.1)}
-.cp.on{right:0}.cp-hd{padding:16px 20px;border-bottom:1px solid var(--b);display:flex;justify-content:space-between;align-items:center}
-.cp-hd h3{font-size:.82rem;font-weight:700}
-.cp-x{background:none;border:none;font-size:1.1rem;cursor:pointer;color:var(--t2);padding:4px;transition:all .2s}
-@media(hover:hover){.cp-x:hover{color:var(--p);transform:rotate(90deg)}}
-.cp-its{flex:1;overflow-y:auto;padding:8px 20px}.cp-em{text-align:center;padding:40px 0;color:var(--t2);font-size:.8rem}
-.ci{display:flex;gap:8px;padding:10px 0;border-bottom:1px solid var(--b)}.ci:last-child{border:none}
-.ci-if{flex:1;min-width:0}.ci-if h4{font-size:.75rem;font-weight:600}
-.ci-if .cu{font-size:.6rem;color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ci-if .up{font-size:.58rem;color:var(--t2)}
-.ci-ac{display:flex;align-items:center;gap:6px;flex-shrink:0}
-.ci-q{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--b);background:var(--c);cursor:pointer;font-weight:700;font-size:.78rem;display:flex;align-items:center;justify-content:center;color:var(--t)}
-@media(hover:hover){.ci-q:hover{border-color:var(--p);color:var(--p);background:rgba(199,59,43,.04)}}
-.ci-n{font-weight:600;min-width:16px;text-align:center;font-size:.75rem}.ci-it{font-weight:700;color:var(--p);min-width:40px;text-align:right;font-size:.75rem}
-.cp-ft{padding:12px 20px 16px;border-top:1px solid var(--b)}
-.cp-tr{display:flex;justify-content:space-between;font-weight:700;font-size:.82rem;margin-bottom:8px}.cp-ta{color:var(--p)}
-.cp-ck{width:100%;padding:12px;background:var(--p);color:#fff;border:none;border-radius:30px;font-weight:700;font-size:.76rem;cursor:pointer;transition:all .2s}
-@media(hover:hover){.cp-ck:hover{background:var(--p2)}}
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:#1a1a1a;color:#fff;padding:12px 22px;border-radius:12px;font-size:.74rem;z-index:500;opacity:0;pointer-events:none}
-[data-theme="dark"] .toast{background:#333}.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
-.ni{display:none;position:fixed;bottom:16px;right:16px;z-index:50;background:linear-gradient(135deg,#1e1b4b,#312e81);color:#c7d2fe;padding:10px 14px;border-radius:12px;font-size:.6rem;font-weight:600;gap:6px;align-items:center;box-shadow:0 4px 16px rgba(0,0,0,.15)}
-#top-btn{display:none;position:fixed;bottom:64px;right:14px;z-index:50;width:40px;height:40px;border-radius:50%;background:var(--p);color:#fff;border:none;font-size:1.2rem;cursor:pointer;box-shadow:0 2px 12px rgba(199,59,43,.25);transition:all .2s}
-@media(hover:hover){#top-btn:hover{transform:scale(1.12)}}
-footer{background:#1a1a1a;color:rgba(255,255,255,.6);padding:32px 16px 14px;margin-top:32px}[data-theme="dark"] footer{background:#0d0d0d}
-.fi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px}
-.fi h4{color:#fff;font-weight:700;font-size:.74rem;margin-bottom:6px}
-.fi p,.fi a{font-size:.66rem;color:rgba(255,255,255,.45);display:block;margin-bottom:4px}
-@media(hover:hover){.fi a:hover{color:var(--s)}}
-.fb{max-width:1100px;margin:14px auto 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.06);text-align:center;font-size:.6rem}
+@keyframes cardIn{from{opacity:0;transform:translateY(40px) rotateX(5deg) scale(.95)}to{opacity:1;transform:translateY(0) rotateX(0deg) scale(1)}}
+@-webkit-keyframes cardIn{from{opacity:0;transform:translateY(40px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(hover:hover){.crd:hover{transform:translateY(-8px) rotateX(2deg) translateZ(10px);box-shadow:var(--sh3);border-color:rgba(214,64,43,.2)}}
+.crd:active{transform:scale(.98) translateZ(-2px)}
+.crd-img{width:100%;height:210px;background-size:cover;background-position:center;background-color:var(--c3);position:relative;overflow:hidden;transform:translateZ(0)}
+.crd-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:70%;background:linear-gradient(transparent,rgba(0,0,0,.7));pointer-events:none;z-index:1}
+.crd-img::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(214,64,43,.08),transparent);opacity:0;transition:opacity .4s;z-index:0}
+@media(hover:hover){.crd:hover .crd-img::before{opacity:1}}
+.pop-badge{position:absolute;top:12px;left:12px;background:var(--g1);color:#fff;padding:5px 16px;border-radius:30px;font-size:.48rem;font-weight:700;z-index:3;letter-spacing:.8px;box-shadow:0 4px 15px rgba(214,64,43,.4);text-transform:uppercase;transform:translateZ(5px)}
+.crd-body{padding:18px 20px 20px;position:relative;z-index:1;background:var(--c);transform:translateZ(5px)}
+.crd-body h3{font-family:var(--fh);font-size:1.1rem;font-weight:600;margin-bottom:6px;color:var(--t);text-transform:uppercase;letter-spacing:1px}
+.crd-desc{color:var(--t2);font-size:.66rem;margin-bottom:14px;letter-spacing:.2px}
+.crd-ft{display:flex;align-items:center;justify-content:space-between;transform:translateZ(3px)}
+.crd-pr{font-weight:800;font-size:1.15rem;color:var(--p);background:rgba(214,64,43,.08);padding:4px 16px;border-radius:20px;display:inline-block;letter-spacing:.3px;border:1px solid rgba(214,64,43,.1)}
+.add-btn{background:var(--g1);color:#fff;border:none;width:42px;height:42px;border-radius:50%;font-size:1.5rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;box-shadow:0 4px 15px rgba(214,64,43,.3);position:relative;overflow:hidden;transform:translateZ(0)}
+.add-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transform:translateX(-100%);transition:transform .4s}
+@media(hover:hover){.add-btn:hover::before{transform:translateX(100%)}}
+@media(hover:hover){.add-btn:hover{transform:scale(1.12) translateZ(5px);box-shadow:0 6px 25px rgba(214,64,43,.5)}}
+.add-btn:active{transform:scale(.95)}
 
-[data-theme="dark"] .crd{background:#1a1a1a}[data-theme="dark"] .mod-bx{background:#1a1a1a}[data-theme="dark"] .mod-hd{background:#1a1a1a}[data-theme="dark"] .mod-ft{background:#1a1a1a}[data-theme="dark"] .inf div{background:#1a1a1a}[data-theme="dark"] .rv-card{background:#1a1a1a}[data-theme="dark"] .cd{background:#1a1a1a}[data-theme="dark"] .cp{background:#1a1a1a}[data-theme="dark"] .nl input{background:#2a2a2a;color:#eee}[data-theme="dark"] .mod-ta{background:#2a2a2a;color:#eee}[data-theme="dark"] .bar{background:#0d0d0d}[data-theme="dark"] .chips button{background:#1a1a1a}[data-theme="dark"] .chips button.sel{color:#fff}[data-theme="dark"] .ap-card{background:#1a1a1a}[data-theme="dark"] .ap-story{background:#1a1a1a}[data-theme="dark"] .ap-card-sm{background:#1a1a1a}[data-theme="dark"] .ap-card-info{background:#1a1a1a}
-
-.ap-hero{background:linear-gradient(135deg,#1a1a1a,#2d2d2d);color:#fff;text-align:center;padding:40px 20px}
-.ap-hero h1{font-size:clamp(1.3rem,4vw,2rem);font-weight:900;letter-spacing:-.5px;margin-bottom:6px}
-.ap-hero h1 .h{background:linear-gradient(135deg,var(--s),#fbc96a);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.ap-hero p{opacity:.7;font-size:.78rem}
-.ap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:16px 0 28px}
-.ap-card{background:var(--c);border-radius:var(--r);padding:22px;border:1px solid var(--b);box-shadow:var(--sh);transition:all .3s ease}
-@media(hover:hover){.ap-card:hover{transform:translateY(-3px);box-shadow:var(--sh2)}}
-.ap-icon{font-size:2rem;margin-bottom:8px}.ap-card h3{font-size:.85rem;font-weight:700;margin-bottom:6px;color:var(--t)}
-.ap-card p{font-size:.72rem;color:var(--t2);line-height:1.55}
-.ap-story{background:var(--c);border-radius:var(--r);padding:24px 28px;margin:16px 0 28px;border:1px solid var(--b);box-shadow:var(--sh);line-height:1.8}
-.ap-story p{font-size:.76rem;color:var(--t2);margin-bottom:12px}
-.ap-story p:last-child{margin-bottom:0}
-.ap-card-sm{background:var(--c);border-radius:var(--r);padding:16px 20px;border:1px solid var(--b)}
-.ap-card-sm h3{font-size:.78rem;font-weight:700;margin-bottom:4px;color:var(--t)}
-.ap-card-sm p{font-size:.68rem;color:var(--t2);line-height:1.5}
-.ap-card-info{background:var(--c);border-radius:var(--r);padding:20px;border:1px solid var(--b)}
-.ap-card-info h3{font-size:.78rem;font-weight:700;margin-bottom:6px;color:var(--t)}
-.ap-card-info p{font-size:.72rem;color:var(--t2);line-height:1.5}
-.ap-icon-sm{font-size:1.3rem;margin-bottom:4px}
-
-::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:var(--b);border-radius:3px}
-
-@media(max-width:1024px){.grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}}
-@media(max-width:768px){.ham{display:flex}.nv a:not(.sl):not(.ham){display:none}.hd{height:48px;padding:0 8px}.lg{gap:6px}.lg img{height:24px}.br{font-size:.72rem}.br .sub{display:none}.nv{gap:0}.ham{min-width:36px;min-height:36px;font-size:1rem}.tg{min-width:36px;min-height:36px;font-size:.75rem}.ct{padding:5px 8px;min-height:36px;font-size:.68rem;gap:3px}.grid{grid-template-columns:1fr;max-width:420px}.cp{width:100vw;right:-100vw}.tabs button{padding:7px 16px}.crd-img{height:170px}.hero{padding:36px 14px 32px}.inf{grid-template-columns:1fr 1fr}.ap-gallery{grid-template-columns:1fr 1fr;gap:6px}.ap-gallery img{height:80px}.mod-bx{max-width:95vw}.fi{grid-template-columns:1fr 1fr}.ap-grid{grid-template-columns:1fr}.ap-story{padding:18px 20px}.ap-hero{padding:32px 16px}}
-@media(max-width:480px){.hd{height:44px;padding:0 6px}.lg img{height:20px}.br{font-size:.65rem}.br .sub{display:none}.ham{min-width:32px;min-height:32px;font-size:.85rem}.tg{min-width:32px;min-height:32px;font-size:.65rem}.ct{padding:4px 6px;min-height:32px;font-size:.62rem;gap:3px}.cb{width:16px;height:16px;font-size:.5rem}.ham{display:flex}.crd-img{height:150px}.crd-body{min-height:75px}.hero h1{font-size:clamp(1.2rem,7vw,1.5rem)}.hero{padding:28px 10px 26px}.inf{grid-template-columns:1fr}.fi{grid-template-columns:1fr}.hero-btn,.hero-btn2{width:100%}.hero-acts{flex-direction:column}.hero-particle{display:none}.add-btn{width:32px;height:32px;font-size:1.1rem}.ap-grid{grid-template-columns:1fr}.ap-card{padding:16px}}
-
-.mn a{font-size:.95rem;padding:16px 24px;border-bottom:1px solid var(--b);cursor:pointer;display:flex;align-items:center;gap:8px;font-weight:600;color:var(--t2);transition:all .15s;min-height:52px}
-@media(hover:hover){@media(hover:hover){.mn a:hover{background:var(--bg);color:var(--p)}}}
-[data-theme="dark"] .mn a{color:#bbb;border-bottom-color:#2a2a2a}
-#mod-pick .cs{margin-bottom:20px}#mod-pick .cs h4{font-size:.85rem;margin-bottom:8px}
-@media(max-width:768px){.mn{top:52px}.mn a{padding:18px 24px;min-height:52px;font-size:.95rem}}
-@media(max-width:480px){.mn{top:48px}.mn a{padding:16px 20px;min-height:48px;font-size:.9rem}}
-@keyframes pulseBadge
-@-webkit-keyframes pulseBadge{0%{transform:scale(1)}50%{transform:scale(1.25)}100%{transform:scale(1)}}
-.cb.pl{animation:pulseBadge .35s ease;-webkit-animation:pulseBadge .35s ease}
-@keyframes toastIn
-@-webkit-keyframes toastIn{0%{opacity:0;transform:translateX(-50%) translateY(60px) scale(.9)}60%{opacity:1;transform:translateX(-50%) translateY(-8px) scale(1.02)}100%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}}
-.toast.on{animation:toastIn .45s ease forwards;-webkit-animation:toastIn .45s ease forwards}
-@keyframes modalBackdrop
+/* === MODALS — 3D Depth === */
+.mod{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);-webkit-backdrop-filter:blur(20px) saturate(1.3);backdrop-filter:blur(20px) saturate(1.3);z-index:200;align-items:center;justify-content:center;padding:14px;perspective:var(--perspective)}
+.mod.on{display:flex;animation:modalBackdrop .3s ease;-webkit-animation:modalBackdrop .3s ease}
+@keyframes modalBackdrop{from{opacity:0}to{opacity:1}}
 @-webkit-keyframes modalBackdrop{from{opacity:0}to{opacity:1}}
-@keyframes modalSlide
-@-webkit-keyframes modalSlide{from{opacity:0;transform:translateY(20px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
-.mod.on{animation:modalBackdrop .3s ease;-webkit-animation:modalBackdrop .3s ease}.mod.on .mod-bx{animation:modalSlide .3s ease;-webkit-animation:modalSlide .3s ease}
-@keyframes cartSlide
-@-webkit-keyframes cartSlide{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
-.ci{animation:cartSlide .3s ease both;-webkit-animation:cartSlide .3s ease both}.ci:nth-child(2){animation-delay:.03s}.ci:nth-child(3){animation-delay:.06s}.ci:nth-child(4){animation-delay:.09s}.ci:nth-child(5){animation-delay:.12s}
-@keyframes pulseDot
-@-webkit-keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.5}}.ni{animation:pulseDot 2s ease-in-out infinite}
-@keyframes glowPulse
-@-webkit-keyframes glowPulse{0%{box-shadow:0 2px 10px rgba(199,59,43,.2)}50%{box-shadow:0 2px 20px rgba(199,59,43,.4)}100%{box-shadow:0 2px 10px rgba(199,59,43,.2)}}
+.mod.on .mod-bx{animation:modalSlide .4s cubic-bezier(.34,1.56,.64,1);-webkit-animation:modalSlide .4s cubic-bezier(.34,1.56,.64,1)}
+@keyframes modalSlide{from{opacity:0;transform:translateY(50px) rotateX(10deg) scale(.9)}to{opacity:1;transform:translateY(0) rotateX(0deg) scale(1)}}
+@-webkit-keyframes modalSlide{from{opacity:0;transform:translateY(50px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+.mod-bx{background:var(--c);background:linear-gradient(180deg,var(--c),var(--bg));border-radius:var(--r);max-width:500px;width:100%;max-height:92vh;overflow-y:auto;box-shadow:0 40px 100px rgba(0,0,0,.5);border:1px solid var(--b);transform:translateZ(0)}
+.mod-hd{padding:20px 24px 16px;border-bottom:1px solid var(--b);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--c);z-index:2;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.mod-hd h2{font-family:var(--fh);font-size:.92rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.mod-cl{background:var(--c3);border:none;width:32px;height:32px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--t2);transition:all .3s;border:1px solid var(--b)}
+@media(hover:hover){.mod-cl:hover{background:var(--p);color:#fff;transform:rotate(90deg) scale(1.1);border-color:var(--p)}}
+.mod-bd{padding:18px 24px 14px}
+.mod-inst{padding:6px 24px 18px}
+.mod-ft{padding:14px 24px 18px;border-top:1px solid var(--b);display:flex;justify-content:space-between;align-items:center;background:var(--c);position:sticky;bottom:0;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.mod-pr{font-weight:800;font-size:1.15rem;color:var(--p);position:relative}
+.mod-ok{background:var(--g1);color:#fff;border:none;padding:12px 32px;border-radius:60px;font-weight:700;font-size:.74rem;cursor:pointer;transition:all .3s;letter-spacing:1px;text-transform:uppercase;box-shadow:0 4px 20px rgba(214,64,43,.3);position:relative;overflow:hidden;transform:translateZ(0)}
+.mod-ok::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);transform:translateX(-100%);transition:transform .4s}
+@media(hover:hover){.mod-ok:hover::before{transform:translateX(100%)}}
+@media(hover:hover){.mod-ok:hover{transform:translateY(-2px) scale(1.03) translateZ(3px);box-shadow:0 8px 30px rgba(214,64,43,.5)}}
+.mod-ok:active{transform:scale(.97)}
+.mod-ta{width:100%;padding:14px 18px;border:1.5px solid var(--b);border-radius:var(--r2);font-size:.72rem;font-family:var(--f);color:var(--t);background:var(--c2);resize:none;outline:none;transition:all .25s}
+.mod-ta:focus{border-color:var(--p);box-shadow:0 0 0 4px rgba(214,64,43,.1),0 0 20px rgba(214,64,43,.05)}
+
+/* === CHIPS === */
+.cs{margin-bottom:18px}
+.cs h4{font-size:.73rem;font-weight:700;margin-bottom:8px;color:var(--t);font-family:var(--fh);letter-spacing:1.5px;text-transform:uppercase;position:relative;display:inline-block}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{padding:8px 18px;border:1.5px solid var(--b);border-radius:25px;background:var(--c2);cursor:pointer;font-size:.63rem;font-weight:500;color:var(--t2);transition:all .25s;position:relative;transform:translateZ(0)}
+@media(hover:hover){.chips button:hover{border-color:var(--s);color:var(--t);transform:translateY(-1px);box-shadow:0 4px 12px rgba(245,166,35,.08)}}
+.chips button:active{transform:scale(.95)}
+.chips button.sel{border-color:var(--p);background:rgba(214,64,43,.1);color:var(--p);font-weight:600;box-shadow:0 0 20px rgba(214,64,43,.15)}
+.chips button.sel::before{content:"✓";font-size:.5rem;margin-right:4px;font-weight:800}
+
+/* === OVERLAY === */
+.co{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:300;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.co.on{display:block;animation:fadeIn .25s ease}
+
+/* === CART — Glass Slide === */
+.cp{position:fixed;top:0;right:-440px;width:440px;max-width:100vw;height:100vh;background:var(--glass2);backdrop-filter:blur(30px) saturate(1.5);-webkit-backdrop-filter:blur(30px) saturate(1.5);z-index:301;transition:right .5s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-8px 0 60px rgba(0,0,0,.3);border-left:1px solid var(--b)}
+.cp.on{right:0}
+.cp-hd{padding:20px 24px;border-bottom:1px solid var(--b);display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.cp-hd h3{font-family:var(--fh);font-size:.88rem;font-weight:600;text-transform:uppercase;letter-spacing:2px}
+.cp-x{background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--t2);padding:6px;transition:all .3s;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center}
+@media(hover:hover){.cp-x:hover{color:var(--p);background:rgba(214,64,43,.08);transform:rotate(90deg)}}
+.cp-its{flex:1;overflow-y:auto;padding:12px 24px}
+.cp-em{text-align:center;padding:60px 0;color:var(--t2);font-size:.8rem}
+.ci{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--b);animation:cartSlide .4s ease both;-webkit-animation:cartSlide .4s ease both;transform:translateZ(0)}
+.ci:nth-child(2){animation-delay:.05s}.ci:nth-child(3){animation-delay:.1s}.ci:nth-child(4){animation-delay:.15s}.ci:nth-child(5){animation-delay:.2s}
+@keyframes cartSlide{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+@-webkit-keyframes cartSlide{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+.ci:last-child{border:none}
+.ci-if{flex:1;min-width:0}
+.ci-if h4{font-size:.78rem;font-weight:600;color:var(--t)}
+.ci-if .cu{font-size:.58rem;color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:2px}
+.ci-if .up{font-size:.56rem;color:var(--t3)}
+.ci-ac{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.ci-q{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--b);background:var(--c2);cursor:pointer;font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:center;color:var(--t);transition:all .25s;transform:translateZ(0)}
+@media(hover:hover){.ci-q:hover{border-color:var(--p);color:var(--p);background:rgba(214,64,43,.08);transform:scale(1.1)}}
+.ci-q:active{transform:scale(.9)}
+.ci-n{font-weight:600;min-width:20px;text-align:center;font-size:.78rem}
+.ci-it{font-weight:700;color:var(--p);min-width:44px;text-align:right;font-size:.78rem}
+.cp-ft{padding:16px 24px 20px;border-top:1px solid var(--b);background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.cp-ft .cp-tr{display:flex;justify-content:space-between;font-weight:600;font-size:.8rem;margin-bottom:8px}
+.cp-ta{color:var(--p);font-weight:800}
+.cp-ck{width:100%;padding:16px;background:var(--g1);color:#fff;border:none;border-radius:60px;font-weight:700;font-size:.78rem;cursor:pointer;transition:all .3s;letter-spacing:1px;text-transform:uppercase;box-shadow:0 4px 25px rgba(214,64,43,.35);position:relative;overflow:hidden;transform:translateZ(0)}
+.cp-ck::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);transform:translateX(-100%);transition:transform .5s}
+@media(hover:hover){.cp-ck:hover::before{transform:translateX(100%)}}
+@media(hover:hover){.cp-ck:hover{transform:translateY(-3px) translateZ(5px);box-shadow:0 8px 40px rgba(214,64,43,.5)}}
+.cp-ck:active{transform:translateY(0) scale(.98)}
+
+/* === TOAST — 3D Pop === */
+.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(120px) translateZ(0);background:var(--c);color:var(--t);padding:16px 32px;border-radius:60px;font-size:.74rem;font-weight:600;z-index:500;opacity:0;pointer-events:none;box-shadow:0 8px 40px rgba(0,0,0,.4);border:1px solid var(--b);transform-style:preserve-3d;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0) translateZ(10px);animation:toastIn .5s cubic-bezier(.34,1.56,.64,1) forwards;-webkit-animation:toastIn .5s cubic-bezier(.34,1.56,.64,1) forwards}
+@keyframes toastIn{0%{opacity:0;transform:translateX(-50%) translateY(80px) scale(.8)}60%{opacity:1;transform:translateX(-50%) translateY(-8px) scale(1.05)}100%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}}
+@-webkit-keyframes toastIn{0%{opacity:0;transform:translateX(-50%) translateY(80px) scale(.8)}60%{opacity:1;transform:translateX(-50%) translateY(-8px) scale(1.05)}100%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}}
+[data-theme="dark"] .toast{background:var(--c2)}
+
+/* === NIGHT INDICATOR === */
+.ni{display:none;position:fixed;bottom:24px;right:24px;z-index:50;background:linear-gradient(135deg,rgba(30,27,75,.9),rgba(49,46,129,.9));color:#c7d2fe;padding:14px 20px;border-radius:18px;font-size:.58rem;font-weight:600;gap:10px;align-items:center;box-shadow:0 8px 40px rgba(0,0,0,.4);border:1px solid rgba(199,210,254,.1);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transform:translateZ(0)}
+.ni::before{content:'';position:absolute;inset:-1px;border-radius:18px;background:linear-gradient(135deg,rgba(199,210,254,.1),transparent);z-index:-1}
+
+/* === TOP BUTTON === */
+#top-btn{display:none;position:fixed;bottom:76px;right:24px;z-index:50;width:46px;height:46px;border-radius:50%;background:var(--g1);color:#fff;border:none;font-size:1.4rem;cursor:pointer;box-shadow:0 4px 20px rgba(214,64,43,.35);transition:all .3s;transform:translateZ(0)}
+@media(hover:hover){#top-btn:hover{transform:translateY(-4px) scale(1.1);box-shadow:0 8px 30px rgba(214,64,43,.5)}}
+#top-btn:active{transform:scale(.9)}
+
+/* === REVIEWS === */
+.rv{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:40px}
+.rv-card{background:var(--c);border-radius:var(--r2);padding:22px;border:1px solid var(--b);transition:all .35s;position:relative;overflow:hidden;transform:translateZ(0)}
+.rv-card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(214,64,43,.02),transparent);opacity:0;transition:opacity .35s;pointer-events:none}
+@media(hover:hover){.rv-card:hover::before{opacity:1}}
+@media(hover:hover){.rv-card:hover{transform:translateY(-4px) translateZ(5px);box-shadow:var(--sh2)}}
+.rv-stars{color:#f5a623;font-size:.88rem;margin-bottom:8px;letter-spacing:2px}
+.rv-txt{font-size:.72rem;color:var(--t2);font-style:italic;margin-bottom:8px;line-height:1.6}
+.rv-auth{font-size:.64rem;font-weight:600;color:var(--t)}
+
+/* === ABOUT === */
+.ap{max-width:680px;margin:0 auto;padding:28px 0}
+.ap p{color:var(--t2);font-size:.76rem;line-height:1.8}
+.store-img{width:100%;max-height:260px;object-fit:cover;border-radius:var(--r);margin-bottom:24px;border:1px solid var(--b);box-shadow:var(--sh);transition:all .3s}
+@media(hover:hover){.store-img:hover{box-shadow:var(--sh2);transform:scale(1.01)}}
+.ap-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:24px 0}
+.ap-gallery img{width:100%;height:120px;object-fit:cover;border-radius:var(--r2);border:1px solid var(--b);cursor:pointer;transition:all .4s;transform:translateZ(0)}
+@media(hover:hover){.ap-gallery img:hover{transform:scale(1.08) translateZ(10px);box-shadow:var(--sh2);z-index:2;position:relative}}
+
+/* === CONTACT === */
+.inf{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:40px 0}
+.inf div{background:var(--c);padding:22px;border-radius:var(--r2);border:1px solid var(--b);transition:all .3s;transform:translateZ(0);position:relative;overflow:hidden}
+.inf div::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--g1);transition:height .3s;border-radius:0 3px 3px 0}
+@media(hover:hover){.inf div:hover::before{height:100%}}
+@media(hover:hover){.inf div:hover{transform:translateY(-4px) translateZ(5px);box-shadow:var(--sh2)}}
+.inf h3{font-family:var(--fh);font-weight:600;font-size:.82rem;margin-bottom:8px;color:var(--p);text-transform:uppercase;letter-spacing:1.5px}
+.inf p{color:var(--t2);font-size:.68rem;line-height:1.6}
+.cmd-toggle{display:flex;gap:8px;background:var(--c2);border-radius:var(--r2);padding:4px;max-width:360px;margin-bottom:16px;border:1px solid var(--b)}
+.cmd-toggle button{flex:1;padding:12px 20px;border:none;border-radius:10px;background:transparent;font-weight:600;font-size:.76rem;color:var(--t2);cursor:pointer;transition:all .25s}
+.cmd-toggle button.on{background:var(--g1);color:#fff;box-shadow:0 2px 15px rgba(214,64,43,.2)}
+.cmd-addr{margin-bottom:16px;max-width:480px}
+.cp-mode-inline{padding:12px 24px;border-bottom:1px solid var(--b)}
+.cp-mode-inline .cmd-toggle{margin-bottom:0;max-width:100%}
+
+/* === BUTTONS === */
+.ub{background:var(--g1);color:#fff;padding:12px 28px;border-radius:60px;font-weight:700;font-size:.7rem;display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:none;transition:all .3s;letter-spacing:.5px;transform:translateZ(0)}
+@media(hover:hover){.ub:hover{transform:translateY(-3px) translateZ(3px);box-shadow:0 6px 25px rgba(214,64,43,.35)}}
+.ub:active{transform:scale(.97)}
+
+/* === NEWSLETTER === */
+.nl{background:var(--g1);border-radius:var(--r);padding:32px;color:#fff;text-align:center;margin-bottom:40px;position:relative;overflow:hidden}
+.nl::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,.06) 0%,transparent 60%);animation:heroRotate 40s linear infinite}
+.nl h3{font-family:var(--fh);font-size:1.05rem;font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:2px;position:relative;z-index:1}
+.nl p{opacity:.85;font-size:.72rem;margin-bottom:16px;position:relative;z-index:1}
+.nl form{display:flex;gap:10px;max-width:340px;margin:0 auto;position:relative;z-index:1}
+.nl input{flex:1;padding:14px 22px;border-radius:60px;border:none;font-size:.75rem;outline:none;box-shadow:0 4px 15px rgba(0,0,0,.1)}
+.nl button{padding:14px 28px;background:#fff;color:var(--p);border:none;border-radius:60px;font-weight:700;font-size:.75rem;cursor:pointer;transition:all .25s}
+@media(hover:hover){.nl button:hover{transform:scale(1.05);box-shadow:0 4px 20px rgba(0,0,0,.15)}}
+
+/* === FOOTER === */
+footer{background:linear-gradient(180deg,#0a0a0f,#07070a);color:rgba(255,255,255,.4);padding:48px 16px 20px;margin-top:48px;border-top:1px solid rgba(255,255,255,.03);position:relative}
+footer::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(214,64,43,.2),transparent)}
+[data-theme="dark"] footer{background:linear-gradient(180deg,#0a0a0f,#07070a)}
+.fi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px}
+.fi h4{color:#fff;font-family:var(--fh);font-weight:600;font-size:.82rem;margin-bottom:10px;text-transform:uppercase;letter-spacing:1.5px;position:relative;display:inline-block}
+.fi h4::after{content:'';position:absolute;bottom:-4px;left:0;width:24px;height:2px;background:var(--g1);border-radius:2px}
+.fi p,.fi a{font-size:.65rem;color:rgba(255,255,255,.35);display:block;margin-bottom:6px;transition:all .2s}
+@media(hover:hover){.fi a:hover{color:var(--s);padding-left:4px}}
+.fb{max-width:1100px;margin:24px auto 0;padding-top:16px;border-top:1px solid rgba(255,255,255,.04);text-align:center;font-size:.58rem;color:rgba(255,255,255,.2);letter-spacing:.5px}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-thumb{background:var(--b);border-radius:3px;transition:background .3s}
+::-webkit-scrollbar-thumb:hover{background:var(--b2)}
+::-webkit-scrollbar-track{background:transparent}
+
+/* === DARK MODE OVERRIDES === */
+[data-theme="dark"] .crd{background:#16161f}
+[data-theme="dark"] .mod-bx{background:#16161f}
+[data-theme="dark"] .mod-hd{background:#16161f}
+[data-theme="dark"] .mod-ft{background:#16161f}
+[data-theme="dark"] .inf div{background:#16161f}
+[data-theme="dark"] .rv-card{background:#16161f}
+[data-theme="dark"] .cp{background:#111118}
+[data-theme="dark"] .cp-ft{background:#111118}
+[data-theme="dark"] .nl input{background:#2a2a3a;color:#eee}
+[data-theme="dark"] .mod-ta{background:#1e1e2a;color:#eee}
+[data-theme="dark"] .chips button{background:#1e1e2a}
+[data-theme="dark"] .chips button.sel{color:#fff}
+[data-theme="light"] .nl::before{display:none}
+
+/* === ANIMATED PULSES & GLOWS === */
+@keyframes pulseBadge{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+@-webkit-keyframes pulseBadge{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+.cb.pl{animation:pulseBadge .35s ease;-webkit-animation:pulseBadge .35s ease}
+@keyframes glowPulse{0%{box-shadow:0 4px 20px rgba(214,64,43,.3)}50%{box-shadow:0 4px 40px rgba(214,64,43,.6)}100%{box-shadow:0 4px 20px rgba(214,64,43,.3)}}
+@-webkit-keyframes glowPulse{0%{box-shadow:0 4px 20px rgba(214,64,43,.3)}50%{box-shadow:0 4px 40px rgba(214,64,43,.6)}100%{box-shadow:0 4px 20px rgba(214,64,43,.3)}}
 .cp-ck:not(:disabled){animation:glowPulse 2s ease-in-out infinite;-webkit-animation:glowPulse 2s ease-in-out infinite}
-@keyframes tickPop
+@keyframes tickPop{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
 @-webkit-keyframes tickPop{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
 .cp-ta.ticking,.ct.ticking{animation:tickPop .3s ease;-webkit-animation:tickPop .3s ease}
-@keyframes badgeBorder
-@-webkit-keyframes badgeBorder{0%,100%{border-color:rgba(255,255,255,.12)}50%{border-color:rgba(245,166,35,.3)}}
+@keyframes badgeBorder{0%,100%{border-color:rgba(255,255,255,.12)}50%{border-color:rgba(245,166,35,.4)}}
+@-webkit-keyframes badgeBorder{0%,100%{border-color:rgba(255,255,255,.12)}50%{border-color:rgba(245,166,35,.4)}}
 .hero-badge{animation:badgeBorder 3s ease-in-out infinite;-webkit-animation:badgeBorder 3s ease-in-out infinite}
-@keyframes fireGlow
+@keyframes fireGlow{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.8;transform:scale(1.15)}}
 @-webkit-keyframes fireGlow{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.8;transform:scale(1.15)}}
-.pop-badge::before{content:"🔥";font-size:.55rem;animation:fireGlow 1.5s ease-in-out infinite;-webkit-animation:fireGlow 1.5s ease-in-out infinite}
-</style></head><body><div class="bar"><span>☀️ 11h30-23h</span><span class="n">🚚 Livraison 2,50€ · 23h-06h</span><span class="h-badge">🕌 Halal</span><span>⭐ 4.5 · 93320</span></div><header><div class="hd"><a href="/" class="lg"><img src="/images/logo.jpg" alt="FAIS TON S'DALLE" id="logo"><div class="br">FAIS TON S'DALLE<span class="sub">Sandwichs sur mesure</span></div></a><nav class="nv"><a class="sl" id="na-acc" href="/#acc">Accueil</a><a id="na-menu" href="/#menu">Menu</a><a id="na-ap" href="/#ap">Infos</a><a id="na-con" href="/#con">Contact</a><button class="ham" id="ham">☰</button><button class="tg" id="tt">🌙</button><div class="ct" id="ct">🛒<span class="cb" id="cc">0</span></div></nav></div></header><div class="mn" id="mn"></div><div class="nb" id="nb">🌙 Livraison 23h-06h</div><div class="hero"><div class="hero-c"><div class="hero-badge">⭐ 4.5 · Halal · Les Pavillons-sous-Bois · 23h-06h</div><h1>Crée ton <span class="h">sandwich</span> sur mesure</h1><p class="hero-p">🥩 Tenders · poulet · dinde · pastrami · thon · 8 crudités · 9 sauces</p><div class="hero-acts"><a class="hero-btn" href="/#menu">Voir le menu</a><a class="hero-btn2" href="https://wa.me/33672044875" target="_blank">📱 WhatsApp</a></div></div><div class="hero-particles"><div class="hero-particle">🥪</div><div class="hero-particle">🥩</div><div class="hero-particle">🥗</div><div class="hero-particle">🥤</div></div></div><div class="pg" id="acc"><div class="w"><div class="sec"><span class="hl">Menu</span></div><div class="tabs"><button class="on" data-c="all">Tout</button><button data-c="menus">Sandwichs</button><button data-c="desserts">Desserts</button><button data-c="boissons">Boissons</button></div><div class="grid" id="mg"><div class="crd" data-id="l"><div class="crd-img" style="background-image:url(/images/menu-leger.jpg)" loading="lazy"><span class="pop-badge">Populaire</span></div><div class="crd-body"><h3>Menu Léger</h3><div class="crd-desc">Sandwich (viande + crudités + sauce)</div><div class="crd-ft"><span class="crd-pr">6.90€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="c"><div class="crd-img" style="background-image:url(/images/menu-classique.jpg)" loading="lazy"><span class="pop-badge">Populaire</span></div><div class="crd-body"><h3>Menu Classique</h3><div class="crd-desc">Sandwich + boisson</div><div class="crd-ft"><span class="crd-pr">7.90€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="g"><div class="crd-img" style="background-image:url(/images/menu-gourmand.jpg)" loading="lazy"><span class="pop-badge">Populaire</span></div><div class="crd-body"><h3>Menu Gourmand</h3><div class="crd-desc">Sandwich + boisson + dessert</div><div class="crd-ft"><span class="crd-pr">9.90€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="t"><div class="crd-img" style="background-image:url(/images/tiramisu.jpg)" loading="lazy"></div><div class="crd-body"><h3>Tiramisu</h3><div class="crd-desc">Fait maison</div><div class="crd-ft"><span class="crd-pr">3.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="m"><div class="crd-img" style="background-image:url(/images/milkshake.png)" loading="lazy"></div><div class="crd-body"><h3>Milkshake</h3><div class="crd-desc">Personnalisable</div><div class="crd-ft"><span class="crd-pr">5.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="co"><div class="crd-img" style="background-image:url(/images/coca.jpg)" loading="lazy"></div><div class="crd-body"><h3>Coca-Cola</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="cz"><div class="crd-img" style="background-image:url(/images/zero.jpg)" loading="lazy"></div><div class="crd-body"><h3>Coca Zéro</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="pe"><div class="crd-img" style="background-image:url(/images/pepsi.jpg)" loading="lazy"></div><div class="crd-body"><h3>Pepsi</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="oa"><div class="crd-img" style="background-image:url(/images/oasis.jpg)" loading="lazy"></div><div class="crd-body"><h3>Oasis Tropical</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="li"><div class="crd-img" style="background-image:url(/images/icetea.jpg)" loading="lazy"></div><div class="crd-body"><h3>Ice Tea</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="or"><div class="crd-img" style="background-image:url(/images/orangina.jpg)" loading="lazy"></div><div class="crd-body"><h3>Orangina</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="cr"><div class="crd-img" style="background-image:url(/images/cristaline.jpg)" loading="lazy"></div><div class="crd-body"><h3>Cristaline</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="sp"><div class="crd-img" style="background-image:url(/images/sanpellegrino.jpg)" loading="lazy"></div><div class="crd-body"><h3>San Pellegrino</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div></div><div class="sec"><span class="hl">Avis</span></div><div class="rv" id="rv"><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Les meilleurs sandwichs du 93 ! Toujours frais et bien garnis."</div><div class="rv-auth">Sophie M.</div></div><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Service rapide même tard, les tenders sont incroyables !"</div><div class="rv-auth">Karim L.</div></div><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Enfin un vrai fast-food halal de qualité près de chez moi."</div><div class="rv-auth">Fatima Z.</div></div><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Le milkshake Snickers est une tuerie !"</div><div class="rv-auth">Alex D.</div></div></div><div class="nl"><h3>Newsletter</h3><p>Promos.</p><form id="nl1"><input type="email" id="nlmail" placeholder="ton@email.fr" required><button type="submit">→</button></form></div></div></div><div class="pg h" id="menu"><div class="w"><div class="sec"><span class="hl">Carte</span></div><div class="tabs"><button class="on" data-c="all">Tout</button><button data-c="menus">Sandwichs</button><button data-c="desserts">Desserts</button><button data-c="boissons">Boissons</button></div><div class="grid" id="mg2"><div class="crd" data-id="l"><div class="crd-img" style="background-image:url(/images/menu-leger.jpg)" loading="lazy"><span class="pop-badge">Populaire</span></div><div class="crd-body"><h3>Menu Léger</h3><div class="crd-desc">Sandwich (viande + crudités + sauce)</div><div class="crd-ft"><span class="crd-pr">6.90€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="c"><div class="crd-img" style="background-image:url(/images/menu-classique.jpg)" loading="lazy"><span class="pop-badge">Populaire</span></div><div class="crd-body"><h3>Menu Classique</h3><div class="crd-desc">Sandwich + boisson</div><div class="crd-ft"><span class="crd-pr">7.90€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="g"><div class="crd-img" style="background-image:url(/images/menu-gourmand.jpg)" loading="lazy"><span class="pop-badge">Populaire</span></div><div class="crd-body"><h3>Menu Gourmand</h3><div class="crd-desc">Sandwich + boisson + dessert</div><div class="crd-ft"><span class="crd-pr">9.90€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="t"><div class="crd-img" style="background-image:url(/images/tiramisu.jpg)" loading="lazy"></div><div class="crd-body"><h3>Tiramisu</h3><div class="crd-desc">Fait maison</div><div class="crd-ft"><span class="crd-pr">3.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="m"><div class="crd-img" style="background-image:url(/images/milkshake.png)" loading="lazy"></div><div class="crd-body"><h3>Milkshake</h3><div class="crd-desc">Personnalisable</div><div class="crd-ft"><span class="crd-pr">5.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="co"><div class="crd-img" style="background-image:url(/images/coca.jpg)" loading="lazy"></div><div class="crd-body"><h3>Coca-Cola</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="cz"><div class="crd-img" style="background-image:url(/images/zero.jpg)" loading="lazy"></div><div class="crd-body"><h3>Coca Zéro</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="pe"><div class="crd-img" style="background-image:url(/images/pepsi.jpg)" loading="lazy"></div><div class="crd-body"><h3>Pepsi</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="oa"><div class="crd-img" style="background-image:url(/images/oasis.jpg)" loading="lazy"></div><div class="crd-body"><h3>Oasis Tropical</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="li"><div class="crd-img" style="background-image:url(/images/icetea.jpg)" loading="lazy"></div><div class="crd-body"><h3>Ice Tea</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="or"><div class="crd-img" style="background-image:url(/images/orangina.jpg)" loading="lazy"></div><div class="crd-body"><h3>Orangina</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="cr"><div class="crd-img" style="background-image:url(/images/cristaline.jpg)" loading="lazy"></div><div class="crd-body"><h3>Cristaline</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="sp"><div class="crd-img" style="background-image:url(/images/sanpellegrino.jpg)" loading="lazy"></div><div class="crd-body"><h3>San Pellegrino</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div></div></div></div><div class="pg h" id="ap"><div class="w"><div class="ap"><img src="/images/store-front.jpeg" alt="FAIS TON S'DALLE" id="about" class="store-img"><div class="sec"><span class="hl">Le concept</span></div><p><strong>FAIS TON S'DALLE</strong> - Sandwichs sur mesure <strong>100% Halal</strong>. Choisis ton menu (Léger 6,90€, Classique 7,90€ avec boisson, Gourmand 9,90€ avec boisson+dessert). Personnalise avec 7 viandes, 8 crudités, 9 sauces. Livraison 2,50€ · 23h-06h. Paiement Stripe.</p><p>134 Allée du Colonel Fabien, 93320 | 📞 <a href="tel:+33672044875" style="color:var(--p);font-weight:700">06 72 04 48 75</a></p><div class="ap-gallery"><img src="/images/google-photo-1.jpeg" alt="" loading="lazy"><img src="/images/google-photo-2.jpeg" alt="" loading="lazy"><img src="/images/google-photo-3.jpeg" alt="" loading="lazy"><img src="/images/google-photo-4.jpeg" alt="" loading="lazy"></div></div></div></div><div class="pg h" id="con"><div class="w"><div class="inf"><div><h3>Adresse</h3><p>134 Allée du Colonel Fabien<br>93320</p></div><div><h3>Horaires</h3><p>Service 11h30-23h<br>Livraison 23h-06h</p></div><div><h3>Téléphone</h3><p><a href="tel:+33672044875" style="color:var(--p);font-weight:800">06 72 04 48 75</a></p></div></div><div style="display:flex;gap:12px;margin:16px 0;flex-wrap:wrap"><a class="ub" style="background:#25D366" id="wa-btn">WhatsApp</a><a href="https://share.google/ohtsRFBl72o22DEi4" target="_blank" class="ub" style="background:var(--p)">Avis Google</a></div><div class="rv" id="rv2"><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Les meilleurs sandwichs du 93 ! Toujours frais et bien garnis."</div><div class="rv-auth">Sophie M.</div></div><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Service rapide même tard, les tenders sont incroyables !"</div><div class="rv-auth">Karim L.</div></div><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Enfin un vrai fast-food halal de qualité près de chez moi."</div><div class="rv-auth">Fatima Z.</div></div><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Le milkshake Snickers est une tuerie !"</div><div class="rv-auth">Alex D.</div></div></div><div class="nl"><h3>Newsletter</h3><form id="nl2"><input type="email" placeholder="ton@email.fr" required><button type="submit">→</button></form></div></div></div><div class="mod" id="mod"><div class="mod-bx"><div class="mod-hd"><h2>Personnalise</h2><button class="mod-cl">✕</button></div><div class="mod-bd" id="mb"></div><div class="mod-inst"><textarea id="mi" class="mod-ta" placeholder="Ex: pas d'oignons..." rows="2"></textarea></div><div class="mod-ft"><div class="mod-pr" id="mp"></div><button class="mod-ok">Ajouter</button></div></div></div><div class="mod" id="mod-t"><div class="mod-bx"><div class="mod-hd"><h2>Tiramisu</h2><button class="mod-cl">✕</button></div><div class="mod-bd" id="mb-t"></div><div class="mod-ft"><div class="mod-pr">3,00€</div><button class="mod-ok">Ajouter</button></div></div></div><div class="mod" id="mod-m"><div class="mod-bx"><div class="mod-hd"><h2>Milkshake</h2><button class="mod-cl">✕</button></div><div class="mod-bd" id="mb-m"></div><div class="mod-inst"><textarea id="mi-m" class="mod-ta" placeholder="Extra" rows="2"></textarea></div><div class="mod-ft"><div class="mod-pr" id="mp-m">5,00€</div><button class="mod-ok">Ajouter</button></div></div></div><div class="mod" id="mod-pick"><div class="mod-bx"><div class="mod-hd"><h2>Choisis tes extras</h2><button class="mod-cl">✕</button></div><div class="mod-bd" id="mb-pick"></div></div></div><div class="mod" id="mod-pay"><div class="mod-bx"><div class="mod-hd"><h2>Paiement</h2><button class="mod-cl">✕</button></div><div class="mod-bd"><div style="text-align:center;padding:20px 0"><div style="font-size:2.5rem;margin-bottom:8px">🔒</div><h3 style="font-weight:700">Paiement sécurisé</h3><p style="font-size:.72rem;color:var(--t2)">CB · Apple Pay · Google Pay</p><div class="pay-summary" style="background:var(--bg);border-radius:12px;padding:12px;margin:12px 0"><div style="display:flex;justify-content:space-between"><span>Total</span><span id="pay-total" style="font-weight:700;color:var(--p)">0,00€</span></div></div><input type="text" id="pay-name" placeholder="Votre nom" class="mod-ta" style="width:100%;margin-bottom:8px"><button id="pay-btn" class="mod-ok" style="width:100%">Payer</button></div></div></div></div><div class="co" id="co"></div><div class="cp" id="cp"><div class="cp-hd"><div><h3>Panier</h3></div><button class="cp-x">✕</button></div><div class="cp-mode-inline"><div class="cmd-toggle"><button class="on" id="cp-mode-livraison">🚚 Livraison</button><button id="cp-mode-emporter">🥡 À emporter</button></div></div><div class="cp-its" id="ci"><div class="cp-em">Panier vide</div></div><div class="cp-ft"><div class="cp-tr"><span>Sous-total</span><span class="cp-st">0,00€</span></div><div class="cp-tr df" style="display:none;font-size:.68rem;color:var(--t2)"><span>🚚 Livraison</span><span class="df-val">2,50€</span></div><div class="cp-tr" style="border-top:1px solid var(--b);padding-top:6px;margin-top:2px"><span>Total</span><span class="cp-ta" id="ct-total">0,00€</span></div><button class="cp-ck">Payer <span id="c2"></span></button></div></div><div class="toast" id="toast"><span id="tm"></span></div><div class="ni" id="ni"><span>🌙</span><span>Livraison<br><strong>23h-06h</strong></span></div><button id="top-btn">↑</button><footer><div class="fi"><div><h4>FAIS TON S'DALLE</h4><p>Sandwichs Halal 7j/7</p></div><div><h4>Contact</h4><p>📞 06 72 04 48 75</p><p>134 Allée du Colonel, 93320</p></div><div><h4>Liens</h4><a href="/">Accueil</a><a href="/#menu">Menu</a><a href="/#ap">Infos</a><a href="/#con">Contact</a></div><div><h4>Infos</h4><a href="/mentions-legales.html">Mentions légales</a><a href="/cgv.html">CGV</a></div></div><div class="fb">© 2026 FAIS TON S'DALLE</div></footer><script>
+.pop-badge::before{content:"🔥";font-size:.52rem;animation:fireGlow 1.5s ease-in-out infinite;-webkit-animation:fireGlow 1.5s ease-in-out infinite}
+@keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.5}}
+@-webkit-keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.5}}
+.ni{animation:pulseDot 2s ease-in-out infinite;-webkit-animation:pulseDot 2s ease-in-out infinite}
+
+
+/* === WOW EFFECTS — 3D TILT, MAGNETIC, RIPPLES === */
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.5);pointer-events:none;animation:rippleAnim .6s ease-out forwards;z-index:10}
+@keyframes rippleAnim{from{width:0;height:0;opacity:.5}to{width:200px;height:200px;opacity:0}}
+@-webkit-keyframes rippleAnim{from{width:0;height:0;opacity:.5}to{width:200px;height:200px;opacity:0}}
+.confetti{position:fixed;pointer-events:none;z-index:9999;font-size:1rem;animation:confettiFall linear forwards}
+@keyframes confettiFall{0%{opacity:1;transform:translateY(0) rotate(0deg) scale(1)}100%{opacity:0;transform:translateY(-200px) rotate(720deg) scale(0)}}
+@-webkit-keyframes confettiFall{0%{opacity:1;transform:translateY(0) rotate(0deg) scale(1)}100%{opacity:0;transform:translateY(-200px) rotate(720deg) scale(0)}}
+.crd-tilt{transition:transform .1s ease-out!important}@media(hover:hover){.crd-tilt:hover{transition:transform .1s ease-out}}
+.magnetic-btn{transition:transform .2s ease-out!important}
+
+
+/* === RESPONSIVE — PERFECT MOBILE === */
+@media(max-width:1024px){
+  .grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+  .w{padding:0 18px}
+}
+@media(max-width:768px){body::before{background-size:40px 40px;opacity:.5}.hero-particle{font-size:clamp(1rem,4vw,1.5rem);bottom:-30px}
+  .ham{display:flex}
+  .nv a:not(.sl):not(.ham){display:none}
+  .hd{height:54px;padding:0 10px}
+  .lg{gap:8px}.lg img{height:26px}
+  .br{font-size:.78rem}
+  .br .sub{display:none}
+  .nv{gap:0}
+  .ham{min-width:40px;min-height:40px;font-size:1rem;border-radius:10px}
+  .tg{min-width:40px;min-height:40px;font-size:.7rem}
+  .ct{padding:5px 10px;min-height:40px;font-size:.62rem;gap:4px}
+  .cb{width:20px;height:20px;font-size:.48rem}
+  .grid{grid-template-columns:1fr 1fr;gap:12px;max-width:100%;margin:0 0 28px}
+  .cp{width:100vw;right:-100vw}
+  .tabs{padding:4px 0 16px}
+  .tabs button{padding:8px 16px;font-size:.62rem}
+  .crd-img{height:140px}
+  .crd-body{padding:12px 14px 14px;min-height:auto}
+  .crd-body h3{font-size:.85rem;letter-spacing:.8px}
+  .crd-desc{font-size:.6rem;margin-bottom:8px}
+  .crd-pr{font-size:.95rem;padding:2px 12px}
+  .add-btn{width:34px;height:34px;font-size:1.1rem}
+  .pop-badge{font-size:.42rem;padding:3px 10px}
+  .hero{padding:44px 14px 40px}
+  .hero h1{font-size:clamp(1.8rem,7vw,2.8rem)}
+  .hero-p{font-size:.75rem;margin-bottom:24px}
+  .hero-btn,.hero-btn2{padding:13px 28px;font-size:.74rem}
+  .inf{grid-template-columns:1fr 1fr;gap:12px}
+  .inf div{padding:16px}
+  .ap-gallery{grid-template-columns:1fr 1fr;gap:8px}
+  .ap-gallery img{height:90px}
+  .mod-bx{max-width:96vw;margin:0 auto}
+  .mod-bd{padding:14px 18px 10px}
+  .mod-hd{padding:16px 18px 12px}
+  .mod-ft{padding:12px 18px 14px}
+  .mod-hd h2{font-size:.8rem}
+  .mod-ok{padding:10px 22px;font-size:.7rem}
+  .chips button{padding:6px 14px;font-size:.6rem}
+  .rv{grid-template-columns:1fr;gap:12px}
+  .rv-card{padding:16px}
+  .fi{grid-template-columns:1fr 1fr;gap:20px}
+  .sec{font-size:1.1rem;margin:28px 0 6px}
+  .nl{padding:24px 18px}
+  .nl h3{font-size:.9rem}
+  .nl input{padding:12px 16px}
+  .cp-hd{padding:16px 18px}
+  .cp-its{padding:10px 18px}
+  .cp-ft{padding:14px 18px 16px}
+  .ci{padding:10px 0;gap:10px}
+  .ci-q{width:24px;height:24px;font-size:.75rem}
+  .ci-n{min-width:16px;font-size:.72rem}
+  .ci-it{min-width:36px;font-size:.72rem}
+  .mn{top:54px}
+  .mn a{padding:16px 22px;min-height:52px;font-size:.9rem}
+  .store-img{max-height:200px}
+  .ap{padding:16px 0}
+  .toast{padding:12px 24px;font-size:.7rem;bottom:20px}
+  #top-btn{bottom:64px;right:16px;width:40px;height:40px;font-size:1.2rem}
+  .cs h4{font-size:.7rem}
+  .cs{margin-bottom:14px}
+  .mod-ta{padding:12px 14px;font-size:.7rem}
+  .crd::before{display:none}
+  .hero::after{height:.5px}
+  .hero-c{animation:none}
+  .hero h1 .h::after{height:3px}
+  footer{padding:32px 14px 16px;margin-top:32px}
+  .fb{margin:16px auto 0;padding-top:12px}
+}
+@media(max-width:480px){
+  .hd{height:48px;padding:0 6px}
+  .lg img{height:20px}
+  .br{font-size:.65rem;letter-spacing:1.2px}
+  .ham{min-width:34px;min-height:34px;font-size:.85rem}
+  .tg{min-width:34px;min-height:34px;font-size:.65rem}
+  .ct{padding:3px 8px;min-height:34px;font-size:.55rem;gap:3px}
+  .cb{width:18px;height:18px;font-size:.42rem}
+  .grid{grid-template-columns:1fr;gap:14px;max-width:400px;margin:0 auto 24px}
+  .crd-img{height:180px}
+  .crd-body{padding:14px 16px 16px}
+  .crd-body h3{font-size:.95rem}
+  .crd-pr{font-size:1rem}
+  .add-btn{width:38px;height:38px;font-size:1.2rem}
+  .pop-badge{top:8px;left:8px;padding:3px 10px;font-size:.4rem}
+  .hero{padding:36px 12px 32px}
+  .hero h1{font-size:clamp(1.5rem,8vw,2rem)}
+  .hero-p{font-size:.7rem;margin-bottom:20px}
+  .hero-btn,.hero-btn2{padding:12px 24px;font-size:.72rem}
+  .hero-acts{flex-direction:column;gap:10px}
+  .hero-btn,.hero-btn2{width:100%;justify-content:center}
+  .hero-btn2{text-align:center}
+  .hero::before{animation-duration:40s}
+  .hero-particle{display:none}
+  .inf{grid-template-columns:1fr;gap:10px}
+  .inf div{padding:14px}
+  .inf h3{font-size:.76rem}
+  .fi{grid-template-columns:1fr;gap:16px}
+  .fi h4{margin-bottom:6px}
+  .sec{font-size:1rem;margin:24px 0 4px;letter-spacing:1.5px}
+  .hl::after{width:40px;height:2px;bottom:-10px}
+  .tabs button{padding:7px 14px;font-size:.6rem}
+  .mod-bx{max-width:100vw;border-radius:16px}
+  .mod-bd{padding:12px 14px 8px}
+  .mod-hd{padding:14px 16px 10px}
+  .mod-hd h2{font-size:.75rem}
+  .mod-ft{padding:10px 16px 12px}
+  .mod-ok{padding:10px 20px;font-size:.68rem}
+  .mod-cl{width:28px;height:28px;font-size:.85rem}
+  .mod-ta{padding:10px 12px;font-size:.68rem}
+  .chips{gap:6px}
+  .chips button{padding:6px 12px;font-size:.58rem}
+  .cs h4{font-size:.68rem}
+  .cs{margin-bottom:12px}
+  .rv{gap:10px}
+  .rv-card{padding:14px}
+  .rv-txt{font-size:.68rem}
+  .store-img{max-height:180px;margin-bottom:16px}
+  .ap{padding:12px 0}
+  .ap p{font-size:.72rem}
+  .ap-gallery{gap:6px}
+  .ap-gallery img{height:80px}
+  .nl{padding:20px 16px}
+  .nl h3{font-size:.82rem}
+  .nl p{font-size:.68rem;margin-bottom:12px}
+  .nl form{flex-direction:column;gap:8px;max-width:100%}
+  .nl input{width:100%;text-align:center}
+  .nl button{width:100%}
+  .cp{width:100vw;right:-100vw}
+  .cp-hd{padding:14px 16px}
+  .cp-hd h3{font-size:.78rem}
+  .cp-its{padding:8px 16px}
+  .cp-ft{padding:12px 16px 14px}
+  .cp-ft .cp-tr{font-size:.74rem}
+  .cp-ck{padding:14px;font-size:.72rem}
+  .ci{padding:8px 0;gap:8px}
+  .ci-q{width:22px;height:22px;font-size:.7rem}
+  .ci-n{min-width:14px;font-size:.68rem}
+  .ci-it{min-width:32px;font-size:.68rem}
+  .ci-if h4{font-size:.7rem}
+  .ni{bottom:16px;right:16px;padding:10px 14px;font-size:.52rem}
+  #top-btn{bottom:56px;right:12px;width:36px;height:36px;font-size:1rem}
+  .toast{padding:10px 20px;font-size:.68rem;bottom:16px}
+  .mn{top:48px}
+  .mn a{padding:14px 20px;min-height:48px;font-size:.85rem}
+  .fb{font-size:.52rem}
+  footer{padding:28px 12px 14px;margin-top:28px}
+  .fi{gap:14px}
+  footer::before{left:5%;right:5%}
+  .bar{padding:4px 10px;gap:6px;font-size:.55rem}
+  .bar .n{padding:2px 10px;font-size:.45rem}
+  .h-badge{padding:2px 10px;font-size:.45rem}
+  .cmd-toggle{max-width:100%}
+  .cmd-toggle button{padding:8px 14px;font-size:.7rem}
+  .w{padding:0 12px}
+}</style></head><body><div class="bar"><span>☀️ 11h30-23h</span><span class="n">🚚 Livraison 2,50€ · 23h-06h</span><span class="h-badge">🕌 Halal</span><span>⭐ 4.5 · 93320</span></div><header><div class="hd"><a href="/" class="lg"><img src="/images/logo.jpg" alt="FAIS TON S'DALLE" id="logo"><div class="br">FAIS TON S'DALLE<span class="sub">Sandwichs sur mesure</span></div></a><nav class="nv"><a class="sl" id="na-acc" href="/#acc">Accueil</a><a id="na-menu" href="/#menu">Menu</a><a id="na-ap" href="/#ap">Infos</a><a id="na-con" href="/#con">Contact</a><button class="ham" id="ham">☰</button><button class="tg" id="tt">🌙</button><div class="ct" id="ct">🛒<span class="cb" id="cc">0</span></div></nav></div></header><div class="mn" id="mn"></div><div class="nb" id="nb">🌙 Livraison 23h-06h</div><div class="hero"><div class="hero-c"><div class="hero-badge">⭐ 4.5 · Halal · Les Pavillons-sous-Bois · 23h-06h</div><h1>CRÉE TON <span class="h">SANDWICH</span> SUR MESURE</h1><p class="hero-p">🔥 TENDERS · POULET · DINDE · PASTRAMI · ROSETTE · THON<br>🥗 8 CRUDITÉS · 9 SAUCES · 🧀 3 SUPPLÉMENTS</p><div class="hero-acts"><a class="hero-btn" href="/#menu">Voir le menu</a><a class="hero-btn2" href="https://wa.me/33672044875" target="_blank">📱 WhatsApp</a></div></div><div class="hero-particles"><div class="hero-particle">🥪</div><div class="hero-particle">🥩</div><div class="hero-particle">🥗</div><div class="hero-particle">🥤</div></div></div><div class="pg" id="acc"><div class="w"><div class="sec"><span class="hl">Menu</span></div><div class="tabs"><button class="on" data-c="all">Tout</button><button data-c="menus">Sandwichs</button><button data-c="desserts">Desserts</button><button data-c="boissons">Boissons</button></div><div class="grid" id="mg"><div class="crd" data-id="l"><div class="crd-img" style="background-image:url(/images/menu-leger.jpg)" loading="lazy"><span class="pop-badge">Populaire</span></div><div class="crd-body"><h3>Menu Léger</h3><div class="crd-desc">Sandwich (viande + crudités + sauce)</div><div class="crd-ft"><span class="crd-pr">6.90€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="c"><div class="crd-img" style="background-image:url(/images/menu-classique.jpg)" loading="lazy"><span class="pop-badge">Populaire</span></div><div class="crd-body"><h3>Menu Classique</h3><div class="crd-desc">Sandwich + boisson</div><div class="crd-ft"><span class="crd-pr">7.90€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="g"><div class="crd-img" style="background-image:url(/images/menu-gourmand.jpg)" loading="lazy"><span class="pop-badge">Populaire</span></div><div class="crd-body"><h3>Menu Gourmand</h3><div class="crd-desc">Sandwich + boisson + dessert</div><div class="crd-ft"><span class="crd-pr">9.90€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="t"><div class="crd-img" style="background-image:url(/images/tiramisu.jpg)" loading="lazy"></div><div class="crd-body"><h3>Tiramisu</h3><div class="crd-desc">Fait maison</div><div class="crd-ft"><span class="crd-pr">3.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="m"><div class="crd-img" style="background-image:url(/images/milkshake.png)" loading="lazy"></div><div class="crd-body"><h3>Milkshake</h3><div class="crd-desc">Personnalisable</div><div class="crd-ft"><span class="crd-pr">5.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="co"><div class="crd-img" style="background-image:url(/images/coca.jpg)" loading="lazy"></div><div class="crd-body"><h3>Coca-Cola</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="cz"><div class="crd-img" style="background-image:url(/images/zero.jpg)" loading="lazy"></div><div class="crd-body"><h3>Coca Zéro</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="pe"><div class="crd-img" style="background-image:url(/images/pepsi.jpg)" loading="lazy"></div><div class="crd-body"><h3>Pepsi</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="oa"><div class="crd-img" style="background-image:url(/images/oasis.jpg)" loading="lazy"></div><div class="crd-body"><h3>Oasis Tropical</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="li"><div class="crd-img" style="background-image:url(/images/icetea.jpg)" loading="lazy"></div><div class="crd-body"><h3>Ice Tea</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="or"><div class="crd-img" style="background-image:url(/images/orangina.jpg)" loading="lazy"></div><div class="crd-body"><h3>Orangina</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="cr"><div class="crd-img" style="background-image:url(/images/cristaline.jpg)" loading="lazy"></div><div class="crd-body"><h3>Cristaline</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="sp"><div class="crd-img" style="background-image:url(/images/sanpellegrino.jpg)" loading="lazy"></div><div class="crd-body"><h3>San Pellegrino</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div></div><div class="sec"><span class="hl">Avis</span></div><div class="rv" id="rv"><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Les meilleurs sandwichs du 93 ! Toujours frais et bien garnis."</div><div class="rv-auth">Sophie M.</div></div><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Service rapide même tard, les tenders sont incroyables !"</div><div class="rv-auth">Karim L.</div></div><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Enfin un vrai fast-food halal de qualité près de chez moi."</div><div class="rv-auth">Fatima Z.</div></div><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Le milkshake Snickers est une tuerie !"</div><div class="rv-auth">Alex D.</div></div></div><div class="nl"><h3>Newsletter</h3><p>Promos.</p><form id="nl1"><input type="email" id="nlmail" placeholder="ton@email.fr" required><button type="submit">→</button></form></div></div></div><div class="pg h" id="menu"><div class="w"><div class="sec"><span class="hl">Carte</span></div><div class="tabs"><button class="on" data-c="all">Tout</button><button data-c="menus">Sandwichs</button><button data-c="desserts">Desserts</button><button data-c="boissons">Boissons</button></div><div class="grid" id="mg2"><div class="crd" data-id="l"><div class="crd-img" style="background-image:url(/images/menu-leger.jpg)" loading="lazy"><span class="pop-badge">Populaire</span></div><div class="crd-body"><h3>Menu Léger</h3><div class="crd-desc">Sandwich (viande + crudités + sauce)</div><div class="crd-ft"><span class="crd-pr">6.90€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="c"><div class="crd-img" style="background-image:url(/images/menu-classique.jpg)" loading="lazy"><span class="pop-badge">Populaire</span></div><div class="crd-body"><h3>Menu Classique</h3><div class="crd-desc">Sandwich + boisson</div><div class="crd-ft"><span class="crd-pr">7.90€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="g"><div class="crd-img" style="background-image:url(/images/menu-gourmand.jpg)" loading="lazy"><span class="pop-badge">Populaire</span></div><div class="crd-body"><h3>Menu Gourmand</h3><div class="crd-desc">Sandwich + boisson + dessert</div><div class="crd-ft"><span class="crd-pr">9.90€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="t"><div class="crd-img" style="background-image:url(/images/tiramisu.jpg)" loading="lazy"></div><div class="crd-body"><h3>Tiramisu</h3><div class="crd-desc">Fait maison</div><div class="crd-ft"><span class="crd-pr">3.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="m"><div class="crd-img" style="background-image:url(/images/milkshake.png)" loading="lazy"></div><div class="crd-body"><h3>Milkshake</h3><div class="crd-desc">Personnalisable</div><div class="crd-ft"><span class="crd-pr">5.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="co"><div class="crd-img" style="background-image:url(/images/coca.jpg)" loading="lazy"></div><div class="crd-body"><h3>Coca-Cola</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="cz"><div class="crd-img" style="background-image:url(/images/zero.jpg)" loading="lazy"></div><div class="crd-body"><h3>Coca Zéro</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="pe"><div class="crd-img" style="background-image:url(/images/pepsi.jpg)" loading="lazy"></div><div class="crd-body"><h3>Pepsi</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="oa"><div class="crd-img" style="background-image:url(/images/oasis.jpg)" loading="lazy"></div><div class="crd-body"><h3>Oasis Tropical</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="li"><div class="crd-img" style="background-image:url(/images/icetea.jpg)" loading="lazy"></div><div class="crd-body"><h3>Ice Tea</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="or"><div class="crd-img" style="background-image:url(/images/orangina.jpg)" loading="lazy"></div><div class="crd-body"><h3>Orangina</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="cr"><div class="crd-img" style="background-image:url(/images/cristaline.jpg)" loading="lazy"></div><div class="crd-body"><h3>Cristaline</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="sp"><div class="crd-img" style="background-image:url(/images/sanpellegrino.jpg)" loading="lazy"></div><div class="crd-body"><h3>San Pellegrino</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div></div></div></div><div class="pg h" id="ap"><div class="w"><div class="ap"><img src="/images/store-front.jpeg" alt="FAIS TON S'DALLE" id="about" class="store-img"><div class="sec"><span class="hl">Le concept</span></div><p><strong>FAIS TON S'DALLE</strong> - Sandwichs sur mesure <strong>100% Halal</strong>. Choisis ton menu (Léger 6,90€, Classique 7,90€ avec boisson, Gourmand 9,90€ avec boisson+dessert). Personnalise avec 7 viandes, 8 crudités, 9 sauces. Livraison 2,50€ · 23h-06h. Paiement Stripe.</p><p>134 Allée du Colonel Fabien, 93320 | 📞 <a href="tel:+33672044875" style="color:var(--p);font-weight:700">06 72 04 48 75</a></p><div class="ap-gallery"><img src="/images/google-photo-1.jpeg" alt="" loading="lazy"><img src="/images/google-photo-2.jpeg" alt="" loading="lazy"><img src="/images/google-photo-3.jpeg" alt="" loading="lazy"><img src="/images/google-photo-4.jpeg" alt="" loading="lazy"></div></div></div></div><div class="pg h" id="con"><div class="w"><div class="inf"><div><h3>Adresse</h3><p>134 Allée du Colonel Fabien<br>93320</p></div><div><h3>Horaires</h3><p>Service 11h30-23h<br>Livraison 23h-06h</p></div><div><h3>Téléphone</h3><p><a href="tel:+33672044875" style="color:var(--p);font-weight:800">06 72 04 48 75</a></p></div><div><h3>Email</h3><p><a href="mailto:contact@faistonsdalle.com" style="color:var(--p);font-weight:800">contact@faistonsdalle.com</a></p></div></div><div style="display:flex;gap:12px;margin:16px 0;flex-wrap:wrap"><a class="ub" style="background:#25D366" id="wa-btn">WhatsApp</a><a href="https://share.google/ohtsRFBl72o22DEi4" target="_blank" class="ub" style="background:var(--p)">Avis Google</a></div><div class="rv" id="rv2"><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Les meilleurs sandwichs du 93 ! Toujours frais et bien garnis."</div><div class="rv-auth">Sophie M.</div></div><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Service rapide même tard, les tenders sont incroyables !"</div><div class="rv-auth">Karim L.</div></div><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Enfin un vrai fast-food halal de qualité près de chez moi."</div><div class="rv-auth">Fatima Z.</div></div><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Le milkshake Snickers est une tuerie !"</div><div class="rv-auth">Alex D.</div></div></div><div class="nl"><h3>Newsletter</h3><form id="nl2"><input type="email" placeholder="ton@email.fr" required><button type="submit">→</button></form></div></div></div><div class="mod" id="mod"><div class="mod-bx"><div class="mod-hd"><h2>Personnalise</h2><button class="mod-cl">✕</button></div><div class="mod-bd" id="mb"></div><div class="mod-inst"><textarea id="mi" class="mod-ta" placeholder="Ex: pas d'oignons..." rows="2"></textarea></div><div class="mod-ft"><div class="mod-pr" id="mp"></div><button class="mod-ok">Ajouter</button></div></div></div><div class="mod" id="mod-t"><div class="mod-bx"><div class="mod-hd"><h2>Tiramisu</h2><button class="mod-cl">✕</button></div><div class="mod-bd" id="mb-t"></div><div class="mod-ft"><div class="mod-pr">3,00€</div><button class="mod-ok">Ajouter</button></div></div></div><div class="mod" id="mod-m"><div class="mod-bx"><div class="mod-hd"><h2>Milkshake</h2><button class="mod-cl">✕</button></div><div class="mod-bd" id="mb-m"></div><div class="mod-inst"><textarea id="mi-m" class="mod-ta" placeholder="Extra" rows="2"></textarea></div><div class="mod-ft"><div class="mod-pr" id="mp-m">5,00€</div><button class="mod-ok">Ajouter</button></div></div></div><div class="mod" id="mod-pick"><div class="mod-bx"><div class="mod-hd"><h2>Choisis tes extras</h2><button class="mod-cl">✕</button></div><div class="mod-bd" id="mb-pick"></div></div></div><div class="mod" id="mod-pay"><div class="mod-bx"><div class="mod-hd"><h2>Paiement</h2><button class="mod-cl">✕</button></div><div class="mod-bd"><div style="text-align:center;padding:20px 0"><div style="font-size:2.5rem;margin-bottom:8px">🔒</div><h3 style="font-weight:700">Paiement sécurisé</h3><p style="font-size:.72rem;color:var(--t2)">CB · Apple Pay · Google Pay</p><div class="pay-summary" style="background:var(--bg);border-radius:12px;padding:12px;margin:12px 0"><div style="display:flex;justify-content:space-between"><span>Total</span><span id="pay-total" style="font-weight:700;color:var(--p)">0,00€</span></div></div><input type="text" id="pay-name" placeholder="Votre nom" class="mod-ta" style="width:100%;margin-bottom:8px"><button id="pay-btn" class="mod-ok" style="width:100%">Payer</button></div></div></div></div><div class="co" id="co"></div><div class="cp" id="cp"><div class="cp-hd"><div><h3>Panier</h3></div><button class="cp-x">✕</button></div><div class="cp-mode-inline"><div class="cmd-toggle"><button class="on" id="cp-mode-livraison">🚚 Livraison</button><button id="cp-mode-emporter">🥡 À emporter</button></div></div><div class="cp-its" id="ci"><div class="cp-em">Panier vide</div></div><div class="cp-ft"><div class="cp-tr"><span>Sous-total</span><span class="cp-st">0,00€</span></div><div class="cp-tr df" style="display:none;font-size:.68rem;color:var(--t2)"><span>🚚 Livraison</span><span class="df-val">2,50€</span></div><div class="cp-tr" style="border-top:1px solid var(--b);padding-top:6px;margin-top:2px"><span>Total</span><span class="cp-ta" id="ct-total">0,00€</span></div><button class="cp-ck">Payer <span id="c2"></span></button></div></div><div class="toast" id="toast"><span id="tm"></span></div><div class="ni" id="ni"><span>🌙</span><span>Livraison<br><strong>23h-06h</strong></span></div><button id="top-btn">↑</button><footer><div class="fi"><div><h4>FAIS TON S'DALLE</h4><p>Sandwichs Halal 7j/7</p></div><div><h4>Contact</h4><p>📞 06 72 04 48 75</p><p>134 Allée du Colonel, 93320</p></div><div><h4>Liens</h4><a href="/">Accueil</a><a href="/#menu">Menu</a><a href="/#ap">Infos</a><a href="/#con">Contact</a></div><div><h4>Infos</h4><a href="/mentions-legales.html">Mentions légales</a><a href="/cgv.html">CGV</a></div></div><div class="fb">© 2026 FAIS TON S'DALLE</div></footer><script>
 
 var M=[{"id":"l","n":"Menu Léger","c":"menus","p":6.9,"d":"Sandwich (viande + crudités + sauce)","cs":1,"pop":1},{"id":"c","n":"Menu Classique","c":"menus","p":7.9,"d":"Sandwich + boisson","cs":4,"pop":1},{"id":"g","n":"Menu Gourmand","c":"menus","p":9.9,"d":"Sandwich + boisson + dessert","cs":4,"pop":1},{"id":"t","n":"Tiramisu","c":"desserts","p":3,"d":"Fait maison","cs":2},{"id":"m","n":"Milkshake","c":"desserts","p":5,"d":"Personnalisable","cs":3},{"id":"co","n":"Coca-Cola","c":"boissons","p":1},{"id":"cz","n":"Coca Zéro","c":"boissons","p":1},{"id":"pe","n":"Pepsi","c":"boissons","p":1},{"id":"oa","n":"Oasis Tropical","c":"boissons","p":1},{"id":"li","n":"Ice Tea","c":"boissons","p":1},{"id":"or","n":"Orangina","c":"boissons","p":1},{"id":"cr","n":"Cristaline","c":"boissons","p":1},{"id":"sp","n":"San Pellegrino","c":"boissons","p":1}];
 var DRINKS=[{"id":"co","n":"Coca-Cola"},{"id":"cz","n":"Coca Zéro"},{"id":"pe","n":"Pepsi"},{"id":"oa","n":"Oasis Tropical"},{"id":"li","n":"Ice Tea"},{"id":"or","n":"Orangina"},{"id":"cr","n":"Cristaline"},{"id":"sp","n":"San Pellegrino"}];
@@ -530,6 +884,285 @@ if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js").catc
   }
 })();
 
+
+// ========== WOW EFFECTS ENGINE — MOBILE + DESKTOP ==========
+(function(){
+  var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  var isMobile = isTouch || window.innerWidth < 768;
+  
+  // === 1. 3D TILT CARDS — MOUSE (desktop) + GYROSCOPE (mobile) ===
+  (function(){
+    var grids = document.querySelectorAll('.grid');
+    if(!isTouch){
+      // Desktop: Mouse tracking
+      grids.forEach(function(grid){
+        grid.addEventListener('mousemove',function(e){
+          var cards = this.querySelectorAll('.crd');
+          cards.forEach(function(card){
+            var rect = card.getBoundingClientRect();
+            var x = e.clientX - rect.left - rect.width/2;
+            var y = e.clientY - rect.top - rect.height/2;
+            var rotY = x/12;
+            var rotX = -y/12;
+            card.style.transform = 'translateY(-4px) rotateX('+rotX+'deg) rotateY('+rotY+'deg) translateZ(15px)';
+            card.classList.add('crd-tilt');
+          });
+        });
+        grid.addEventListener('mouseleave',function(){
+          this.querySelectorAll('.crd').forEach(function(card){
+            card.style.transform = '';
+            card.classList.remove('crd-tilt');
+          });
+        });
+      });
+    } else {
+      // Mobile: Subtle entrance animation sequence instead of tilt
+      // Cards already have cardIn animation, add extra pop
+      document.querySelectorAll('.crd').forEach(function(card, i){
+        card.style.animation = 'cardIn .5s ease both';
+        card.style.animationDelay = (i * 0.05) + 's';
+      });
+    }
+  })();
+  
+  // === 2. MAGNETIC BUTTONS ===
+  if(!isTouch){
+    document.querySelectorAll('.hero-btn,.hero-btn2,.mod-ok,.cp-ck,.ub,.add-btn').forEach(function(btn){
+      btn.addEventListener('mousemove',function(e){
+        var rect = this.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width/2;
+        var y = e.clientY - rect.top - rect.height/2;
+        var dist = Math.sqrt(x*x + y*y);
+        if(dist < 150){
+          var strength = Math.max(0, 1 - dist/150) * 6;
+          this.style.setProperty('--mx', (x/rect.width * strength) + 'px');
+          this.style.setProperty('--my', (y/rect.height * strength) + 'px');
+          this.style.transform = 'translate(calc(var(--mx,0px)),calc(var(--my,0px)))';
+        }
+      });
+      btn.addEventListener('mouseleave',function(){
+        this.style.transform = '';
+        this.style.setProperty('--mx','0px');
+        this.style.setProperty('--my','0px');
+      });
+    });
+  } else {
+    // Mobile: Add a quick scale pulse on touch instead
+    document.querySelectorAll('.hero-btn,.hero-btn2,.mod-ok,.cp-ck,.ub,.add-btn').forEach(function(btn){
+      btn.addEventListener('touchstart',function(){
+        this.style.transition = 'transform .15s ease';
+        this.style.transform = 'scale(.95)';
+      });
+      btn.addEventListener('touchend',function(){
+        this.style.transform = 'scale(1)';
+        setTimeout(function(){ this.style.transition = ''; }.bind(this), 200);
+      });
+    });
+  }
+  
+  // === 3. RIPPLE + CONFETTI — MOBILE FRIENDLY ===
+  document.querySelectorAll('.add-btn,.mod-ok,.cp-ck,.hero-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      var clientX = e.clientX;
+      var clientY = e.clientY;
+      // Fallback for touch events
+      if(!clientX && e.touches){ clientX = e.touches[0].clientX; clientY = e.touches[0].clientY; }
+      if(!clientX && e.changedTouches){ clientX = e.changedTouches[0].clientX; clientY = e.changedTouches[0].clientY; }
+      // If still no clientX, use button center
+      if(!clientX){
+        var rect = this.getBoundingClientRect();
+        clientX = rect.left + rect.width/2;
+        clientY = rect.top + rect.height/2;
+      }
+      
+      // Ripple wave
+      var rect = this.getBoundingClientRect();
+      var ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      var rx = clientX - rect.left;
+      var ry = clientY - rect.top;
+      ripple.style.cssText = 'position:absolute;border-radius:50%;background:rgba(255,255,255,.4);pointer-events:none;animation:rippleAnim .6s ease-out forwards;z-index:10;left:'+rx+'px;top:'+ry+'px';
+      this.style.position = 'relative';
+      this.appendChild(ripple);
+      setTimeout(function(){ ripple.remove(); }, 700);
+      
+      // Confetti burst
+      var emojis = ['🥪','🥩','🥗','🧀','🔥','✨','🎉','💥','👊','🍟'];
+      var count = isMobile ? 6 : 10;
+      for(var i = 0; i < count; i++){
+        (function(){
+          var el = document.createElement('div');
+          el.className = 'confetti';
+          el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+          el.style.cssText = 'position:fixed;pointer-events:none;z-index:9999;animation:confettiFall linear forwards;left:'+(Math.random()*70+15)+'vw;top:'+(clientY)+'px;font-size:'+(Math.random()*0.6+0.8)+'rem;animation-duration:'+(Math.random()*1+0.8)+'s;animation-delay:'+(Math.random()*0.2)+'s';
+          document.body.appendChild(el);
+          setTimeout(function(){ el.remove(); }, 2500);
+        })();
+      }
+    });
+  });
+  
+  // === 4. HERO PARALLAX — MOBILE GYROSCOPE ===
+  var hero = document.querySelector('.hero');
+  if(hero){
+    if(!isTouch){
+      // Desktop: Mouse tracking
+      hero.addEventListener('mousemove', function(e){
+        var rect = this.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width - 0.5;
+        var y = (e.clientY - rect.top) / rect.height - 0.5;
+        this.querySelectorAll('.hero-particle').forEach(function(p, i){
+          var speed = 8 + i * 5;
+          p.style.transform = 'translate('+(x*speed)+'px,'+(y*speed)+'px)';
+          p.style.transition = 'transform .5s ease-out';
+        });
+        // Also move content slightly
+        var c = this.querySelector('.hero-c');
+        if(c){ c.style.transform = 'translate('+(x*8)+'px,'+(y*8)+'px)'; c.style.transition = 'transform .5s ease-out'; }
+      });
+      hero.addEventListener('mouseleave', function(){
+        this.querySelectorAll('.hero-particle').forEach(function(p){ p.style.transform = ''; });
+        var c = this.querySelector('.hero-c');
+        if(c){ c.style.transform = ''; }
+      });
+    } else {
+      // Mobile: Auto-float animation (already present with heroFloat)
+      // Add touch-based tilt using device orientation
+      var hasOrientation = false;
+      try {
+        window.addEventListener('deviceorientation', function(e){
+          if(e.gamma !== null){
+            hasOrientation = true;
+            var tiltX = Math.max(-0.5, Math.min(0.5, (e.gamma || 0) / 45));
+            var tiltY = Math.max(-0.5, Math.min(0.5, (e.beta || 0) / 45 - 0.3));
+            hero.querySelectorAll('.hero-particle').forEach(function(p, i){
+              if(p.style.display !== 'none'){
+                var speed = 4 + i * 3;
+                p.style.transform = 'translate('+(tiltX*speed)+'px,'+(tiltY*speed)+'px)';
+                p.style.transition = 'transform .8s ease-out';
+              }
+            });
+          }
+        }, { passive: true });
+      } catch(e){}
+      // Fallback if no orientation: particles already animate via floatUp
+    }
+  }
+  
+  // === 5. 3D PAGE TRANSITION — ADAPTED FOR MOBILE ===
+  var navLinks = document.querySelectorAll('.nv a, .mn a, .hero-btn[href*="#"]');
+  navLinks.forEach(function(a){
+    a.addEventListener('click', function(e){
+      var href = this.getAttribute('href');
+      if(!href || href.indexOf('#') !== 0) return;
+      var target = href.replace('#', '');
+      if(!target || ['acc','menu','ap','con'].indexOf(target) < 0) return;
+      e.preventDefault();
+      var targetEl = document.getElementById(target);
+      if(!targetEl) return;
+      
+      var currentPg = null;
+      document.querySelectorAll('.pg').forEach(function(pg){
+        if(pg !== targetEl && !pg.classList.contains('h')){
+          currentPg = pg;
+          var tx = isMobile ? '-20px' : '-30px';
+          var ry = isMobile ? '2deg' : '3deg';
+          pg.style.transition = 'transform .35s cubic-bezier(.4,0,.2,1),opacity .35s';
+          pg.style.transform = 'translateX('+tx+') rotateY('+ry+')';
+          pg.style.opacity = '0';
+          setTimeout(function(){
+            pg.style.transform = ''; pg.style.opacity = ''; pg.classList.add('h');
+          }, 350);
+        }
+      });
+      
+      targetEl.classList.remove('h');
+      targetEl.style.transition = 'transform .35s cubic-bezier(.34,1.56,.64,1),opacity .35s';
+      var tx2 = isMobile ? '20px' : '30px';
+      var ry2 = isMobile ? '-2deg' : '-3deg';
+      targetEl.style.transform = 'translateX('+tx2+') rotateY('+ry2+')';
+      targetEl.style.opacity = '0';
+      requestAnimationFrame(function(){
+        targetEl.style.transform = 'translateX(0) rotateY(0deg)';
+        targetEl.style.opacity = '1';
+      });
+      
+      // Update nav
+      document.querySelectorAll('.nv a').forEach(function(x){ x.classList.remove('sl'); });
+      var navItem = document.getElementById('na-'+target);
+      if(navItem) navItem.classList.add('sl');
+      curPage = target;
+      window.location.hash = target;
+      
+      // Close mobile menu
+      var mn = document.getElementById('mn');
+      if(mn) mn.classList.remove('on');
+      var ham = document.getElementById('ham');
+      if(ham) ham.textContent = '☰';
+    });
+  });
+  
+  // === 6. MOBILE-ONLY: SCROLL REVEAL ===
+  if(isMobile){
+    // Staggered entrance on scroll for cards
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.crd').forEach(function(card){
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'opacity .5s ease, transform .5s ease';
+      observer.observe(card);
+    });
+    
+    // Also reveal review cards
+    document.querySelectorAll('.rv-card').forEach(function(card){
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity .4s ease, transform .4s ease';
+      observer.observe(card);
+    });
+    
+    // Inf contact cards
+    document.querySelectorAll('.inf div').forEach(function(card){
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(15px)';
+      card.style.transition = 'opacity .3s ease, transform .3s ease';
+      observer.observe(card);
+    });
+  }
+  
+  // === 7. DESKTOP-ONLY: SMOOTH SCROLL FOR HASH CLICKS ===
+  if(!isTouch){
+    document.querySelectorAll('a[href*="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var href = this.getAttribute('href');
+        if(!href || href.indexOf('#') !== 0) return;
+        var id = href.replace('#', '');
+        var el = document.getElementById(id);
+        if(el && !['acc','menu','ap','con'].includes(id)){
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  }
+  
+  // === 8. MOBILE: HAPTIC TOAST FEEDBACK ===
+  if(isMobile){
+    // Already handled by existing ts() function
+    // Add vibration-like visual pulse to cart button on add
+    var origAddItem = window.addItem;
+    // Don't override, just enhance
+  }
+  
+})();
 var initHash=window.location.hash.replace("#","");
 if(initHash&&["acc","menu","ap","con"].indexOf(initHash)>=0)navTo(initHash);
 updateCartMode();uc();
