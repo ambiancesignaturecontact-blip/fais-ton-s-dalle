@@ -1,32 +1,513 @@
-import re
-with open('index.html','r') as f:
-    h = f.read()
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>FAIS TON S'DALLE — Sandwichs sur mesure Halal | Les Pavillons-sous-Bois 93320</title><meta name="description" content="Crée ton sandwich sur mesure chez FAIS TON S'DALLE. Halal. Tenders, poulet, dinde, pastrami, rosette, thon. Livraison 23h-06h."><meta name="robots" content="index,follow"><link rel="canonical" href="https://www.faistonsdalle.com"><meta property="og:type" content="restaurant.menu"><meta property="og:site_name" content="FAIS TON S'DALLE"><meta property="og:locale" content="fr_FR"><meta property="og:url" content="https://www.faistonsdalle.com"><meta property="og:title" content="FAIS TON S'DALLE"><meta property="og:image" content="https://www.faistonsdalle.com/images/logo.jpg"><meta property="og:description" content="Crée ton sandwich sur mesure chez FAIS TON S'DALLE. Halal."><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#c73b2b"><link rel="manifest" href="/manifest.json"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="icon" type="image/png" sizes="16x16" href="/favicon.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png"><link rel="icon" type="image/jpeg" sizes="48x48" href="/images/favicon.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon.jpg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"><script src="https://js.stripe.com/v3/"></script><style>:root{--p:#c73b2b;--p2:#a52a1c;--s:#f5a623;--bg:#f8f6f3;--c:#fff;--t:#1a1a1a;--t2:#6b6b6b;--b:#e8e2db;--r:16px;--f:"Inter","Segoe UI",sans-serif;--sh:0 2px 16px rgba(0,0,0,.06);--sh2:0 8px 30px rgba(0,0,0,.1)}
+[data-theme="dark"]{--bg:#121212;--c:#1a1a1a;--t:#eee;--t2:#999;--b:#2a2a2a}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;transition:background-color .25s,border-color .25s,color .25s}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);background:var(--bg);color:var(--t);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font-family:var(--f);cursor:pointer;touch-action:manipulation}
+.bar{background:#1a1a1a;color:#fff;padding:5px 14px;padding-top:calc(5px + env(safe-area-inset-top,0px));font-size:.65rem;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;font-weight:600}
+.bar .n{background:linear-gradient(135deg,#1e1b4b,#312e81);color:#c7d2fe;padding:2px 10px;border-radius:12px;font-size:.55rem}
+.h-badge{background:linear-gradient(135deg,#059669,#047857);color:#d1fae5;padding:2px 10px;border-radius:12px;font-size:.55rem}
+.pg{display:block;animation:fadeIn .25s ease;-webkit-animation:fadeIn .25s ease;padding-bottom:20px}
+@keyframes fadeIn
+@-webkit-keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.pg.h{display:none}
+header{background:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);position:-webkit-sticky;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--b)}
+[data-theme="dark"] header{background:rgba(26,26,26,.95);border-bottom-color:#2a2a2a}
+.hd{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:56px}
+.lg{display:flex;align-items:center;gap:10px;color:#1a1a1a}
+.lg img{height:30px;width:auto;border-radius:4px}
+.br{font-weight:700;font-size:.85rem;color:#1a1a1a;line-height:1.2}
+.br .sub{display:block;font-weight:500;font-size:.42rem;letter-spacing:1.2px;text-transform:uppercase;color:#1a1a1a;opacity:.5}
+[data-theme="dark"] .br{color:#eee}[data-theme="dark"] .br .sub{color:#eee}[data-theme="dark"] .lg{color:#eee}
+@media(min-width:769px){.br .sub{display:block}}
+.nv{display:flex;gap:2px;align-items:center}
+.nv a{padding:8px 14px;border-radius:30px;font-size:.72rem;font-weight:600;color:var(--t2);cursor:pointer;min-height:44px;display:flex;align-items:center}
+@media(hover:hover){.nv a:hover{background:var(--bg);color:var(--p)}}
+.nv a.sl{background:var(--p);color:#fff}
+.tg{background:none;border:1.5px solid var(--b);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.85rem;color:var(--t2);min-width:44px;min-height:44px}
+@media(hover:hover){.tg:hover{border-color:var(--s);transform:rotate(15deg)}}
+.ct{padding:7px 12px;border-radius:30px;display:flex;align-items:center;gap:5px;font-weight:700;font-size:.72rem;cursor:pointer;border:1.5px solid var(--b);background:var(--c);min-height:44px}
+@media(hover:hover){.ct:hover{border-color:var(--p)}}
+.cb{background:var(--p);color:#fff;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:700}
+.ham{display:none;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--t2);min-width:44px;min-height:44px;align-items:center;justify-content:center}
+.mn{display:none;position:fixed;top:56px;left:0;right:0;background:var(--c);z-index:99;flex-direction:column;box-shadow:0 8px 30px rgba(0,0,0,.1);border-bottom:1px solid var(--b)}
+.mn.on{display:flex}.mn a{padding:14px 20px;font-weight:600;font-size:.82rem;color:var(--t2);border-bottom:1px solid var(--b);cursor:pointer}
+@media(hover:hover){@media(hover:hover){.mn a:hover{background:var(--bg);color:var(--p)}}}[data-theme="dark"] .mn{background:#1a1a1a;border-bottom-color:#2a2a2a}[data-theme="dark"] .mn a{color:#bbb}
+.hero{background:linear-gradient(135deg,#1a1a1a,#2d2d2d);color:#fff;padding:48px 16px 40px;text-align:center;position:relative;overflow:hidden}
+.hero-c{position:relative;max-width:620px;margin:0 auto;z-index:1}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:5px 16px;border-radius:30px;font-size:.6rem;margin-bottom:14px}
+.hero h1{font-size:clamp(1.5rem,5vw,2.4rem);font-weight:900;margin-bottom:8px;letter-spacing:-.5px}
+.hero h1 .h{background:linear-gradient(135deg,var(--s),#fbc96a);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-p{font-size:.78rem;opacity:.75;margin-bottom:22px}
+.hero-acts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.hero-btn{background:var(--p);color:#fff;padding:11px 28px;border-radius:30px;font-weight:700;font-size:.78rem;cursor:pointer;transition:all .25s;display:inline-block}
+@media(hover:hover){.hero-btn:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(199,59,43,.25)}}
+.hero-btn2{background:rgba(255,255,255,.1);color:#fff;padding:11px 28px;border-radius:30px;font-weight:600;font-size:.78rem;cursor:pointer;border:1px solid rgba(255,255,255,.1);display:inline-block;transition:all .25s}
+@media(hover:hover){.hero-btn2:hover{background:rgba(255,255,255,.15);transform:translateY(-2px)}}
+.hero-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-particle{position:absolute;font-size:clamp(1rem,3vw,1.8rem);opacity:0;bottom:-30px;animation:floatUp 8s ease-in-out infinite;-webkit-animation:floatUp 8s ease-in-out infinite}
+.hero-particle:nth-child(1){left:5%;animation-delay:0s;animation-duration:9s}
+.hero-particle:nth-child(2){left:25%;animation-delay:2s;animation-duration:11s}
+.hero-particle:nth-child(3){left:50%;animation-delay:4s;animation-duration:8s}
+.hero-particle:nth-child(4){left:78%;animation-delay:1s;animation-duration:10s}
+@keyframes floatUp
+@-webkit-keyframes floatUp{0%{opacity:0;transform:translateY(60px)}10%{opacity:.6}90%{opacity:.4}100%{opacity:0;transform:translateY(-250px) rotate(360deg)}}
+.nb{background:linear-gradient(135deg,#1e1b4b,#312e81);padding:7px 14px;text-align:center;color:#c7d2fe;display:none}
+.w{max-width:1100px;margin:0 auto;padding:0 16px}
+.sec{font-size:1.15rem;font-weight:700;margin:28px 0 4px;padding-bottom:8px;border-bottom:2px solid rgba(245,166,35,.2)}
+.hl{color:var(--p)}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:2px 0 16px}
+.tabs button{padding:8px 20px;border-radius:30px;border:1.5px solid var(--b);background:var(--c);font-weight:600;font-size:.68rem;cursor:pointer;white-space:nowrap;color:var(--t2);flex-shrink:0;transition:all .2s}
+@media(hover:hover){.tabs button:hover{border-color:var(--s)}}.tabs button.on{background:var(--p);color:#fff;border-color:var(--p)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-bottom:28px}
+.crd{background:var(--c);border-radius:var(--r);overflow:hidden;border:1px solid var(--b);cursor:pointer;transition:all .3s ease;box-shadow:var(--sh);animation:cardIn .4s ease both;-webkit-animation:cardIn .4s ease both;touch-action:manipulation}
+.crd:nth-child(2){animation-delay:.05s}.crd:nth-child(3){animation-delay:.1s}.crd:nth-child(4){animation-delay:.15s}.crd:nth-child(5){animation-delay:.2s}.crd:nth-child(6){animation-delay:.25s}.crd:nth-child(7){animation-delay:.3s}.crd:nth-child(8){animation-delay:.35s}.crd:nth-child(9){animation-delay:.4s}.crd:nth-child(10){animation-delay:.45s}.crd:nth-child(11){animation-delay:.5s}.crd:nth-child(12){animation-delay:.55s}.crd:nth-child(13){animation-delay:.6s}
+@keyframes cardIn
+@-webkit-keyframes cardIn{from{opacity:0;transform:translateY(20px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(hover:hover){.crd:hover{transform:translateY(-4px);box-shadow:var(--sh2);border-color:rgba(199,59,43,.2)}}
+.crd-img{width:100%;height:190px;background-size:cover;background-position:center;background-color:var(--b);position:relative}
+.pop-badge{position:absolute;top:8px;left:8px;background:var(--s);color:#fff;padding:3px 10px;border-radius:30px;font-size:.5rem;font-weight:700;z-index:2}
+.crd-body{padding:14px 16px 16px}.crd-body h3{font-size:.9rem;font-weight:700;margin-bottom:3px;color:var(--t)}
+.crd-desc{color:var(--t2);font-size:.66rem;margin-bottom:10px}.crd-ft{display:flex;align-items:center;justify-content:space-between}
+.crd-pr{font-weight:800;font-size:1.05rem;color:var(--p);background:rgba(199,59,43,.08);padding:2px 10px;border-radius:20px;display:inline-block}
+.add-btn{background:var(--p);color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-size:1.3rem;display:flex;align-items:center;justify-content:center;cursor:pointer}
+@media(hover:hover){.add-btn:hover{background:var(--p2);transform:scale(1.12)}}
+.rv{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:28px}
+.rv-card{background:var(--c);border-radius:var(--r);padding:16px;border:1px solid var(--b)}
+.rv-stars{color:#f5a623;font-size:.82rem;margin-bottom:4px}.rv-txt{font-size:.7rem;color:var(--t2);font-style:italic;margin-bottom:4px}.rv-auth{font-size:.65rem;font-weight:600}
+.ap{max-width:680px;margin:0 auto;padding:20px 0}
+.cd{background:var(--c);border-radius:var(--r);padding:18px 22px;margin:14px 0;border:1px solid var(--b);box-shadow:var(--sh)}
+.ap h2{font-size:1.15rem;font-weight:700;margin-bottom:10px}.ap h3{font-size:.85rem;font-weight:700;color:var(--p);margin-bottom:6px}.ap p{color:var(--t2);font-size:.76rem;line-height:1.6}
+.store-img{width:100%;max-height:220px;object-fit:cover;border-radius:var(--r);margin-bottom:16px;border:1px solid var(--b)}
+.ap-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:16px 0}
+.ap-gallery img{width:100%;height:100px;object-fit:cover;border-radius:var(--r);border:1px solid var(--b);cursor:pointer;transition:all .3s ease}
+@media(hover:hover){.ap-gallery img:hover{transform:scale(1.04)}}
+.inf{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:28px 0}
+.inf div{background:var(--c);padding:16px;border-radius:var(--r);border:1px solid var(--b)}
+.inf h3{font-weight:700;font-size:.76rem;margin-bottom:4px}.inf p{color:var(--t2);font-size:.66rem}
+.cmd-toggle{display:flex;gap:8px;background:var(--b);border-radius:var(--r);padding:4px;max-width:360px;margin-bottom:16px}
+.cmd-toggle button{flex:1;padding:10px 16px;border:none;border-radius:12px;background:transparent;font-weight:600;font-size:.78rem;color:var(--t2);cursor:pointer}
+.cmd-toggle button.on{background:var(--p);color:#fff}.cmd-addr{margin-bottom:16px;max-width:480px}
+.cp-mode-inline{padding:8px 20px;border-bottom:1px solid var(--b)}.cp-mode-inline .cmd-toggle{margin-bottom:0;max-width:100%}
+.mod-ta{width:100%;padding:10px 14px;border:1.5px solid var(--b);border-radius:12px;font-size:.72rem;font-family:var(--f);color:var(--t);background:var(--c);resize:none;outline:none}
+.mod-ta:focus{border-color:var(--p)}
+.ub{background:#06c;color:#fff;padding:9px 20px;border-radius:30px;font-weight:700;font-size:.72rem;display:inline-block;cursor:pointer;border:none;transition:all .2s}
+@media(hover:hover){.ub:hover{transform:translateY(-1px)}}.ub2{background:var(--p);color:#fff;padding:12px 28px;border-radius:30px;font-weight:700;font-size:.8rem;display:inline-block;cursor:pointer;transition:all .2s}@media(hover:hover){.ub2:hover{transform:translateY(-2px)}}
+.nl{background:linear-gradient(135deg,var(--p),#8a2216);border-radius:var(--r);padding:24px;color:#fff;text-align:center;margin-bottom:28px;position:relative;overflow:hidden}
+.nl h3{font-size:.95rem;font-weight:700;margin-bottom:3px}.nl p{opacity:.8;font-size:.72rem;margin-bottom:12px}.nl form{display:flex;gap:6px;max-width:300px;margin:0 auto}
+.nl input{flex:1;padding:11px 16px;border-radius:30px;border:none;font-size:.75rem;outline:none}
+.nl button{padding:11px 22px;background:#fff;color:var(--p);border:none;border-radius:30px;font-weight:700;font-size:.75rem;cursor:pointer}
+.mod{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);z-index:200;align-items:center;justify-content:center;padding:14px}
+.mod.on{display:flex}.mod-bx{background:var(--c);border-radius:var(--r);max-width:460px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 25px 80px rgba(0,0,0,.2)}
+.mod-hd{padding:16px 20px 12px;border-bottom:1px solid var(--b);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--c)}
+.mod-hd h2{font-size:.82rem;font-weight:700}
+.mod-cl{background:var(--b);border:none;width:28px;height:28px;border-radius:50%;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--t2);transition:all .2s}
+@media(hover:hover){.mod-cl:hover{background:var(--p);color:#fff;transform:rotate(90deg)}}
+.mod-bd{padding:14px 20px 10px}.cs{margin-bottom:16px}.cs h4{font-size:.75rem;font-weight:700;margin-bottom:5px;color:var(--t)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chips button{padding:6px 14px;border:1.5px solid var(--b);border-radius:20px;background:var(--c);cursor:pointer;font-size:.63rem;font-weight:500;color:var(--t)}
+@media(hover:hover){.chips button:hover{border-color:var(--s)}}.chips button.sel{border-color:var(--p);background:rgba(199,59,43,.08);color:var(--p);font-weight:600}
+.chips button.sel::before{content:"\u2713";font-size:.5rem;margin-right:2px}
+.mod-inst{padding:4px 20px 14px}.mod-ft{padding:12px 20px 14px;border-top:1px solid var(--b);display:flex;justify-content:space-between;align-items:center;background:var(--c);position:sticky;bottom:0}
+.mod-pr{font-weight:800;font-size:1rem;color:var(--p)}
+.mod-ok{background:var(--p);color:#fff;border:none;padding:9px 24px;border-radius:30px;font-weight:700;font-size:.74rem;cursor:pointer;transition:all .2s}
+@media(hover:hover){.mod-ok:hover{background:var(--p2);transform:scale(1.04)}}
+.co{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.4);z-index:300}.co.on{display:block}
+.cp{position:fixed;top:0;right:-380px;width:380px;max-width:100vw;height:100vh;background:var(--c);z-index:301;transition:right .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-4px 0 30px rgba(0,0,0,.1)}
+.cp.on{right:0}.cp-hd{padding:16px 20px;border-bottom:1px solid var(--b);display:flex;justify-content:space-between;align-items:center}
+.cp-hd h3{font-size:.82rem;font-weight:700}
+.cp-x{background:none;border:none;font-size:1.1rem;cursor:pointer;color:var(--t2);padding:4px;transition:all .2s}
+@media(hover:hover){.cp-x:hover{color:var(--p);transform:rotate(90deg)}}
+.cp-its{flex:1;overflow-y:auto;padding:8px 20px}.cp-em{text-align:center;padding:40px 0;color:var(--t2);font-size:.8rem}
+.ci{display:flex;gap:8px;padding:10px 0;border-bottom:1px solid var(--b)}.ci:last-child{border:none}
+.ci-if{flex:1;min-width:0}.ci-if h4{font-size:.75rem;font-weight:600}
+.ci-if .cu{font-size:.6rem;color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ci-if .up{font-size:.58rem;color:var(--t2)}
+.ci-ac{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.ci-q{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--b);background:var(--c);cursor:pointer;font-weight:700;font-size:.78rem;display:flex;align-items:center;justify-content:center;color:var(--t)}
+@media(hover:hover){.ci-q:hover{border-color:var(--p);color:var(--p);background:rgba(199,59,43,.04)}}
+.ci-n{font-weight:600;min-width:16px;text-align:center;font-size:.75rem}.ci-it{font-weight:700;color:var(--p);min-width:40px;text-align:right;font-size:.75rem}
+.cp-ft{padding:12px 20px 16px;border-top:1px solid var(--b)}
+.cp-tr{display:flex;justify-content:space-between;font-weight:700;font-size:.82rem;margin-bottom:8px}.cp-ta{color:var(--p)}
+.cp-ck{width:100%;padding:12px;background:var(--p);color:#fff;border:none;border-radius:30px;font-weight:700;font-size:.76rem;cursor:pointer;transition:all .2s}
+@media(hover:hover){.cp-ck:hover{background:var(--p2)}}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:#1a1a1a;color:#fff;padding:12px 22px;border-radius:12px;font-size:.74rem;z-index:500;opacity:0;pointer-events:none}
+[data-theme="dark"] .toast{background:#333}.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.ni{display:none;position:fixed;bottom:16px;right:16px;z-index:50;background:linear-gradient(135deg,#1e1b4b,#312e81);color:#c7d2fe;padding:10px 14px;border-radius:12px;font-size:.6rem;font-weight:600;gap:6px;align-items:center;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+#top-btn{display:none;position:fixed;bottom:64px;right:14px;z-index:50;width:40px;height:40px;border-radius:50%;background:var(--p);color:#fff;border:none;font-size:1.2rem;cursor:pointer;box-shadow:0 2px 12px rgba(199,59,43,.25);transition:all .2s}
+@media(hover:hover){#top-btn:hover{transform:scale(1.12)}}
+footer{background:#1a1a1a;color:rgba(255,255,255,.6);padding:32px 16px 14px;margin-top:32px}[data-theme="dark"] footer{background:#0d0d0d}
+.fi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px}
+.fi h4{color:#fff;font-weight:700;font-size:.74rem;margin-bottom:6px}
+.fi p,.fi a{font-size:.66rem;color:rgba(255,255,255,.45);display:block;margin-bottom:4px}
+@media(hover:hover){.fi a:hover{color:var(--s)}}
+.fb{max-width:1100px;margin:14px auto 0;padding-top:12px;border-top:1px solid rgba(255,255,255,.06);text-align:center;font-size:.6rem}
 
-checks = [
-    ('Favicon SVG visible (sandwich)', 'image/svg+xml' in h),
-    ('Favicon apple-touch', 'apple-touch-icon' in h),
-    ('Texte "FAIS TON S\'DALLE" en noir', '.brand{font-weight:800' in h),
-    ('Plus de barre <s>', '<s>' not in h.split('Sandwichs sur mesure')[0]),
-    ('Cuisson chaud/froid dans om()', 'CU=' in h and 'Chaud' in h and 'Froid' in h),
-    ('Selecteur chips design', '.chips button' in h and 'border-radius:20px' in h),
-    ('Telephone bien affiche', 'font-size:1.3rem' in h and '06 72 04 48 75' in h),
-    ('Commande WhatsApp avec recapitulatif', 'wa.me/33672044875?text=' in h),
-    ('Temps estime 20-30 min', '20-30 min' in h),
-    ('Infos livraison section', 'Infos livraison' in h or 'Zone' in h),
-    ('Images en fichiers statiques', 'data:image' not in h.split('</head>')[0]),
-    ('Taille sous 50KB', len(h) < 50000),
-]
+[data-theme="dark"] .crd{background:#1a1a1a}[data-theme="dark"] .mod-bx{background:#1a1a1a}[data-theme="dark"] .mod-hd{background:#1a1a1a}[data-theme="dark"] .mod-ft{background:#1a1a1a}[data-theme="dark"] .inf div{background:#1a1a1a}[data-theme="dark"] .rv-card{background:#1a1a1a}[data-theme="dark"] .cd{background:#1a1a1a}[data-theme="dark"] .cp{background:#1a1a1a}[data-theme="dark"] .nl input{background:#2a2a2a;color:#eee}[data-theme="dark"] .mod-ta{background:#2a2a2a;color:#eee}[data-theme="dark"] .bar{background:#0d0d0d}[data-theme="dark"] .chips button{background:#1a1a1a}[data-theme="dark"] .chips button.sel{color:#fff}[data-theme="dark"] .ap-card{background:#1a1a1a}[data-theme="dark"] .ap-story{background:#1a1a1a}[data-theme="dark"] .ap-card-sm{background:#1a1a1a}[data-theme="dark"] .ap-card-info{background:#1a1a1a}
 
-# JS braces
-js = re.findall(r'<script>(?!.*application)(.*?)</script>', h, re.DOTALL)
-for s in js:
-    if 'function tt' in s:
-        braces_ok = s.count('{') == s.count('}')
-        checks.append(('JS braces equilibrees', braces_ok))
-        break
+.ap-hero{background:linear-gradient(135deg,#1a1a1a,#2d2d2d);color:#fff;text-align:center;padding:40px 20px}
+.ap-hero h1{font-size:clamp(1.3rem,4vw,2rem);font-weight:900;letter-spacing:-.5px;margin-bottom:6px}
+.ap-hero h1 .h{background:linear-gradient(135deg,var(--s),#fbc96a);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ap-hero p{opacity:.7;font-size:.78rem}
+.ap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:16px 0 28px}
+.ap-card{background:var(--c);border-radius:var(--r);padding:22px;border:1px solid var(--b);box-shadow:var(--sh);transition:all .3s ease}
+@media(hover:hover){.ap-card:hover{transform:translateY(-3px);box-shadow:var(--sh2)}}
+.ap-icon{font-size:2rem;margin-bottom:8px}.ap-card h3{font-size:.85rem;font-weight:700;margin-bottom:6px;color:var(--t)}
+.ap-card p{font-size:.72rem;color:var(--t2);line-height:1.55}
+.ap-story{background:var(--c);border-radius:var(--r);padding:24px 28px;margin:16px 0 28px;border:1px solid var(--b);box-shadow:var(--sh);line-height:1.8}
+.ap-story p{font-size:.76rem;color:var(--t2);margin-bottom:12px}
+.ap-story p:last-child{margin-bottom:0}
+.ap-card-sm{background:var(--c);border-radius:var(--r);padding:16px 20px;border:1px solid var(--b)}
+.ap-card-sm h3{font-size:.78rem;font-weight:700;margin-bottom:4px;color:var(--t)}
+.ap-card-sm p{font-size:.68rem;color:var(--t2);line-height:1.5}
+.ap-card-info{background:var(--c);border-radius:var(--r);padding:20px;border:1px solid var(--b)}
+.ap-card-info h3{font-size:.78rem;font-weight:700;margin-bottom:6px;color:var(--t)}
+.ap-card-info p{font-size:.72rem;color:var(--t2);line-height:1.5}
+.ap-icon-sm{font-size:1.3rem;margin-bottom:4px}
 
-for name, ok in checks:
-    print(f'  {"OK" if ok else "X"} {name}')
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:var(--b);border-radius:3px}
 
-print(f'\nTaille: {len(h)} bytes ({len(h)/1024:.1f}KB)')
-print(f'Total: {sum(1 for _,v in checks if v)}/{len(checks)}')
+@media(max-width:1024px){.grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}}
+@media(max-width:768px){.ham{display:flex}.nv a:not(.sl):not(.ham){display:none}.hd{height:48px;padding:0 8px}.lg{gap:6px}.lg img{height:24px}.br{font-size:.72rem}.br .sub{display:none}.nv{gap:0}.ham{min-width:36px;min-height:36px;font-size:1rem}.tg{min-width:36px;min-height:36px;font-size:.75rem}.ct{padding:5px 8px;min-height:36px;font-size:.68rem;gap:3px}.grid{grid-template-columns:1fr;max-width:420px}.cp{width:100vw;right:-100vw}.tabs button{padding:7px 16px}.crd-img{height:170px}.hero{padding:36px 14px 32px}.inf{grid-template-columns:1fr 1fr}.ap-gallery{grid-template-columns:1fr 1fr;gap:6px}.ap-gallery img{height:80px}.mod-bx{max-width:95vw}.fi{grid-template-columns:1fr 1fr}.ap-grid{grid-template-columns:1fr}.ap-story{padding:18px 20px}.ap-hero{padding:32px 16px}}
+@media(max-width:480px){.hd{height:44px;padding:0 6px}.lg img{height:20px}.br{font-size:.65rem}.br .sub{display:none}.ham{min-width:32px;min-height:32px;font-size:.85rem}.tg{min-width:32px;min-height:32px;font-size:.65rem}.ct{padding:4px 6px;min-height:32px;font-size:.62rem;gap:3px}.cb{width:16px;height:16px;font-size:.5rem}.ham{display:flex}.crd-img{height:150px}.crd-body{min-height:75px}.hero h1{font-size:clamp(1.2rem,7vw,1.5rem)}.hero{padding:28px 10px 26px}.inf{grid-template-columns:1fr}.fi{grid-template-columns:1fr}.hero-btn,.hero-btn2{width:100%}.hero-acts{flex-direction:column}.hero-particle{display:none}.add-btn{width:32px;height:32px;font-size:1.1rem}.ap-grid{grid-template-columns:1fr}.ap-card{padding:16px}}
+
+.mn a{font-size:.95rem;padding:16px 24px;border-bottom:1px solid var(--b);cursor:pointer;display:flex;align-items:center;gap:8px;font-weight:600;color:var(--t2);transition:all .15s;min-height:52px}
+@media(hover:hover){@media(hover:hover){.mn a:hover{background:var(--bg);color:var(--p)}}}
+[data-theme="dark"] .mn a{color:#bbb;border-bottom-color:#2a2a2a}
+#mod-pick .cs{margin-bottom:20px}#mod-pick .cs h4{font-size:.85rem;margin-bottom:8px}
+@media(max-width:768px){.mn{top:52px}.mn a{padding:18px 24px;min-height:52px;font-size:.95rem}}
+@media(max-width:480px){.mn{top:48px}.mn a{padding:16px 20px;min-height:48px;font-size:.9rem}}
+@keyframes pulseBadge
+@-webkit-keyframes pulseBadge{0%{transform:scale(1)}50%{transform:scale(1.25)}100%{transform:scale(1)}}
+.cb.pl{animation:pulseBadge .35s ease;-webkit-animation:pulseBadge .35s ease}
+@keyframes toastIn
+@-webkit-keyframes toastIn{0%{opacity:0;transform:translateX(-50%) translateY(60px) scale(.9)}60%{opacity:1;transform:translateX(-50%) translateY(-8px) scale(1.02)}100%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}}
+.toast.on{animation:toastIn .45s ease forwards;-webkit-animation:toastIn .45s ease forwards}
+@keyframes modalBackdrop
+@-webkit-keyframes modalBackdrop{from{opacity:0}to{opacity:1}}
+@keyframes modalSlide
+@-webkit-keyframes modalSlide{from{opacity:0;transform:translateY(20px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.mod.on{animation:modalBackdrop .3s ease;-webkit-animation:modalBackdrop .3s ease}.mod.on .mod-bx{animation:modalSlide .3s ease;-webkit-animation:modalSlide .3s ease}
+@keyframes cartSlide
+@-webkit-keyframes cartSlide{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+.ci{animation:cartSlide .3s ease both;-webkit-animation:cartSlide .3s ease both}.ci:nth-child(2){animation-delay:.03s}.ci:nth-child(3){animation-delay:.06s}.ci:nth-child(4){animation-delay:.09s}.ci:nth-child(5){animation-delay:.12s}
+@keyframes pulseDot
+@-webkit-keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.5}}.ni{animation:pulseDot 2s ease-in-out infinite}
+@keyframes glowPulse
+@-webkit-keyframes glowPulse{0%{box-shadow:0 2px 10px rgba(199,59,43,.2)}50%{box-shadow:0 2px 20px rgba(199,59,43,.4)}100%{box-shadow:0 2px 10px rgba(199,59,43,.2)}}
+.cp-ck:not(:disabled){animation:glowPulse 2s ease-in-out infinite;-webkit-animation:glowPulse 2s ease-in-out infinite}
+@keyframes tickPop
+@-webkit-keyframes tickPop{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
+.cp-ta.ticking,.ct.ticking{animation:tickPop .3s ease;-webkit-animation:tickPop .3s ease}
+@keyframes badgeBorder
+@-webkit-keyframes badgeBorder{0%,100%{border-color:rgba(255,255,255,.12)}50%{border-color:rgba(245,166,35,.3)}}
+.hero-badge{animation:badgeBorder 3s ease-in-out infinite;-webkit-animation:badgeBorder 3s ease-in-out infinite}
+@keyframes fireGlow
+@-webkit-keyframes fireGlow{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.8;transform:scale(1.15)}}
+.pop-badge::before{content:"🔥";font-size:.55rem;animation:fireGlow 1.5s ease-in-out infinite;-webkit-animation:fireGlow 1.5s ease-in-out infinite}
+</style></head><body><div class="bar"><span>☀️ 11h30-23h</span><span class="n">🚚 Livraison 2,50€ · 23h-06h</span><span class="h-badge">🕌 Halal</span><span>⭐ 4.5 · 93320</span></div><header><div class="hd"><a href="/" class="lg"><img src="/images/logo.jpg" alt="FAIS TON S'DALLE" id="logo"><div class="br">FAIS TON S'DALLE<span class="sub">Sandwichs sur mesure</span></div></a><nav class="nv"><a class="sl" id="na-acc" href="/#acc">Accueil</a><a id="na-menu" href="/#menu">Menu</a><a id="na-ap" href="/#ap">Infos</a><a id="na-con" href="/#con">Contact</a><button class="ham" id="ham">☰</button><button class="tg" id="tt">🌙</button><div class="ct" id="ct">🛒<span class="cb" id="cc">0</span></div></nav></div></header><div class="mn" id="mn"></div><div class="nb" id="nb">🌙 Livraison 23h-06h</div><div class="hero"><div class="hero-c"><div class="hero-badge">⭐ 4.5 · Halal · Les Pavillons-sous-Bois · 23h-06h</div><h1>Crée ton <span class="h">sandwich</span> sur mesure</h1><p class="hero-p">🥩 Tenders · poulet · dinde · pastrami · thon · 8 crudités · 9 sauces</p><div class="hero-acts"><a class="hero-btn" href="/#menu">Voir le menu</a><a class="hero-btn2" href="https://wa.me/33672044875" target="_blank">📱 WhatsApp</a></div></div><div class="hero-particles"><div class="hero-particle">🥪</div><div class="hero-particle">🥩</div><div class="hero-particle">🥗</div><div class="hero-particle">🥤</div></div></div><div class="pg" id="acc"><div class="w"><div class="sec"><span class="hl">Menu</span></div><div class="tabs"><button class="on" data-c="all">Tout</button><button data-c="menus">Sandwichs</button><button data-c="desserts">Desserts</button><button data-c="boissons">Boissons</button></div><div class="grid" id="mg"><div class="crd" data-id="l"><div class="crd-img" style="background-image:url(/images/menu-leger.jpg)" loading="lazy"><span class="pop-badge">Populaire</span></div><div class="crd-body"><h3>Menu Léger</h3><div class="crd-desc">Sandwich (viande + crudités + sauce)</div><div class="crd-ft"><span class="crd-pr">6.90€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="c"><div class="crd-img" style="background-image:url(/images/menu-classique.jpg)" loading="lazy"><span class="pop-badge">Populaire</span></div><div class="crd-body"><h3>Menu Classique</h3><div class="crd-desc">Sandwich + boisson</div><div class="crd-ft"><span class="crd-pr">7.90€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="g"><div class="crd-img" style="background-image:url(/images/menu-gourmand.jpg)" loading="lazy"><span class="pop-badge">Populaire</span></div><div class="crd-body"><h3>Menu Gourmand</h3><div class="crd-desc">Sandwich + boisson + dessert</div><div class="crd-ft"><span class="crd-pr">9.90€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="t"><div class="crd-img" style="background-image:url(/images/tiramisu.jpg)" loading="lazy"></div><div class="crd-body"><h3>Tiramisu</h3><div class="crd-desc">Fait maison</div><div class="crd-ft"><span class="crd-pr">3.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="m"><div class="crd-img" style="background-image:url(/images/milkshake.png)" loading="lazy"></div><div class="crd-body"><h3>Milkshake</h3><div class="crd-desc">Personnalisable</div><div class="crd-ft"><span class="crd-pr">5.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="co"><div class="crd-img" style="background-image:url(/images/coca.jpg)" loading="lazy"></div><div class="crd-body"><h3>Coca-Cola</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="cz"><div class="crd-img" style="background-image:url(/images/zero.jpg)" loading="lazy"></div><div class="crd-body"><h3>Coca Zéro</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="pe"><div class="crd-img" style="background-image:url(/images/pepsi.jpg)" loading="lazy"></div><div class="crd-body"><h3>Pepsi</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="oa"><div class="crd-img" style="background-image:url(/images/oasis.jpg)" loading="lazy"></div><div class="crd-body"><h3>Oasis Tropical</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="li"><div class="crd-img" style="background-image:url(/images/icetea.jpg)" loading="lazy"></div><div class="crd-body"><h3>Ice Tea</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="or"><div class="crd-img" style="background-image:url(/images/orangina.jpg)" loading="lazy"></div><div class="crd-body"><h3>Orangina</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="cr"><div class="crd-img" style="background-image:url(/images/cristaline.jpg)" loading="lazy"></div><div class="crd-body"><h3>Cristaline</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="sp"><div class="crd-img" style="background-image:url(/images/sanpellegrino.jpg)" loading="lazy"></div><div class="crd-body"><h3>San Pellegrino</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div></div><div class="sec"><span class="hl">Avis</span></div><div class="rv" id="rv"><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Les meilleurs sandwichs du 93 ! Toujours frais et bien garnis."</div><div class="rv-auth">Sophie M.</div></div><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Service rapide même tard, les tenders sont incroyables !"</div><div class="rv-auth">Karim L.</div></div><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Enfin un vrai fast-food halal de qualité près de chez moi."</div><div class="rv-auth">Fatima Z.</div></div><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Le milkshake Snickers est une tuerie !"</div><div class="rv-auth">Alex D.</div></div></div><div class="nl"><h3>Newsletter</h3><p>Promos.</p><form id="nl1"><input type="email" id="nlmail" placeholder="ton@email.fr" required><button type="submit">→</button></form></div></div></div><div class="pg h" id="menu"><div class="w"><div class="sec"><span class="hl">Carte</span></div><div class="tabs"><button class="on" data-c="all">Tout</button><button data-c="menus">Sandwichs</button><button data-c="desserts">Desserts</button><button data-c="boissons">Boissons</button></div><div class="grid" id="mg2"><div class="crd" data-id="l"><div class="crd-img" style="background-image:url(/images/menu-leger.jpg)" loading="lazy"><span class="pop-badge">Populaire</span></div><div class="crd-body"><h3>Menu Léger</h3><div class="crd-desc">Sandwich (viande + crudités + sauce)</div><div class="crd-ft"><span class="crd-pr">6.90€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="c"><div class="crd-img" style="background-image:url(/images/menu-classique.jpg)" loading="lazy"><span class="pop-badge">Populaire</span></div><div class="crd-body"><h3>Menu Classique</h3><div class="crd-desc">Sandwich + boisson</div><div class="crd-ft"><span class="crd-pr">7.90€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="g"><div class="crd-img" style="background-image:url(/images/menu-gourmand.jpg)" loading="lazy"><span class="pop-badge">Populaire</span></div><div class="crd-body"><h3>Menu Gourmand</h3><div class="crd-desc">Sandwich + boisson + dessert</div><div class="crd-ft"><span class="crd-pr">9.90€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="t"><div class="crd-img" style="background-image:url(/images/tiramisu.jpg)" loading="lazy"></div><div class="crd-body"><h3>Tiramisu</h3><div class="crd-desc">Fait maison</div><div class="crd-ft"><span class="crd-pr">3.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="m"><div class="crd-img" style="background-image:url(/images/milkshake.png)" loading="lazy"></div><div class="crd-body"><h3>Milkshake</h3><div class="crd-desc">Personnalisable</div><div class="crd-ft"><span class="crd-pr">5.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="co"><div class="crd-img" style="background-image:url(/images/coca.jpg)" loading="lazy"></div><div class="crd-body"><h3>Coca-Cola</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="cz"><div class="crd-img" style="background-image:url(/images/zero.jpg)" loading="lazy"></div><div class="crd-body"><h3>Coca Zéro</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="pe"><div class="crd-img" style="background-image:url(/images/pepsi.jpg)" loading="lazy"></div><div class="crd-body"><h3>Pepsi</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="oa"><div class="crd-img" style="background-image:url(/images/oasis.jpg)" loading="lazy"></div><div class="crd-body"><h3>Oasis Tropical</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="li"><div class="crd-img" style="background-image:url(/images/icetea.jpg)" loading="lazy"></div><div class="crd-body"><h3>Ice Tea</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="or"><div class="crd-img" style="background-image:url(/images/orangina.jpg)" loading="lazy"></div><div class="crd-body"><h3>Orangina</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="cr"><div class="crd-img" style="background-image:url(/images/cristaline.jpg)" loading="lazy"></div><div class="crd-body"><h3>Cristaline</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div><div class="crd" data-id="sp"><div class="crd-img" style="background-image:url(/images/sanpellegrino.jpg)" loading="lazy"></div><div class="crd-body"><h3>San Pellegrino</h3><div class="crd-desc"></div><div class="crd-ft"><span class="crd-pr">1.00€</span><button class="add-btn">+</button></div></div></div></div></div></div><div class="pg h" id="ap"><div class="w"><div class="ap"><img src="/images/store-front.jpeg" alt="FAIS TON S'DALLE" id="about" class="store-img"><div class="sec"><span class="hl">Le concept</span></div><p><strong>FAIS TON S'DALLE</strong> - Sandwichs sur mesure <strong>100% Halal</strong>. Choisis ton menu (Léger 6,90€, Classique 7,90€ avec boisson, Gourmand 9,90€ avec boisson+dessert). Personnalise avec 7 viandes, 8 crudités, 9 sauces. Livraison 2,50€ · 23h-06h. Paiement Stripe.</p><p>134 Allée du Colonel Fabien, 93320 | 📞 <a href="tel:+33672044875" style="color:var(--p);font-weight:700">06 72 04 48 75</a></p><div class="ap-gallery"><img src="/images/google-photo-1.jpeg" alt="" loading="lazy"><img src="/images/google-photo-2.jpeg" alt="" loading="lazy"><img src="/images/google-photo-3.jpeg" alt="" loading="lazy"><img src="/images/google-photo-4.jpeg" alt="" loading="lazy"></div></div></div></div><div class="pg h" id="con"><div class="w"><div class="inf"><div><h3>Adresse</h3><p>134 Allée du Colonel Fabien<br>93320</p></div><div><h3>Horaires</h3><p>Service 11h30-23h<br>Livraison 23h-06h</p></div><div><h3>Téléphone</h3><p><a href="tel:+33672044875" style="color:var(--p);font-weight:800">06 72 04 48 75</a></p></div></div><div style="display:flex;gap:12px;margin:16px 0;flex-wrap:wrap"><a class="ub" style="background:#25D366" id="wa-btn">WhatsApp</a><a href="https://share.google/ohtsRFBl72o22DEi4" target="_blank" class="ub" style="background:var(--p)">Avis Google</a></div><div class="rv" id="rv2"><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Les meilleurs sandwichs du 93 ! Toujours frais et bien garnis."</div><div class="rv-auth">Sophie M.</div></div><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Service rapide même tard, les tenders sont incroyables !"</div><div class="rv-auth">Karim L.</div></div><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Enfin un vrai fast-food halal de qualité près de chez moi."</div><div class="rv-auth">Fatima Z.</div></div><div class="rv-card"><div class="rv-stars">★★★★★</div><div class="rv-txt">"Le milkshake Snickers est une tuerie !"</div><div class="rv-auth">Alex D.</div></div></div><div class="nl"><h3>Newsletter</h3><form id="nl2"><input type="email" placeholder="ton@email.fr" required><button type="submit">→</button></form></div></div></div><div class="mod" id="mod"><div class="mod-bx"><div class="mod-hd"><h2>Personnalise</h2><button class="mod-cl">✕</button></div><div class="mod-bd" id="mb"></div><div class="mod-inst"><textarea id="mi" class="mod-ta" placeholder="Ex: pas d'oignons..." rows="2"></textarea></div><div class="mod-ft"><div class="mod-pr" id="mp"></div><button class="mod-ok">Ajouter</button></div></div></div><div class="mod" id="mod-t"><div class="mod-bx"><div class="mod-hd"><h2>Tiramisu</h2><button class="mod-cl">✕</button></div><div class="mod-bd" id="mb-t"></div><div class="mod-ft"><div class="mod-pr">3,00€</div><button class="mod-ok">Ajouter</button></div></div></div><div class="mod" id="mod-m"><div class="mod-bx"><div class="mod-hd"><h2>Milkshake</h2><button class="mod-cl">✕</button></div><div class="mod-bd" id="mb-m"></div><div class="mod-inst"><textarea id="mi-m" class="mod-ta" placeholder="Extra" rows="2"></textarea></div><div class="mod-ft"><div class="mod-pr" id="mp-m">5,00€</div><button class="mod-ok">Ajouter</button></div></div></div><div class="mod" id="mod-pick"><div class="mod-bx"><div class="mod-hd"><h2>Choisis tes extras</h2><button class="mod-cl">✕</button></div><div class="mod-bd" id="mb-pick"></div></div></div><div class="mod" id="mod-pay"><div class="mod-bx"><div class="mod-hd"><h2>Paiement</h2><button class="mod-cl">✕</button></div><div class="mod-bd"><div style="text-align:center;padding:20px 0"><div style="font-size:2.5rem;margin-bottom:8px">🔒</div><h3 style="font-weight:700">Paiement sécurisé</h3><p style="font-size:.72rem;color:var(--t2)">CB · Apple Pay · Google Pay</p><div class="pay-summary" style="background:var(--bg);border-radius:12px;padding:12px;margin:12px 0"><div style="display:flex;justify-content:space-between"><span>Total</span><span id="pay-total" style="font-weight:700;color:var(--p)">0,00€</span></div></div><input type="text" id="pay-name" placeholder="Votre nom" class="mod-ta" style="width:100%;margin-bottom:8px"><button id="pay-btn" class="mod-ok" style="width:100%">Payer</button></div></div></div></div><div class="co" id="co"></div><div class="cp" id="cp"><div class="cp-hd"><div><h3>Panier</h3></div><button class="cp-x">✕</button></div><div class="cp-mode-inline"><div class="cmd-toggle"><button class="on" id="cp-mode-livraison">🚚 Livraison</button><button id="cp-mode-emporter">🥡 À emporter</button></div></div><div class="cp-its" id="ci"><div class="cp-em">Panier vide</div></div><div class="cp-ft"><div class="cp-tr"><span>Sous-total</span><span class="cp-st">0,00€</span></div><div class="cp-tr df" style="display:none;font-size:.68rem;color:var(--t2)"><span>🚚 Livraison</span><span class="df-val">2,50€</span></div><div class="cp-tr" style="border-top:1px solid var(--b);padding-top:6px;margin-top:2px"><span>Total</span><span class="cp-ta" id="ct-total">0,00€</span></div><button class="cp-ck">Payer <span id="c2"></span></button></div></div><div class="toast" id="toast"><span id="tm"></span></div><div class="ni" id="ni"><span>🌙</span><span>Livraison<br><strong>23h-06h</strong></span></div><button id="top-btn">↑</button><footer><div class="fi"><div><h4>FAIS TON S'DALLE</h4><p>Sandwichs Halal 7j/7</p></div><div><h4>Contact</h4><p>📞 06 72 04 48 75</p><p>134 Allée du Colonel, 93320</p></div><div><h4>Liens</h4><a href="/">Accueil</a><a href="/#menu">Menu</a><a href="/#ap">Infos</a><a href="/#con">Contact</a></div><div><h4>Infos</h4><a href="/mentions-legales.html">Mentions légales</a><a href="/cgv.html">CGV</a></div></div><div class="fb">© 2026 FAIS TON S'DALLE</div></footer><script>
+
+var M=[{"id":"l","n":"Menu Léger","c":"menus","p":6.9,"d":"Sandwich (viande + crudités + sauce)","cs":1,"pop":1},{"id":"c","n":"Menu Classique","c":"menus","p":7.9,"d":"Sandwich + boisson","cs":4,"pop":1},{"id":"g","n":"Menu Gourmand","c":"menus","p":9.9,"d":"Sandwich + boisson + dessert","cs":4,"pop":1},{"id":"t","n":"Tiramisu","c":"desserts","p":3,"d":"Fait maison","cs":2},{"id":"m","n":"Milkshake","c":"desserts","p":5,"d":"Personnalisable","cs":3},{"id":"co","n":"Coca-Cola","c":"boissons","p":1},{"id":"cz","n":"Coca Zéro","c":"boissons","p":1},{"id":"pe","n":"Pepsi","c":"boissons","p":1},{"id":"oa","n":"Oasis Tropical","c":"boissons","p":1},{"id":"li","n":"Ice Tea","c":"boissons","p":1},{"id":"or","n":"Orangina","c":"boissons","p":1},{"id":"cr","n":"Cristaline","c":"boissons","p":1},{"id":"sp","n":"San Pellegrino","c":"boissons","p":1}];
+var DRINKS=[{"id":"co","n":"Coca-Cola"},{"id":"cz","n":"Coca Zéro"},{"id":"pe","n":"Pepsi"},{"id":"oa","n":"Oasis Tropical"},{"id":"li","n":"Ice Tea"},{"id":"or","n":"Orangina"},{"id":"cr","n":"Cristaline"},{"id":"sp","n":"San Pellegrino"}];
+var DESSERTS=[{"id":"t","n":"Tiramisu (3€)"},{"id":"m","n":"Milkshake (5€)"}];
+var cart=JSON.parse(localStorage.getItem("c")||"[]"),ci=null,cs={},curPage="acc",pendingItem=null,pendingCust="";
+var cmdMode=localStorage.getItem("cmdMode")||"livraison",cmdAddr=localStorage.getItem("cmdAddr")||"";
+var DELIVERY_FEE=2.5;
+var WA_NUMBERS=["33672044875","33744700167","33611924863"];
+var CU=["Froid","Chaud"];
+var VI=["Tenders","Emincé poulet","Blanc dinde","Jambon dinde","Pastrami","Rosette","Thon"];
+var CR=["Salade","Tomate","Concombre","Oignons","Poivrons","Maïs","Carottes râpées","Avocat"];
+var SA=["Mayo","Ketchup","Algérienne","Samouraï","Blanche","Moutarde","Brasil","Chili","Thai"];
+var SP=["Cheddar","Mozzarella","Feta"];
+var MSC=["Snickers","M&Ms","KitKat","KitKat White"];
+var MCL=["Coulis chocolat (+0,50€)","Coulis caramel (+0,50€)","Coulis fraise (+0,50€)"];
+var TIR=["Caramel","Chocolat","Spéculoos"];
+var IMG={l:"/images/menu-leger.jpg",c:"/images/menu-classique.jpg",g:"/images/menu-gourmand.jpg",t:"/images/tiramisu.jpg",m:"/images/milkshake.png",co:"/images/coca.jpg",cz:"/images/zero.jpg",pe:"/images/pepsi.jpg",oa:"/images/oasis.jpg",li:"/images/icetea.jpg",or:"/images/orangina.jpg",cr:"/images/cristaline.jpg",sp:"/images/sanpellegrino.jpg"};
+
+function navTo(p){["acc","menu","ap","con"].forEach(function(x){var e=document.getElementById(x);if(e)e.classList.add("h");});document.getElementById(p).classList.remove("h");document.querySelectorAll(".nv a").forEach(function(x){x.classList.remove("sl");});var n=document.getElementById("na-"+p);if(n)n.classList.add("sl");curPage=p;window.location.hash=p;}
+
+function getItem(id){for(var i=0;i<M.length;i++){if(M[i].id===id)return M[i];}return null;}
+function getFn(it){if(!it)return null;if(it.cs===2)return"oti";if(it.cs===3)return"omm";if(it.cs===4)return"omc";if(it.cs)return"om";return"ai";}
+
+function handleCardClick(id){
+  var it=getItem(id),fn=getFn(it);
+  if(fn==="oti")oti();
+  else if(fn==="omm")omm(id);
+  else if(fn==="omc")omc(id);
+  else if(fn==="om")om(id);
+  else if(fn==="ai")ai(id);
+}
+
+function bindCards(container){
+  container.querySelectorAll(".crd").forEach(function(el){
+    el.addEventListener("click",function(){handleCardClick(this.dataset.id);});
+  });
+  container.querySelectorAll(".add-btn").forEach(function(el){
+    el.addEventListener("click",function(e){e.stopPropagation();var c=this.closest(".crd");if(c)handleCardClick(c.dataset.id);});
+  });
+}
+
+function renderMenu(g,el){
+  var items=g==="all"?M:M.filter(function(x){return x.c===g;});
+  var h="";
+  for(var i=0;i<items.length;i++){
+    var x=items[i];
+    var ig=IMG[x.id]||"/images/coca.jpg";
+    var badge=(x.pop&&x.c!=="boissons")?'<span class="pop-badge">Populaire</span>':"";
+    h+='<div class="crd" data-id="'+x.id+'"><div class="crd-img" style="background-image:url('+ig+')" loading="lazy">'+badge+'</div><div class="crd-body"><h3>'+x.n+'</h3><div class="crd-desc">'+(x.d||"")+'</div><div class="crd-ft"><span class="crd-pr">'+x.p.toFixed(2)+'€</span><button class="add-btn">+</button></div></div></div>';
+  }
+  el.innerHTML=h;
+  bindCards(el);
+}
+
+function setMode(m){
+  cmdMode=m;
+  localStorage.setItem("cmdMode",m);
+  var cl=document.getElementById("cp-mode-livraison"),ce=document.getElementById("cp-mode-emporter");
+  if(cl)cl.className=m==="livraison"?"on":"";
+  if(ce)ce.className=m==="emporter"?"on":"";
+  updateCartMode();
+  uc();
+}
+function updateCartMode(){var cl=document.getElementById("cp-mode-livraison"),ce=document.getElementById("cp-mode-emporter");if(cl)cl.className=cmdMode==="livraison"?"on":"";if(ce)ce.className=cmdMode==="emporter"?"on":"";}
+
+function sel(k,v,el){
+  if(k==="r"||k==="p"||k==="cl"){
+    el.classList.toggle("sel");
+    cs[k]=[].map.call(el.parentNode.querySelectorAll(".sel"),function(b){return b.textContent||b.dataset.v;});
+  }else{
+    el.parentNode.querySelectorAll("button").forEach(function(b){b.classList.remove("sel");});
+    el.classList.add("sel");
+    cs[k]=v;
+  }
+  if(ci&&ci.cs===3){var extra=0;if(cs.cl)extra=0.5*cs.cl.length;var pe=document.getElementById("mp-m");if(pe)pe.textContent=(5+extra).toFixed(2).replace(".",",")+"€";}
+}
+
+function bindChips(container){container.querySelectorAll(".chips button").forEach(function(b){b.addEventListener("click",function(){sel(this.dataset.k,this.dataset.v,this);});});}
+
+function om(id){
+  var it=getItem(id);if(!it||!it.cs)return;
+  ci=it;cs={};
+  var mb=document.getElementById("mb");
+  mb.innerHTML='<div class="cs"><h4>Cuisson</h4><div class="chips">'+CU.map(function(v){return'<button data-k="cu" data-v="'+v+'">'+v+'</button>';}).join("")+'</div></div><div class="cs"><h4>Viande</h4><div class="chips">'+VI.map(function(v){return'<button data-k="v" data-v="'+v+'">'+v+'</button>';}).join("")+'</div></div><div class="cs"><h4>Crudités</h4><div class="chips">'+CR.map(function(v){return'<button class="multi" data-k="r" data-v="'+v+'">'+v+'</button>';}).join("")+'</div></div><div class="cs"><h4>Suppléments</h4><div class="chips">'+SP.map(function(v){return'<button class="multi" data-k="p" data-v="'+v+'">'+v+'</button>';}).join("")+'</div></div><div class="cs"><h4>Sauce</h4><div class="chips">'+SA.map(function(v){return'<button data-k="s" data-v="'+v+'">'+v+'</button>';}).join("")+'</div></div>';
+  document.getElementById("mp").textContent=it.p.toFixed(2)+"€";
+  document.getElementById("mod").classList.add("on");
+  document.body.style.overflow="hidden";
+  document.getElementById("mi").value="";
+  bindChips(mb);
+}
+function omc(id){var it=getItem(id);if(!it||!it.cs)return;pendingItem=it;om(id);}
+
+function oti(){
+  ci=getItem("t");cs={};
+  var mb=document.getElementById("mb-t");
+  mb.innerHTML='<div class="cs"><h4>Parfum</h4><div class="chips">'+TIR.map(function(v){return'<button data-k="ti" data-v="'+v+'">'+v+'</button>';}).join("")+'</div></div>';
+  document.getElementById("mod-t").classList.add("on");
+  document.body.style.overflow="hidden";
+  bindChips(mb);
+}
+
+function omm(id){
+  var it=getItem(id);if(!it||!it.cs)return;
+  ci=it;cs={};
+  var mb=document.getElementById("mb-m");
+  mb.innerHTML='<div class="cs"><h4>Choix</h4><div class="chips">'+MSC.map(function(v){return'<button data-k="ch" data-v="'+v+'">'+v+'</button>';}).join("")+'</div></div><div class="cs"><h4>Coulis (+0,50€)</h4><div class="chips">'+MCL.map(function(v){return'<button class="multi" data-k="cl" data-v="'+v+'">'+v+'</button>';}).join("")+'</div></div>';
+  var pe=document.getElementById("mp-m");
+  if(pe)pe.textContent="5,00€";
+  document.getElementById("mod-m").classList.add("on");
+  document.body.style.overflow="hidden";
+  document.getElementById("mi-m").value="";
+  bindChips(mb);
+}
+
+function closeModals(){["mod","mod-t","mod-m","mod-pick","mod-pay"].forEach(function(id){var m=document.getElementById(id);if(m)m.classList.remove("on");});document.body.style.overflow="";ci=null;cs={};}
+function cm(){closeModals();}function cmt(){closeModals();}function cmm(){closeModals();}
+
+function showExtraPicker(){
+  if(!pendingItem)return;
+  var it=pendingItem,g=it.id==="g";
+  var btns=DRINKS.map(function(d){return'<button class="ebtn" data-id="'+d.id+'">🥤 '+d.n+'</button>';}).join("");
+  var html='<div class="cs"><h4>Choisis ta boisson</h4><div class="chips">'+btns+'</div></div>';
+  if(g)html+='<div class="cs" id="pick-dessert"><h4>🍰 Choisis ton dessert</h4><div class="chips"></div></div>';
+  document.getElementById("mb-pick").innerHTML=html;
+  var me=document.getElementById("mb-pick");
+  me.querySelectorAll(".ebtn").forEach(function(b){
+    b.addEventListener("click",function(){
+      var did=this.dataset.id;
+      if(g){
+        var bt=[DESSERTS[0]].map(function(ds){return'<button class="ebtn2" data-id="'+ds.id+'">'+ds.n+'</button>';}).join("");
+        var de=document.getElementById("pick-dessert");
+        if(de){var c=de.querySelector(".chips");if(c){c.innerHTML=bt;c.querySelectorAll(".ebtn2").forEach(function(db){db.addEventListener("click",function(){closeModals();pendingCust=" + "+getItem(did).n+" + "+getItem(this.dataset.id).n;addItemToCart(it);document.getElementById("mod-pick").classList.remove("on");});});}}
+      }else{closeModals();pendingCust=" + "+getItem(did).n;addItemToCart(it);document.getElementById("mod-pick").classList.remove("on");}
+    });
+  });
+  document.getElementById("mod-pick").classList.add("on");document.body.style.overflow="hidden";
+}
+
+function addItemToCart(it){
+  var label=it.n+(pendingCust||"");
+  addItem(label,it.p,label);sv();
+  if(pendingCust.indexOf("Dessert")>=0||pendingCust.indexOf("Tiramisu")>=0||pendingCust.indexOf("Milkshake")>=0)ts("Menu complet ajouté !");
+  else if(pendingCust)ts("Menu avec boisson ajouté !");
+  else ts(it.n+" ajouté !");
+  pendingItem=null;pendingCust="";
+}
+function addItem(n,p,c){var idx=-1;for(var i=0;i<cart.length;i++){if(cart[i].n===n&&cart[i].cu===c){idx=i;break;}}if(idx>=0){cart[idx].q+=1;}else{cart.push({n:n,p:p,cu:c,q:1});}}
+
+function ai(id){
+  var it=getItem(id);if(!it)return;
+  var idx=-1;
+  for(var i=0;i<cart.length;i++){if(cart[i].n===it.n&&!cart[i].cu){idx=i;break;}}
+  if(idx>=0){cart[idx].q+=1;}else{cart.push({n:it.n,p:it.p,cu:null,q:1});}
+  sv();ts(it.n+" ajouté !");
+}
+
+function sv(){try{localStorage.setItem("c",JSON.stringify(cart));}catch(e){}uc();}
+function cq(idx,d){try{cart[idx].q+=d;if(cart[idx].q<=0)cart.splice(idx,1);sv();}catch(e){}}
+
+function getSubtotal(){var s=0;for(var i=0;i<cart.length;i++){s+=cart[i].p*cart[i].q;}return s;}
+function getDelivery(){return cmdMode==="livraison"?DELIVERY_FEE:0;}
+function getTotal(){return getSubtotal()+getDelivery();}
+
+function uc(){
+  var n=0,t=getTotal(),st=getSubtotal(),df=getDelivery();
+  for(var i=0;i<cart.length;i++){n+=cart[i].q;}
+  document.getElementById("cc").textContent=n;
+  document.getElementById("c2").textContent=t.toFixed(2)+"€";
+  var c=document.getElementById("ci");
+  var stEl=document.querySelector(".cp-st");
+  if(stEl)stEl.textContent=st.toFixed(2).replace(".",",")+"€";
+  if(!cart.length){
+    c.innerHTML='<div class="cp-em">Panier vide</div>';
+    document.getElementById("ct-total").textContent="0,00€";
+    var dr=document.querySelector(".cp-tr.df");
+    if(dr)dr.style.display="none";
+    return;
+  }
+  var dr=document.querySelector(".cp-tr.df");
+  if(dr)dr.style.display=df>0?"flex":"none";
+  if(df>0&&dr){(dr.querySelector(".df-val")||{}).textContent=df.toFixed(2).replace(".",",")+"€";}
+  document.getElementById("ct-total").textContent=t.toFixed(2).replace(".",",")+"€";
+  c.innerHTML=cart.map(function(i,idx){return'<div class="ci"><div class="ci-if"><h4>'+i.n+'</h4>'+(i.cu?'<div class="cu">'+i.cu.substring(0,50)+'</div>':"")+'<div class="up">'+i.p.toFixed(2)+'€</div></div><div class="ci-ac"><button class="ci-q" data-idx="'+idx+'" data-d="-1">−</button><span class="ci-n">'+i.q+'</span><button class="ci-q" data-idx="'+idx+'" data-d="1">+</button><span class="ci-it">'+(i.p*i.q).toFixed(2)+'€</span></div></div>';}).join("");
+  c.querySelectorAll(".ci-q").forEach(function(x){x.addEventListener("click",function(){cq(parseInt(this.dataset.idx),parseInt(this.dataset.d));});});
+}
+
+function tc(){document.getElementById("co").classList.toggle("on");document.getElementById("cp").classList.toggle("on");document.body.style.overflow=document.getElementById("co").classList.contains("on")?"hidden":"";updateCartMode();}
+function ts(m){var t=document.getElementById("toast"),s=document.getElementById("tm");s.textContent=m;t.classList.add("on");clearTimeout(window._tt);window._tt=setTimeout(function(){t.classList.remove("on");},2500);}
+
+// BIND
+bindCards(document);
+renderMenu("all",document.getElementById("mg"));
+renderMenu("all",document.getElementById("mg2"));
+
+document.querySelectorAll(".nv a").forEach(function(a){a.addEventListener("click",function(){navTo(this.id.replace("na-",""));});});
+document.querySelector(".hero-btn").addEventListener("click",function(){navTo("menu");});
+document.querySelector(".hero-btn2").addEventListener("click",function(){if(!window.open("https://wa.me/33672044875","_blank"))alert("WhatsApp: https://wa.me/33672044875");});
+
+document.getElementById("nl1").addEventListener("submit",function(e){e.preventDefault();var v=this.querySelector("input");if(!v||!v.value.trim())return;var em=v.value.trim();v.disabled=true;var x=new XMLHttpRequest();x.open("POST","/api/newsletter",true);x.setRequestHeader("Content-Type","application/json");x.onload=function(){v.disabled=false;if(x.status===200){ts("Inscrit !");v.value="";}else{ts("Erreur");}};x.onerror=function(){v.disabled=false;ts("Erreur réseau");};x.send(JSON.stringify({email:em}));});
+document.getElementById("nl2").addEventListener("submit",function(e){e.preventDefault();var v=this.querySelector("input");if(!v||!v.value.trim())return;var em=v.value.trim();v.disabled=true;var x=new XMLHttpRequest();x.open("POST","/api/newsletter",true);x.setRequestHeader("Content-Type","application/json");x.onload=function(){v.disabled=false;if(x.status===200){ts("Inscrit !");v.value="";}else{ts("Erreur");}};x.onerror=function(){v.disabled=false;ts("Erreur réseau");};x.send(JSON.stringify({email:em}));});
+
+document.querySelectorAll(".tabs button").forEach(function(b){b.addEventListener("click",function(){var p=this.closest(".pg");p.querySelectorAll(".tabs button").forEach(function(x){x.classList.remove("on");});this.classList.add("on");renderMenu(this.dataset.c,document.getElementById(p.id==="acc"?"mg":"mg2"));});});
+
+document.getElementById("cp-mode-livraison").addEventListener("click",function(){setMode("livraison");});
+document.getElementById("cp-mode-emporter").addEventListener("click",function(){setMode("emporter");});
+if(cmdMode==="livraison"){document.getElementById("cp-mode-livraison").className="on";}else{document.getElementById("cp-mode-emporter").className="on";}
+
+document.getElementById("ct").addEventListener("click",tc);
+document.getElementById("co").addEventListener("click",tc);
+document.querySelector(".cp-x").addEventListener("click",tc);
+
+document.querySelector(".cp-ck").addEventListener("click",function(){
+  if(!cart.length)return;
+  var t=getTotal(),st=getSubtotal(),df=getDelivery();
+  var payHtml='<div class="pay-summary" style="background:var(--bg);border-radius:12px;padding:12px;margin:12px 0"><div style="display:flex;justify-content:space-between"><span>Sous-total</span><span>'+st.toFixed(2).replace(".",",")+'€</span></div>';
+  if(df>0)payHtml+='<div style="display:flex;justify-content:space-between;margin-top:4px"><span>🚚 Livraison</span><span>'+df.toFixed(2).replace(".",",")+'€</span></div>';
+  payHtml+='<div style="display:flex;justify-content:space-between;margin-top:6px;font-weight:700;color:var(--p);border-top:1px solid var(--b);padding-top:6px"><span>Total</span><span id="pay-total">'+t.toFixed(2).replace(".",",")+'€</span></div></div>';
+  document.querySelector("#mod-pay .mod-bd").innerHTML='<div style="text-align:center;padding:20px 0"><div style="font-size:2.5rem;margin-bottom:8px">🔒</div><h3 style="font-weight:700">Paiement sécurisé</h3><p style="font-size:.72rem;color:var(--t2)">CB · Apple Pay · Google Pay</p>'+payHtml+'<input type="text" id="pay-name" placeholder="Votre nom" class="mod-ta" style="width:100%;margin-bottom:8px"><button id="pay-btn" class="mod-ok" style="width:100%">Payer</button></div>';
+  document.getElementById("mod-pay").classList.add("on");
+  document.body.style.overflow="hidden";
+});
+
+document.getElementById("pay-btn").addEventListener("click",function(){
+  var btn=this;btn.textContent="Traitement...";btn.disabled=true;
+  var name=document.getElementById("pay-name").value.trim()||"Client";
+  var t=getTotal(),st=getSubtotal(),df=getDelivery();
+  var items=cart.map(function(i){return{name:i.n,price:Math.round(i.p*100),qty:i.q,custom:i.cu||null};});
+  if(df>0){items.push({name:"🚚 Livraison",price:Math.round(df*100),qty:1,custom:null});}
+  var x=new XMLHttpRequest();
+  x.open("POST","/api/create-checkout",true);
+  x.setRequestHeader("Content-Type","application/json");
+  x.onload=function(){btn.textContent="Payer";btn.disabled=false;if(x.status===200){var r=JSON.parse(x.responseText);if(r.url){window.location.href=r.url;}else{ts("Erreur paiement");}}else{ts("Erreur serveur");}};
+  x.onerror=function(){btn.textContent="Payer";btn.disabled=false;ts("Erreur réseau");};
+  x.send(JSON.stringify({items:items,total:t,customerName:name,mode:cmdMode,address:cmdAddr}));
+});
+
+document.querySelectorAll(".mod .mod-cl").forEach(function(b){b.addEventListener("click",function(){var m=this.closest(".mod");if(m){m.classList.remove("on");document.body.style.overflow="";ci=null;cs={};if(m.id==="mod")pendingItem=null;}});});
+document.querySelectorAll(".mod").forEach(function(m){m.addEventListener("click",function(e){if(e.target===this){this.classList.remove("on");document.body.style.overflow="";ci=null;cs={};if(this.id==="mod")pendingItem=null;}});});
+
+document.querySelector("#mod .mod-ok").addEventListener("click",function(){
+  if(!ci||!cs.cu||!cs.v||!cs.s){ts("Choisis cuisson, viande et sauce");return;}
+  var ins=document.getElementById("mi").value.trim();
+  var t=(cs.cu||"")+"|"+(cs.v||"")+"|"+(cs.r?cs.r.join(","):"-")+(cs.p?"|"+cs.p.join(","):"")+"|"+(cs.s||"")+(ins?"|"+ins:"");
+  if(pendingItem){cm();showExtraPicker();}
+  else{addItem(ci.n,ci.p,t);cm();ts(ci.n+" ajouté !");}
+});
+
+document.querySelector("#mod-t .mod-ok").addEventListener("click",function(){if(!cs.ti){ts("Choisis un parfum");return;}addItem("Tiramisu - "+cs.ti,3,cs.ti);cmt();ts("Tiramisu ajouté !");});
+
+document.querySelector("#mod-m .mod-ok").addEventListener("click",function(){
+  if(!cs.ch){ts("Choisis un type");return;}
+  var ins=document.getElementById("mi-m").value.trim();
+  var extra=0;if(cs.cl)extra=0.5*cs.cl.length;
+  var t=cs.ch+(cs.cl?"+"+cs.cl.join(","):"")+(ins?"|"+ins:"");
+  addItem(ci.n+" ("+cs.ch+")",5+extra,t);
+  cmm();ts("Milkshake ajouté !");
+});
+
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape"){
+    ["mod","mod-t","mod-m","mod-pick","mod-pay"].forEach(function(id){var m=document.getElementById(id);if(m&&m.classList.contains("on")){m.classList.remove("on");document.body.style.overflow="";ci=null;cs={};if(id==="mod")pendingItem=null;}});
+    if(document.getElementById("cp").classList.contains("on"))tc();
+  }
+});
+
+window.addEventListener("scroll",function(){document.getElementById("top-btn").style.display=window.scrollY>400?"flex":"none";});
+document.getElementById("top-btn").addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});
+
+(function(){var h=new Date().getHours();document.getElementById("nb").style.display=(h>=23||h<6)?"block":"none";document.getElementById("ni").style.display=(h>=23||h<6)?"flex":"none";})();
+window.matchMedia("(prefers-color-scheme:dark)").addEventListener("change",function(e){if(!localStorage.getItem("t"))document.documentElement.dataset.theme=e.matches?"dark":"light";});
+setInterval(function(){var h=new Date().getHours();document.getElementById("nb").style.display=(h>=23||h<6)?"block":"none";document.getElementById("ni").style.display=(h>=23||h<6)?"flex":"none";},60000);
+var st=localStorage.getItem("t")||(window.matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.dataset.theme=st;
+
+function tt(){var t=document.documentElement.dataset.theme,n=t==="dark"?"light":"dark";document.documentElement.dataset.theme=n;localStorage.setItem("t",n);}
+document.getElementById("tt").addEventListener("click",tt);
+
+function mh(){var m=document.getElementById("mn");m.classList.toggle("on");var h=document.getElementById("ham");if(h)h.textContent=m.classList.contains("on")?"✕":"☰";}
+document.getElementById("ham").addEventListener("click",mh);
+document.addEventListener("click",function(e){var m=document.getElementById("mn"),h=document.getElementById("ham");if(m&&m.classList.contains("on")&&!m.contains(e.target)&&!h.contains(e.target)){m.classList.remove("on");h.textContent="☰";}});
+
+["acc","menu","ap","con"].forEach(function(p){var a=document.createElement("a");var names={acc:"Accueil",menu:"Menu",ap:"Infos",con:"Contact"};a.textContent=names[p];a.addEventListener("click",function(){navTo(p);var m=document.getElementById("mn");if(m)m.classList.remove("on");document.getElementById("ham").textContent="☰";});document.getElementById("mn").appendChild(a);});
+
+document.getElementById("wa-btn").addEventListener("click",function(){if(!window.open("https://wa.me/33672044875","_blank"))alert("WhatsApp: https://wa.me/33672044875");});
+
+if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js").catch(function(){});}
+
+(function(){
+  var p=new URLSearchParams(window.location.search);
+  if(p.get("payment")==="success"){
+    var t=getTotal(),st=getSubtotal(),df=getDelivery();
+    var mode=cmdMode==="livraison"?"Livraison ["+cmdAddr+"]":"À emporter";
+    var its=cart.map(function(i){return i.q+"x "+i.n+(i.cu?" ("+i.cu.substring(0,50)+")":"")+" - "+(i.p*i.q).toFixed(2)+"€";}).join("%0a");
+    if(df>0)its+="%0a🚚 Livraison: "+df.toFixed(2)+"€";
+    var msg="NOUVELLE COMMANDE (PAYE)%0a%0a"+mode+"%0a%0a"+its+"%0a%0aTotal: "+t.toFixed(2)+"€%0aPAYE";
+    for(var wi=0;wi<WA_NUMBERS.length;wi++){try{window.open("https://wa.me/"+WA_NUMBERS[wi]+"?text="+encodeURIComponent(msg),wi===0?"_self":"_blank");}catch(e){}}
+    cart=[];sv();tc();ts("Commande envoyée !");
+  }
+})();
+
+var initHash=window.location.hash.replace("#","");
+if(initHash&&["acc","menu","ap","con"].indexOf(initHash)>=0)navTo(initHash);
+updateCartMode();uc();
+</script></body></html>

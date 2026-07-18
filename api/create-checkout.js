@@ -2,13 +2,20 @@
 // 💳 API CREATE CHECKOUT — Stripe (Vercel Serverless)
 // Crée une session de paiement Stripe Checkout
 // =============================================================
-
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Méthode non autorisée' });
+module.exports = async (req, res) => {
+  // CORS
+  const origin = req.headers['origin'] || '';
+  const allowedOrigins = ['https://faistonsdalle.com', 'http://localhost:3000', 'http://localhost:5173'];
+  if (allowedOrigins.some(o => origin.startsWith(o)) || (origin && origin.includes('faistonsdalle.vercel.app'))) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
   }
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Méthode non autorisée' });
 
   try {
     const { items, total, customerName, mode, address } = req.body;
@@ -17,7 +24,6 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Panier vide' });
     }
 
-    // Construire les line_items pour Stripe
     const lineItems = items.map(item => ({
       price_data: {
         currency: 'eur',
@@ -25,30 +31,15 @@ export default async function handler(req, res) {
           name: item.name,
           description: item.custom ? item.custom.substring(0, 100) : undefined,
         },
-        unit_amount: Math.round(item.price * 100), // Stripe utilise les centimes
+        unit_amount: Math.round(item.price * 100),
       },
       quantity: item.qty || 1,
     }));
 
-    // Ajouter les frais de livraison (optionnel)
-    // si tu veux ajouter 1€ de livraison :
-    // if (mode === 'livraison') {
-    //   lineItems.push({
-    //     price_data: {
-    //       currency: 'eur',
-    //       product_data: { name: 'Frais de livraison' },
-    //       unit_amount: 100, // 1€
-    //     },
-    //     quantity: 1,
-    //   });
-    // }
-
-    // Construire l'URL de retour avec les infos de commande
-    const baseUrl = process.env.SITE_URL || 'https://faistonsdalle.fr';
+    const baseUrl = process.env.SITE_URL || 'https://faistonsdalle.com';
     const successUrl = `${baseUrl}?payment=success&total=${total.toFixed(2)}&mode=${mode || 'pickup'}&addr=${encodeURIComponent(address || '')}`;
     const cancelUrl = `${baseUrl}`;
 
-    // Créer la session Stripe Checkout
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',
@@ -69,6 +60,6 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error('Erreur Stripe:', error);
-    return res.status(500).json({ error: 'Erreur lors de la création du paiement' });
+    return res.status(500).json({ error: 'Erreur lors de la cr\u00e9ation du paiement' });
   }
-}
+};

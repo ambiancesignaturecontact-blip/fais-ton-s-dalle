@@ -1,39 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Mentions Légales — FAIS TON S'DALLE</title>
-<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,'Segoe UI',sans-serif;background:#f8f6f3;color:#1a1a1a;padding:40px 20px;max-width:700px;margin:0 auto;line-height:1.7}a{color:#c73b2b}h1{font-size:1.4rem;margin-bottom:8px;color:#c73b2b}h2{font-size:1rem;margin:24px 0 6px;color:#1a1a1a}p,li{font-size:.82rem;color:#444;margin-bottom:6px}.back{display:inline-block;margin-bottom:24px;color:#c73b2b;font-size:.8rem;font-weight:600}</style>
-</head>
-<body>
-<a href="/" class="back">← Retour au site</a>
-<h1>Mentions Légales</h1>
+# robots.txt pour FAIS TON S'DALLE
+User-agent: *
+Allow: /
+Sitemap: https://faistonsdalle.com/sitemap.xml
 
-<h2>Éditeur du site</h2>
-<p><strong>FAIS TON S'DALLE</strong><br>
-134 Allée du Colonel Fabien, 93320 Les Pavillons-sous-Bois<br>
-📞 <a href="tel:+33672044875">06 72 04 48 75</a><br>
-✉️ <a href="mailto:contact@faistonsdalle.com">contact@faistonsdalle.com</a></p>
-
-<h2>Responsable de publication</h2>
-<p>Le gérant de l'entreprise individuelle FAIS TON S'DALLE.</p>
-
-<h2>Hébergement</h2>
-<p>Site hébergé par <strong>Vercel Inc.</strong><br>
-340 S Lemon Ave #4133, Walnut, CA 91789, USA<br>
-<a href="https://vercel.com" target="_blank" rel="noopener">https://vercel.com</a></p>
-
-<h2>Propriété intellectuelle</h2>
-<p>L'ensemble du contenu du site (textes, images, logos) est la propriété exclusive de FAIS TON S'DALLE. Toute reproduction ou utilisation sans autorisation est interdite.</p>
-
-<h2>Données personnelles</h2>
-<p>Les informations collectées via le formulaire de commande et la newsletter sont destinées exclusivement à FAIS TON S'DALLE. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour l'exercer, contactez-nous à <a href="mailto:contact@faistonsdalle.com">contact@faistonsdalle.com</a>.</p>
-
-<h2>Paiement</h2>
-<p>Les paiements en ligne sont traités par <strong>Stripe</strong>, leader mondial du paiement sécurisé. Aucune donnée bancaire n'est stockée sur nos serveurs. Stripe est certifié PCI DSS Level 1.</p>
-
-<h2>Litiges</h2>
-<p>Conformément à l'article L.612-1 du Code de la consommation, le consommateur peut recourir à un médiateur de la consommation.</p>
-
-<p style="margin-top:32px;font-size:.7rem;color:#999">Dernière mise à jour : juillet 2026</p>
-</body>
-</html>
+# Disallow admin paths
+Disallow: /admin/

@@ -1,9 +1,12 @@
-{
-  "name": "faistonsdalle",
-  "version": "1.0.0",
-  "description": "FAIS TON S'DALLE - Sandwichs sur mesure Halal | Les Pavillons-sous-Bois",
-  "dependencies": {
-    "@supabase/supabase-js": "^2.109.0",
-    "stripe": "^14.0.0"
-  }
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://faistonsdalle.com/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://faistonsdalle.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://faistonsdalle.com/"/>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

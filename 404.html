@@ -1,63 +1,24 @@
-# ===========================================================
-# FAIS TON S'DALLE — Variables d'environnement
-# Copier ce fichier vers .env et remplir les valeurs
-# ===========================================================
-
-# --- Base de données PostgreSQL (Vercel Postgres / Supabase) ---
-POSTGRES_URL="postgres://user:password@host:5432/dbname"
-POSTGRES_PRISMA_URL="postgres://user:password@host:5432/dbname?schema=public"
-POSTGRES_URL_NON_POOLING="postgres://user:password@host:5432/dbname"
-POSTGRES_USER="user"
-POSTGRES_HOST="host"
-POSTGRES_PASSWORD="password"
-POSTGRES_DATABASE="dbname"
-
-# --- Domaine / URL du site ---
-SITE_URL="https://faistonsdalle.fr"
-NEXT_PUBLIC_SITE_URL="https://faistonsdalle.fr"
-
-# --- Uber Eats (API Store) ---
-UBER_STORE_ID="qQkk53_5XNaUCkcZTskV6g"
-UBER_STORE_URL="https://www.ubereats.com/fr-en/store/fais-ton-sdalle/qQkk53_5XNaUCkcZTskV6g"
-
-# --- WhatsApp Business ---
-WHATSAPP_NUMBER="33672044875"
-WHATSAPP_MESSAGE="Bonjour ! Je souhaite commander."
-
-# --- Newsletter (Mailchimp / Resend / SendGrid) ---
-# Pour envoyer les emails de la newsletter
-MAILCHIMP_API_KEY=""
-MAILCHIMP_LIST_ID=""
-# OU
-RESEND_API_KEY=""
-NEWSLETTER_FROM="contact@faistonsdalle.com"
-
-# --- Google Analytics 4 ---
-NEXT_PUBLIC_GA_ID="G-XXXXXXXXXX"
-
-# --- Google Maps (pour embeds optionnels) ---
-NEXT_PUBLIC_GOOGLE_MAPS_KEY=""
-
-# --- TikTok (Pixel / API) ---
-TIKTOK_PIXEL_ID=""
-
-# --- Admin (connexion dashboard) ---
-ADMIN_EMAIL="contact@faistonsdalle.com"
-ADMIN_PASSWORD_HASH=""  # généré avec bcrypt
-
-# --- Fidélité (points) ---
-LOYALTY_POINTS_PER_SANDWICH=1
-LOYALTY_FREE_AFTER=10  # 10 sandwichs = 1 gratuit
-
-# --- Contact ---
-CONTACT_EMAIL="contact@faistonsdalle.com"
-CONTACT_PHONE="06 72 04 48 75"
-
-# --- Stripe (Paiement en ligne) ---
-# Crée un compte Stripe : https://dashboard.stripe.com/register
-# Clés disponibles dans : Dashboard → Developers → API Keys
-STRIPE_SECRET_KEY="sk_live_xxxxxxxxxxxxx"  # 🔒 NE JAMAIS PARTAGER
-NEXT_PUBLIC_STRIPE_KEY="pk_live_xxxxxxxxxxxxx"  # Clé publiable (sûre côté client)
-
-# --- Mode développement / production ---
-NODE_ENV="production"
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>404 — Page introuvable | FAIS TON S'DALLE</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,'Segoe UI',sans-serif;background:#f8f6f3;color:#1a1a1a;display:flex;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:20px}
+.c{max-width:400px}
+h1{font-size:5rem;color:#c73b2b;font-weight:900;line-height:1}
+p{margin:16px 0;color:#6b6b6b;font-size:.9rem;line-height:1.5}
+a{background:#c73b2b;color:#fff;padding:12px 28px;border-radius:30px;font-weight:700;font-size:.85rem;text-decoration:none;display:inline-block;transition:.2s}
+a:hover{transform:scale(1.04)}
+</style>
+</head>
+<body>
+<div class="c">
+<div style="font-size:4rem;margin-bottom:8px">🥪</div>
+<h1>404</h1>
+<p>Oups ! Cette page n'existe pas.<br>Retourne à l'accueil pour créer ton sandwich.</p>
+<a href="/">Retour au menu</a>
+</div>
+</body>
+</html>

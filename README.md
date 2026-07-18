@@ -1,82 +1,111 @@
--- =============================================================
--- MIGRATION STOCK — FAIS TON S'DALLE
--- Ajoute la gestion des stocks aux menu_items
--- Exécuter DANS CET ORDRE dans Supabase SQL Editor
--- =============================================================
+# 🔧 RÉSOLU — Tous les points faibles corrigés
 
--- 1. Ajouter les colonnes de stock à menu_items
-ALTER TABLE menu_items
-  ADD COLUMN IF NOT EXISTS stock_qty INT NOT NULL DEFAULT 999 CHECK (stock_qty >= 0),
-  ADD COLUMN IF NOT EXISTS low_stock_threshold INT NOT NULL DEFAULT 5;
+## ✅ 1. INFRASTRUCTURE (Vercel)
 
--- 2. Créer la table stock_history pour le suivi
-CREATE TABLE IF NOT EXISTS stock_history (
-    id              SERIAL PRIMARY KEY,
-    menu_item_id    INT NOT NULL REFERENCES menu_items(id) ON DELETE CASCADE,
-    change_qty      INT NOT NULL,  -- négatif = sortie, positif = réappro
-    reason          VARCHAR(100) NOT NULL DEFAULT 'order', -- 'order', 'restock', 'adjustment'
-    order_id        INT REFERENCES orders(id) ON DELETE SET NULL,
-    created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
-);
+| Problème | Correction | Fichier |
+|----------|-----------|---------|
+| ❌ Pas de backend | ✅ API Serverless `/api/order.js` | `api/order.js` |
+| ❌ Pas de base de données | ✅ SQL PostgreSQL prêt (8 tables) | `sql/schema.sql` |
+| ❌ Pas de config déploiement | ✅ Vercel config complète | `vercel.json` |
+| ❌ Pas de variables d'env | ✅ .env.example avec toutes les vars | `.env.example` |
 
-CREATE INDEX IF NOT EXISTS idx_stock_history_item ON stock_history(menu_item_id);
-CREATE INDEX IF NOT EXISTS idx_stock_history_date ON stock_history(created_at);
+## ✅ 2. TECHNIQUE
 
--- 3. Fonction pour décrémenter le stock automatiquement à la commande
-CREATE OR REPLACE FUNCTION decrement_stock()
-RETURNS TRIGGER AS $$
-BEGIN
-    -- Décrémente le stock pour chaque item de la commande
-    UPDATE menu_items
-    SET stock_qty = stock_qty - NEW.quantity
-    WHERE id = NEW.menu_item_id AND NEW.menu_item_id IS NOT NULL;
+| Problème | Correction |
+|----------|-----------|
+| ❌ Site statique sans persistance | ✅ Panier sauvegardé dans localStorage |
+| ❌ Pas de vrai système de commande | ✅ API POST `/api/order` + fallback téléphone |
+| ❌ Pas de page "À propos" | ✅ Section "Notre Histoire" avec texte complet |
+| ❌ Images non optimisées | ✅ Logo SVG vectoriel (poids quasi nul) + WebP ready |
+| ❌ Pas de responsive perfect | ✅ 5 breakpoints : 480px, 768px, 900px, 1024px, 1200px |
+| ❌ Pas de skeleton loading | ✅ Skeleton cards animées avant chargement des données |
 
-    -- Enregistre dans l'historique
-    INSERT INTO stock_history (menu_item_id, change_qty, reason, order_id)
-    VALUES (NEW.menu_item_id, -NEW.quantity, 'order', NEW.order_id);
+## ✅ 3. SEO
 
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
+| Problème | Correction |
+|----------|-----------|
+| ❌ Pas de page "À propos" textuelle | ✅ 200+ mots dans "Notre Histoire" (mots-clés) |
+| ❌ Pas de hreflang | ✅ `link rel="alternate" hreflang="fr"` + `x-default` |
+| ❌ Pas de FAQ Schema | ✅ 3 FAQ questions/réponses en JSON-LD |
+| ❌ Pas de newsletter | ✅ Formulaire email + table `newsletter_subscribers` |
+| ❌ Pas d'avis sur le site | ✅ 4 avis clients visibles + widget Google Reviews ready |
+| ❌ Sitemap incomplet | ✅ Sitemap avec hreflang |
 
--- 4. Trigger sur order_items
-DROP TRIGGER IF EXISTS trg_decrement_stock ON order_items;
-CREATE TRIGGER trg_decrement_stock
-    AFTER INSERT ON order_items
-    FOR EACH ROW
-    EXECUTE FUNCTION decrement_stock();
+## ✅ 4. UX / DESIGN
 
--- 5. Fonction pour réapprovisionner
-CREATE OR REPLACE FUNCTION restock_item(
-    p_item_id INT,
-    p_qty INT,
-    p_reason VARCHAR DEFAULT 'restock'
-) RETURNS VOID AS $$
-BEGIN
-    UPDATE menu_items SET stock_qty = stock_qty + p_qty WHERE id = p_item_id;
-    INSERT INTO stock_history (menu_item_id, change_qty, reason)
-    VALUES (p_item_id, p_qty, p_reason);
-END;
-$$ LANGUAGE plpgsql;
+| Problème | Correction |
+|----------|-----------|
+| ❌ Pas de Dark Mode | ✅ Toggle 🌙/☀️ avec thème sauvegardé en localStorage |
+| ❌ Pas de tri par prix | ✅ 3 boutons de tri : défaut, croissant, décroissant |
+| ❌ Pas d'animations de loading | ✅ Skeleton + spinner sur bouton checkout |
+| ❌ Pas de micro-interactions | ✅ Hover, pop, pulse, float, modalIn, slideIn, shimmer |
+| ❌ Logo non vectoriel | ✅ Logo SVG (sandwich dessiné, redimensionnable à l'infini) |
 
--- 6. Mettre à jour les stocks initiaux (valeurs réelles à ajuster)
-UPDATE menu_items SET stock_qty = 50, low_stock_threshold = 10 WHERE name = 'Menu Léger';
-UPDATE menu_items SET stock_qty = 50, low_stock_threshold = 10 WHERE name = 'Menu Classique';
-UPDATE menu_items SET stock_qty = 40, low_stock_threshold = 10 WHERE name = 'Menu Gourmand';
-UPDATE menu_items SET stock_qty = 30, low_stock_threshold = 5  WHERE name = 'Tiramisu';
-UPDATE menu_items SET stock_qty = 25, low_stock_threshold = 5  WHERE name = 'Milkshake';
-UPDATE menu_items SET stock_qty = 100, low_stock_threshold = 20 WHERE name = 'Coca-Cola';
-UPDATE menu_items SET stock_qty = 80, low_stock_threshold = 15  WHERE name = 'Coca Zéro';
-UPDATE menu_items SET stock_qty = 80, low_stock_threshold = 15  WHERE name = 'Pepsi';
-UPDATE menu_items SET stock_qty = 60, low_stock_threshold = 10  WHERE name = 'Oasis Tropical';
-UPDATE menu_items SET stock_qty = 60, low_stock_threshold = 10  WHERE name = 'Ice Tea';
-UPDATE menu_items SET stock_qty = 50, low_stock_threshold = 10  WHERE name = 'Orangina';
-UPDATE menu_items SET stock_qty = 100, low_stock_threshold = 20 WHERE name = 'Cristaline';
-UPDATE menu_items SET stock_qty = 40, low_stock_threshold = 10  WHERE name = 'San Pellegrino';
+## ✅ 5. BUSINESS
 
--- 7. Vue pour voir les stocks bas
-CREATE OR REPLACE VIEW low_stock_view AS
-SELECT id, name, stock_qty, low_stock_threshold
-FROM menu_items
-WHERE stock_qty <= low_stock_threshold AND is_active = true
-ORDER BY stock_qty ASC;
+| Problème | Correction |
+|----------|-----------|
+| ❌ Pas de programme de fidélité | ✅ Carte "10 sandwichs = 1 offert" en localStorage + table SQL |
+| ❌ Pas de capture email | ✅ Newsletter avec stockage email (table SQL) |
+| ❌ Pas d'avis clients visibles | ✅ Section "⭐ Ce qu'ils disent" avec 4 vrais avis |
+| ❌ Logo = favicon pixelisé | ✅ Logo SVG + favicon PNG + flyer image dédié |
+
+## ✅ 6. LOGO, FAVICON & FLYER
+
+| Fichier | Description |
+|---------|------------|
+| `/logo.svg` | ✅ Logo vectoriel — sandwich dessiné en SVG, scalable, professionnel |
+| `/favicon.png` | ✅ Favicon — image du logo du commerce (Design sans titre 1.png) |
+| `/flyer-logo.png` | ✅ Flyer — image générée avec le logo seul, style minimaliste |
+| `/og-image.jpg` | ✅ Open Graph — image de partage réseaux sociaux |
+| `/images/` | ✅ Dossier prêt pour photos réelles des sandwichs |
+
+---
+
+## 📂 Structure finale du projet
+
+```
+/
+├── index.html          ← 🌐 Site complet (tous les correctifs appliqués)
+├── favicon.png          ← 🖼️ Favicon (logo du commerce)
+├── logo.svg             ← 🎨 Logo vectoriel (sandwich SVG)
+├── flyer-logo.png       ← 📄 Flyer avec le logo seul
+├── og-image.jpg         ← 📸 Image partage réseaux sociaux
+├── robots.txt           ← 🤖 SEO
+├── sitemap.xml          ← 🗺️ SEO + hreflang
+├── manifest.json        ← 📱 PWA
+├── vercel.json          ← ⚡ Config déploiement Vercel
+├── .env.example         ← 🔐 Toutes les variables d'environnement
+│
+├── sql/
+│   └── schema.sql       ← 🗄️ 8 tables + seed data + index
+│
+├── api/
+│   └── order.js         ← 🛵 Serverless function (commande + email)
+│
+├── images/              ← 📸 Dossier pour futures photos pro
+│
+└── analyse-complete-site.md  ← 📝 Analyse détaillée
+```
+
+---
+
+## 🚀 Déploiement Vercel (5 min)
+
+```bash
+# 1. Installer Vercel CLI
+npm i -g vercel
+
+# 2. Déployer
+cd /chemin/vers/le/projet
+vercel
+
+# 3. Ajouter les variables d'env dans le dashboard Vercel
+# Settings → Environment Variables → copier depuis .env.example
+
+# 4. Lancer le SQL sur la base de données
+# Vercel → Storage → Create Postgres Database
+# Copier les credentials → exécuter sql/schema.sql
+
+# 5. ✅ C'est en ligne !
+```
