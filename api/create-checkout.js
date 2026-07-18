@@ -31,7 +31,7 @@ module.exports = async (req, res) => {
           name: item.name,
           description: (item.custom && typeof item.custom==='string') ? item.custom.substring(0, 100) : undefined,
         },
-        unit_amount: Math.round(item.price * 100),
+        unit_amount: item.price,
       },
       quantity: item.qty || 1,
     }));
