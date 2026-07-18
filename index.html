@@ -211,7 +211,7 @@ footer{background:#1a1a1a;color:rgba(255,255,255,.6);padding:32px 16px 14px;marg
 
 var M=[{"id":"l","n":"Menu Léger","c":"menus","p":6.9,"d":"Sandwich (viande + crudités + sauce)","cs":1,"pop":1},{"id":"c","n":"Menu Classique","c":"menus","p":7.9,"d":"Sandwich + boisson","cs":4,"pop":1},{"id":"g","n":"Menu Gourmand","c":"menus","p":9.9,"d":"Sandwich + boisson + dessert","cs":4,"pop":1},{"id":"t","n":"Tiramisu","c":"desserts","p":3,"d":"Fait maison","cs":2},{"id":"m","n":"Milkshake","c":"desserts","p":5,"d":"Personnalisable","cs":3},{"id":"co","n":"Coca-Cola","c":"boissons","p":1},{"id":"cz","n":"Coca Zéro","c":"boissons","p":1},{"id":"pe","n":"Pepsi","c":"boissons","p":1},{"id":"oa","n":"Oasis Tropical","c":"boissons","p":1},{"id":"li","n":"Ice Tea","c":"boissons","p":1},{"id":"or","n":"Orangina","c":"boissons","p":1},{"id":"cr","n":"Cristaline","c":"boissons","p":1},{"id":"sp","n":"San Pellegrino","c":"boissons","p":1}];
 var DRINKS=[{"id":"co","n":"Coca-Cola"},{"id":"cz","n":"Coca Zéro"},{"id":"pe","n":"Pepsi"},{"id":"oa","n":"Oasis Tropical"},{"id":"li","n":"Ice Tea"},{"id":"or","n":"Orangina"},{"id":"cr","n":"Cristaline"},{"id":"sp","n":"San Pellegrino"}];
-var DESSERTS=[{"id":"t","n":"Tiramisu (3€)"},{"id":"m","n":"Milkshake (5€)"}];
+var DESSERTS=[{"id":"t","n":"Tiramisu (3€)"}];
 var cart=JSON.parse(localStorage.getItem("c")||"[]"),ci=null,cs={},curPage="acc",pendingItem=null,pendingCust="";
 var cmdMode=localStorage.getItem("cmdMode")||"livraison",cmdAddr=localStorage.getItem("cmdAddr")||"";
 var DELIVERY_FEE=2.5;
@@ -330,17 +330,18 @@ function showExtraPicker(){
   var it=pendingItem,g=it.id==="g";
   var btns=DRINKS.map(function(d){return'<button class="ebtn" data-id="'+d.id+'">🥤 '+d.n+'</button>';}).join("");
   var html='<div class="cs"><h4>Choisis ta boisson</h4><div class="chips">'+btns+'</div></div>';
-  if(g)html+='<div class="cs" id="pick-dessert"><h4>🍰 Choisis ton dessert</h4><div class="chips"></div></div>';
   document.getElementById("mb-pick").innerHTML=html;
   var me=document.getElementById("mb-pick");
   me.querySelectorAll(".ebtn").forEach(function(b){
     b.addEventListener("click",function(){
       var did=this.dataset.id;
+      closeModals();
+      pendingCust=" + "+getItem(did).n;
       if(g){
-        var bt=[DESSERTS[0]].map(function(ds){return'<button class="ebtn2" data-id="'+ds.id+'">'+ds.n+'</button>';}).join("");
-        var de=document.getElementById("pick-dessert");
-        if(de){var c=de.querySelector(".chips");if(c){c.innerHTML=bt;c.querySelectorAll(".ebtn2").forEach(function(db){db.addEventListener("click",function(){closeModals();pendingCust=" + "+getItem(did).n+" + "+getItem(this.dataset.id).n;addItemToCart(it);document.getElementById("mod-pick").classList.remove("on");});});}}
-      }else{closeModals();pendingCust=" + "+getItem(did).n;addItemToCart(it);document.getElementById("mod-pick").classList.remove("on");}
+        oti();
+      }else{
+        addItemToCart(it);
+      }
     });
   });
   document.getElementById("mod-pick").classList.add("on");document.body.style.overflow="hidden";
@@ -455,15 +456,38 @@ document.querySelector("#mod .mod-ok").addEventListener("click",function(){
   else{addItem(ci.n,ci.p,t);cm();ts(ci.n+" ajouté !");}
 });
 
-document.querySelector("#mod-t .mod-ok").addEventListener("click",function(){if(!cs.ti){ts("Choisis un parfum");return;}addItem("Tiramisu - "+cs.ti,3,cs.ti);cmt();ts("Tiramisu ajouté !");});
+document.querySelector("#mod-t .mod-ok").addEventListener("click",function(){
+  if(!cs.ti){ts("Choisis un parfum");return;}
+  if(pendingCust){
+    var fullLabel=pendingCust+" + Tiramisu ("+cs.ti+")";
+    var it=pendingItem||ci;
+    addItem(it.n+fullLabel,it.p,fullLabel);
+    sv();ts("Menu complet ajouté !");
+    pendingItem=null;pendingCust="";
+    cmt();
+  }else{
+    addItem("Tiramisu - "+cs.ti,3,cs.ti);
+    ts("Tiramisu ajouté !");
+    cmt();
+  }
+});
 
 document.querySelector("#mod-m .mod-ok").addEventListener("click",function(){
   if(!cs.ch){ts("Choisis un type");return;}
   var ins=document.getElementById("mi-m").value.trim();
   var extra=0;if(cs.cl)extra=0.5*cs.cl.length;
-  var t=cs.ch+(cs.cl?"+"+cs.cl.join(","):"")+(ins?"|"+ins:"");
-  addItem(ci.n+" ("+cs.ch+")",5+extra,t);
-  cmm();ts("Milkshake ajouté !");
+  var msLabel=cs.ch+(cs.cl?"+"+cs.cl.join(","):"")+(ins?"|"+ins:"");
+  if(pendingCust){
+    var fullLabel=pendingCust+" + Milkshake ("+cs.ch+")";
+    var it=pendingItem||ci;
+    addItem(it.n+fullLabel,it.p+5+extra,fullLabel);
+    sv();ts("Menu complet ajouté !");
+    pendingItem=null;pendingCust="";
+  }else{
+    addItem(ci.n+" ("+cs.ch+")",5+extra,msLabel);
+    ts("Milkshake ajouté !");
+  }
+  cmm();
 });
 
 document.addEventListener("keydown",function(e){
