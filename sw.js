@@ -1,6 +1,6 @@
 // Service Worker — FAIS TON S'DALLE v2.0
-const CACHE = 'ftd-v3';
-const URLS = ['/', '/index.html', '/manifest.json', '/404.html',
+const CACHE = 'ftd-v4';
+const URLS = ['/', '/index.html', '/manifest.json', '/404.html', '/favicon.ico', '/favicon.png',
   '/images/logo.jpg', '/images/favicon.jpg', '/images/apple-icon.jpg',
   '/images/logo-192.png', '/images/logo-512.png',
   '/images/menu-leger.jpg', '/images/menu-classique.jpg', '/images/menu-gourmand.jpg',
@@ -18,6 +18,7 @@ self.addEventListener('install', function(e) {
 });
 
 self.addEventListener('activate', function(e) {
+  self.skipWaiting();
   e.waitUntil(clients.claim().then(function() {
     return caches.keys().then(function(ks) {
       return Promise.all(ks.filter(function(k) { return k !== CACHE; }).map(function(k) { return caches.delete(k); }));
