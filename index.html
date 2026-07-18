@@ -422,6 +422,7 @@ document.querySelector(".cp-x").addEventListener("click",tc);
 
 document.querySelector(".cp-ck").addEventListener("click",function(){
   if(!cart.length)return;
+  var self=this;
   var t=getTotal(),st=getSubtotal(),df=getDelivery();
   var payHtml='<div class="pay-summary" style="background:var(--bg);border-radius:12px;padding:12px;margin:12px 0"><div style="display:flex;justify-content:space-between"><span>Sous-total</span><span>'+st.toFixed(2).replace(".",",")+'€</span></div>';
   if(df>0)payHtml+='<div style="display:flex;justify-content:space-between;margin-top:4px"><span>🚚 Livraison</span><span>'+df.toFixed(2).replace(".",",")+'€</span></div>';
@@ -429,20 +430,18 @@ document.querySelector(".cp-ck").addEventListener("click",function(){
   document.querySelector("#mod-pay .mod-bd").innerHTML='<div style="text-align:center;padding:20px 0"><div style="font-size:2.5rem;margin-bottom:8px">🔒</div><h3 style="font-weight:700">Paiement sécurisé</h3><p style="font-size:.72rem;color:var(--t2)">CB · Apple Pay · Google Pay</p>'+payHtml+'<input type="text" id="pay-name" placeholder="Votre nom" class="mod-ta" style="width:100%;margin-bottom:8px"><button id="pay-btn" class="mod-ok" style="width:100%">Payer</button></div>';
   document.getElementById("mod-pay").classList.add("on");
   document.body.style.overflow="hidden";
-});
-
-document.getElementById("pay-btn").addEventListener("click",function(){
-  var btn=this;btn.textContent="Traitement...";btn.disabled=true;
-  var name=document.getElementById("pay-name").value.trim()||"Client";
-  var t=getTotal(),st=getSubtotal(),df=getDelivery();
-  var items=cart.map(function(i){return{name:i.n,price:Math.round(i.p*100),qty:i.q,custom:i.cu||null};});
-  if(df>0){items.push({name:"🚚 Livraison",price:Math.round(df*100),qty:1,custom:null});}
-  var x=new XMLHttpRequest();
-  x.open("POST","/api/create-checkout",true);
-  x.setRequestHeader("Content-Type","application/json");
-  x.onload=function(){btn.textContent="Payer";btn.disabled=false;if(x.status===200){var r=JSON.parse(x.responseText);if(r.url){window.location.href=r.url;}else{ts("Erreur paiement");}}else{ts("Erreur serveur");}};
-  x.onerror=function(){btn.textContent="Payer";btn.disabled=false;ts("Erreur réseau");};
-  x.send(JSON.stringify({items:items,total:t,customerName:name,mode:cmdMode,address:cmdAddr}));
+  document.getElementById("pay-btn").addEventListener("click",function payHandler(){
+    var btn=this;btn.textContent="Traitement...";btn.disabled=true;
+    var name=document.getElementById("pay-name").value.trim()||"Client";
+    var items=cart.map(function(i){return{name:i.n,price:Math.round(i.p*100),qty:i.q,custom:i.cu||null};});
+    if(df>0){items.push({name:"🚚 Livraison",price:Math.round(df*100),qty:1,custom:null});}
+    var x=new XMLHttpRequest();
+    x.open("POST","/api/create-checkout",true);
+    x.setRequestHeader("Content-Type","application/json");
+    x.onload=function(){btn.textContent="Payer";btn.disabled=false;if(x.status===200){var r=JSON.parse(x.responseText);if(r.url){window.location.href=r.url;}else{ts("Erreur paiement");}}else{ts("Erreur serveur");}};
+    x.onerror=function(){btn.textContent="Payer";btn.disabled=false;ts("Erreur réseau");};
+    x.send(JSON.stringify({items:items,total:t,customerName:name,mode:cmdMode,address:cmdAddr}));
+  });
 });
 
 document.querySelectorAll(".mod .mod-cl").forEach(function(b){b.addEventListener("click",function(){var m=this.closest(".mod");if(m){m.classList.remove("on");document.body.style.overflow="";ci=null;cs={};if(m.id==="mod")pendingItem=null;}});});
@@ -453,7 +452,7 @@ document.querySelector("#mod .mod-ok").addEventListener("click",function(){
   var ins=document.getElementById("mi").value.trim();
   var t=(cs.cu||"")+"|"+(cs.v||"")+"|"+(cs.r?cs.r.join(","):"-")+(cs.p?"|"+cs.p.join(","):"")+"|"+(cs.s||"")+(ins?"|"+ins:"");
   if(pendingItem){cm();showExtraPicker();}
-  else{addItem(ci.n,ci.p,t);cm();ts(ci.n+" ajouté !");}
+  else{addItem(ci.n,ci.p,t);sv();cm();ts(ci.n+" ajouté !");}
 });
 
 document.querySelector("#mod-t .mod-ok").addEventListener("click",function(){
@@ -466,7 +465,7 @@ document.querySelector("#mod-t .mod-ok").addEventListener("click",function(){
     pendingItem=null;pendingCust="";
     cmt();
   }else{
-    addItem("Tiramisu - "+cs.ti,3,cs.ti);
+    addItem("Tiramisu - "+cs.ti,3,cs.ti);sv();
     ts("Tiramisu ajouté !");
     cmt();
   }
@@ -484,7 +483,7 @@ document.querySelector("#mod-m .mod-ok").addEventListener("click",function(){
     sv();ts("Menu complet ajouté !");
     pendingItem=null;pendingCust="";
   }else{
-    addItem(ci.n+" ("+cs.ch+")",5+extra,msLabel);
+    addItem(ci.n+" ("+cs.ch+")",5+extra,msLabel);sv();
     ts("Milkshake ajouté !");
   }
   cmm();
