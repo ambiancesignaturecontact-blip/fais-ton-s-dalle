@@ -223,7 +223,7 @@ var SA=["Mayo","Ketchup","Algérienne","Samouraï","Blanche","Moutarde","Brasil"
 var SP=["Cheddar","Mozzarella","Feta"];
 var MSC=["Snickers","M&Ms","KitKat","KitKat White"];
 var MCL=["Coulis chocolat (+0,50€)","Coulis caramel (+0,50€)","Coulis fraise (+0,50€)"];
-var TIR=["Caramel","Chocolat","Spéculoos"];
+var TIR=["Caramel","Chocolat"];
 var IMG={l:"/images/menu-leger.jpg",c:"/images/menu-classique.jpg",g:"/images/menu-gourmand.jpg",t:"/images/tiramisu.jpg",m:"/images/milkshake.png",co:"/images/coca.jpg",cz:"/images/zero.jpg",pe:"/images/pepsi.jpg",oa:"/images/oasis.jpg",li:"/images/icetea.jpg",or:"/images/orangina.jpg",cr:"/images/cristaline.jpg",sp:"/images/sanpellegrino.jpg"};
 
 function navTo(p){["acc","menu","ap","con"].forEach(function(x){var e=document.getElementById(x);if(e)e.classList.add("h");});document.getElementById(p).classList.remove("h");document.querySelectorAll(".nv a").forEach(function(x){x.classList.remove("sl");});var n=document.getElementById("na-"+p);if(n)n.classList.add("sl");curPage=p;window.location.hash=p;}
