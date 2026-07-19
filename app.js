@@ -310,15 +310,22 @@ if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js?v=2").
 
   if(p.get("payment")==="success"){
     var t=getTotal(),st=getSubtotal(),df=getDelivery();
-    var mode=cmdMode==="livraison"?"LIVRAISON ["+cmdAddr+"]":"A EMPORTER";
+    var mode=cmdMode==="livraison"?"LIVRAISON":"A EMPORTER";
     var items="";
     for(var i=0;i<cart.length;i++){
-      var name=cart[i].n.replace(/[^a-zA-Z0-9 ]/g,"");
-      var cust=cart[i].cu?cart[i].cu.replace(/[^a-zA-Z0-9 ,]/g,""):"";
-      items+=cart[i].q+"x "+name+(cust?" ("+cust.substring(0,50)+")":"")+" - "+(cart[i].p*cart[i].q).toFixed(2)+"EUR\n";
+      var name=cart[i].n.replace(/[^a-zA-Z0-9\s\-\+]/g,"").trim();
+      items+=cart[i].q+"x "+name+" - "+(cart[i].p*cart[i].q).toFixed(2)+"EUR\n";
     }
-    if(df>0)items+="Livraison: "+df.toFixed(2)+"EUR\n";
-    var msg="*NOUVELLE COMMANDE (PAYEE)*\n\n"+mode+"\n\n"+items+"\n\nTotal: "+t.toFixed(2)+"EUR\nPAYE OK";
+    if(df>0)items+="LIVRAISON: "+df.toFixed(2)+"EUR\n";
+    var msg="";
+    msg+="*NOUVELLE COMMANDE PAYEE*\n";
+    msg+="\n";
+    msg+=mode+"\n";
+    msg+="\n";
+    msg+=items;
+    msg+="\n";
+    msg+="TOTAL: "+t.toFixed(2)+"EUR\n";
+    msg+="PAYE OK";
     try{
       var waUrl="https://wa.me/"+WA_NUMBERS[0]+"?text="+encodeURIComponent(msg);
       window.open(waUrl,"_blank");
