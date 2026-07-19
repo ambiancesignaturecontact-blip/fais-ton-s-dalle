@@ -217,8 +217,8 @@ document.querySelector(".cp-x").addEventListener("click",tc);
 document.getElementById("cp-pay-btn").addEventListener("click",function(){
   if(!cart.length)return;
   var btn=this;
-  var name=(document.getElementById("pay-name-inline")||{}).value.trim()||"Client";
-  var addr=cmdMode==="livraison"?(document.getElementById("cp-addr-input")||{}).value.trim()||cmdAddr:cmdAddr;
+  var name=(document.getElementById("pay-name-inline")||{}).value.trim()||"Client";name=name.replace(/[<>]/g,"");
+  var addr=cmdMode==="livraison"?(document.getElementById("cp-addr-input")||{}).value.trim()||cmdAddr:cmdAddr;addr=addr.replace(/[<>]/g,"");
   if(cmdMode==="livraison"&&!addr){ts("📝 Ajoute ton adresse");document.getElementById("cp-addr-input").focus();return;}
   btn.textContent="💳 Traitement...";btn.disabled=true;
   var t=getTotal(),st=getSubtotal(),df=getDelivery();
@@ -228,6 +228,8 @@ document.getElementById("cp-pay-btn").addEventListener("click",function(){
   x.open("POST","/api/create-checkout",true);
   x.setRequestHeader("Content-Type","application/json");
   x.onload=function(){btn.innerHTML="💳 Payer "+t.toFixed(2).replace(".",",")+"€";btn.disabled=false;if(x.status===200){var r=JSON.parse(x.responseText);if(r.url){window.location.href=r.url;}else{ts("Erreur paiement");}}else{ts("Erreur serveur");}};
+  x.timeout=10000;
+  x.ontimeout=function(){btn.innerHTML="💳 Payer "+t.toFixed(2).replace(".",",")+"€";btn.disabled=false;ts("Erreur: délai dépassé");};
   x.onerror=function(){btn.innerHTML="💳 Payer "+t.toFixed(2).replace(".",",")+"€";btn.disabled=false;ts("Erreur réseau");};
   x.send(JSON.stringify({items:items,total:t,customerName:name,mode:cmdMode,address:addr}));
 });
@@ -319,6 +321,12 @@ if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js?v=2").
     var waUrl="https://wa.me/"+WA_NUMBERS[0]+"?text="+encodeURIComponent(msg);
     try{window.open(waUrl,"_blank");}catch(e){}
     cart=[];sv();tc();ts("Commande envoyee!");
+    // Afficher bannière de confirmation persistante
+    var banner=document.createElement("div");
+    banner.style.cssText="position:fixed;top:80px;left:50%;transform:translateX(-50%);z-index:999;background:var(--c);border:2px solid var(--p);border-radius:var(--r);padding:20px 30px;box-shadow:0 20px 60px rgba(0,0,0,.5);text-align:center;animation:fadeIn .5s ease;max-width:90vw;backdrop-filter:blur(20px)";
+    banner.innerHTML="<div style='font-size:2rem;margin-bottom:8px'>🎉</div><h3 style='font-family:var(--fh);font-size:1.1rem;margin-bottom:4px'>COMMANDE CONFIRMÉE !</h3><p style='font-size:.75rem;color:var(--t2);margin-bottom:12px'>Un récapitulatif a été envoyé par WhatsApp.</p><button onclick='this.parentElement.remove()' style='background:var(--g1);color:#fff;border:none;padding:8px 24px;border-radius:60px;font-weight:700;font-size:.7rem;cursor:pointer'>OK</button>";
+    document.body.appendChild(banner);
+    setTimeout(function(){banner.remove()},10000);
   }
 })();
 var initHash=window.location.hash.replace("#","");
