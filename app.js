@@ -316,6 +316,7 @@ if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js?v=2").
     }
     if(df>0)items+="Livraison: "+df.toFixed(2)+"EUR\n";
     var total=t.toFixed(2);
+    
     var msg="";
     msg+="*NOUVELLE COMMANDE (PAYEE)*\n";
     msg+="\n";
@@ -323,8 +324,8 @@ if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js?v=2").
     msg+="\n";
     msg+=items;
     msg+="\n";
-    msg+="Total: "+total+"EUR\nPAYE OK";
-    var waUrl="https://wa.me/"+WA_NUMBERS[0]+"?text="+encodeURIComponent(msg);
+    msg+="Total: "+total+" EUR\nPAYE OK";
+var waUrl="https://wa.me/"+WA_NUMBERS[0]+"?text="+encodeURIComponent(msg);
     try{window.open(waUrl,"_blank");}catch(e){}
     cart=[];sv();tc();ts("Commande envoyee par WhatsApp !");
   }
