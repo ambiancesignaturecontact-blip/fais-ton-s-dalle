@@ -313,7 +313,7 @@ if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js?v=2").
     var mode=cmdMode==="livraison"?"LIVRAISON":"A EMPORTER";
     var items="";
     for(var i=0;i<cart.length;i++){
-      var name=cart[i].n.replace(/[^a-zA-Z0-9\s\-\+]/g,"").trim();
+      var name=cart[i].n.replace(/[\u00e0\u00e2\u00e4]/g,"a").replace(/[\u00e9\u00e8\u00ea\u00eb]/g,"e").replace(/[\u00ee\u00ef]/g,"i").replace(/[\u00f4\u00f6]/g,"o").replace(/[\u00f9\u00fb\u00fc]/g,"u").replace(/[\u00e7]/g,"c").replace(/[\u0153]/g,"oe").replace(/[^a-zA-Z0-9 \-]/g,"");
       items+=cart[i].q+"x "+name+" - "+(cart[i].p*cart[i].q).toFixed(2)+"EUR\n";
     }
     if(df>0)items+="LIVRAISON: "+df.toFixed(2)+"EUR\n";
