@@ -307,28 +307,25 @@ document.getElementById("wa-btn").addEventListener("click",function(){window.loc
 
 if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js?v=2").catch(function(){});navigator.serviceWorker.ready.then(function(r){r.update();});}
 
-(function(){
-  var p=new URLSearchParams(window.location.search);
+
   if(p.get("payment")==="success"){
     var t=getTotal(),st=getSubtotal(),df=getDelivery();
     var mode=cmdMode==="livraison"?"LIVRAISON ["+cmdAddr+"]":"A EMPORTER";
     var items="";
     for(var i=0;i<cart.length;i++){
-      items+=cart[i].q+"x "+cart[i].n+(cart[i].cu?" ("+cart[i].cu.substring(0,50)+")":"")+" - "+(cart[i].p*cart[i].q).toFixed(2)+"EUR\n";
+      var name=cart[i].n.replace(/[^a-zA-Z0-9 ]/g,"");
+      var cust=cart[i].cu?cart[i].cu.replace(/[^a-zA-Z0-9 ,]/g,""):"";
+      items+=cart[i].q+"x "+name+(cust?" ("+cust.substring(0,50)+")":"")+" - "+(cart[i].p*cart[i].q).toFixed(2)+"EUR\n";
     }
     if(df>0)items+="Livraison: "+df.toFixed(2)+"EUR\n";
     var msg="*NOUVELLE COMMANDE (PAYEE)*\n\n"+mode+"\n\n"+items+"\n\nTotal: "+t.toFixed(2)+"EUR\nPAYE OK";
-    var waUrl="https://wa.me/"+WA_NUMBERS[0]+"?text="+encodeURIComponent(msg);
-    try{window.open(waUrl,"_blank");}catch(e){}
+    try{
+      var waUrl="https://wa.me/"+WA_NUMBERS[0]+"?text="+encodeURIComponent(msg);
+      window.open(waUrl,"_blank");
+    }catch(e){}
     cart=[];sv();tc();ts("Commande envoyee!");
-    // Afficher bannière de confirmation persistante
-    var banner=document.createElement("div");
-    banner.style.cssText="position:fixed;top:80px;left:50%;transform:translateX(-50%);z-index:999;background:var(--c);border:2px solid var(--p);border-radius:var(--r);padding:20px 30px;box-shadow:0 20px 60px rgba(0,0,0,.5);text-align:center;animation:fadeIn .5s ease;max-width:90vw;backdrop-filter:blur(20px)";
-    banner.innerHTML="<div style='font-size:2rem;margin-bottom:8px'>🎉</div><h3 style='font-family:var(--fh);font-size:1.1rem;margin-bottom:4px'>COMMANDE CONFIRMÉE !</h3><p style='font-size:.75rem;color:var(--t2);margin-bottom:12px'>Un récapitulatif a été envoyé par WhatsApp.</p><button onclick='this.parentElement.remove()' style='background:var(--g1);color:#fff;border:none;padding:8px 24px;border-radius:60px;font-weight:700;font-size:.7rem;cursor:pointer'>OK</button>";
-    document.body.appendChild(banner);
-    setTimeout(function(){banner.remove()},10000);
   }
-})();
+
 var initHash=window.location.hash.replace("#","");
 if(initHash&&["acc","menu","ap","con"].indexOf(initHash)>=0)navTo(initHash);
 updateCartMode();uc();
