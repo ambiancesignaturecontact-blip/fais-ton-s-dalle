@@ -1,12 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://faistonsdalle.com/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://faistonsdalle.com/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://faistonsdalle.com/"/>
-    <lastmod>2026-07-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://faistonsdalle.com/images/logo.jpg</image:loc>
+      <image:title>FAIS TON S'DALLE Logo</image:title>
+      <image:caption>Sandwichs sur mesure Halal aux Pavillons-sous-Bois</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://faistonsdalle.com/images/menu-leger.jpg</image:loc>
+      <image:title>Menu Léger 6,90€</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://faistonsdalle.com/images/menu-classique.jpg</image:loc>
+      <image:title>Menu Classique 7,90€</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://faistonsdalle.com/images/menu-gourmand.jpg</image:loc>
+      <image:title>Menu Gourmand 9,90€</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://faistonsdalle.com/images/tiramisu.jpg</image:loc>
+      <image:title>Tiramisu Maison</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://faistonsdalle.com/images/milkshake.jpg</image:loc>
+      <image:title>Milkshake personnalisable</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://faistonsdalle.com/images/store-front.jpeg</image:loc>
+      <image:title>FAIS TON S'DALLE boutique</image:title>
+    </image:image>
   </url>
 </urlset>
