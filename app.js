@@ -1,7 +1,8 @@
+// VERSION=1.0.6-FINAL
 // VERSION=1.0.5 - 2026-07-19 16:06
 
-var M=[{"id":"l","n":"Menu Léger","c":"menus","p":6.9,"d":"Sandwich (viande + crudités + sauce)","cs":1,"pop":1},{"id":"c","n":"Menu Classique","c":"menus","p":7.9,"d":"Sandwich + boisson","cs":4,"pop":1},{"id":"g","n":"Menu Gourmand","c":"menus","p":9.9,"d":"Sandwich + boisson + dessert","cs":4,"pop":1},{"id":"t","n":"Tiramisu","c":"desserts","p":3,"d":"Fait maison","cs":2},{"id":"m","n":"Milkshake","c":"desserts","p":5,"d":"Personnalisable","cs":3},{"id":"co","n":"Coca-Cola","c":"boissons","p":1},{"id":"cz","n":"Coca Zéro","c":"boissons","p":1},{"id":"pe","n":"Pepsi","c":"boissons","p":1},{"id":"oa","n":"Oasis Tropical","c":"boissons","p":1},{"id":"li","n":"Ice Tea","c":"boissons","p":1},{"id":"or","n":"Orangina","c":"boissons","p":1},{"id":"cr","n":"Cristaline","c":"boissons","p":1},{"id":"sp","n":"San Pellegrino","c":"boissons","p":1}];
-var DRINKS=[{"id":"co","n":"Coca-Cola"},{"id":"cz","n":"Coca Zéro"},{"id":"pe","n":"Pepsi"},{"id":"oa","n":"Oasis Tropical"},{"id":"li","n":"Ice Tea"},{"id":"or","n":"Orangina"},{"id":"cr","n":"Cristaline"},{"id":"sp","n":"San Pellegrino"}];
+var M=[{"id":"l","n":"Menu Léger","c":"menus","p":6.9,"d":"Sandwich (viande + crudités + sauce)","cs":1,"pop":1},{"id":"c","n":"Menu Classique","c":"menus","p":7.9,"d":"Sandwich + boisson","cs":4,"pop":1},{"id":"g","n":"Menu Gourmand","c":"menus","p":9.9,"d":"Sandwich + boisson + dessert","cs":4,"pop":1},{"id":"t","n":"Tiramisu","c":"desserts","p":3,"d":"Fait maison","cs":2},{"id":"m","n":"Milkshake","c":"desserts","p":5,"d":"Personnalisable","cs":3},{"id":"co","n":"Coca-Cola","c":"boissons","p":1},{"id":"cz","n":"Coca Zéro","c":"boissons","p":1},{"id":"pe","n":"Pepsi","c":"boissons","p":1},{"id":"oa","n":"Oasis Tropical","c":"boissons","p":1},{"id":"li","n":"Ice Tea","c":"boissons","p":1},{"id":"or","n":"Orangina","c":"boissons","p":1},{"id":"cr","n":"Cristaline","c":"boissons","p":1},{"id":"sp","n":"San Pellegrino","c":"boissons","p":1},{"id":"ck","n":"Coca Cerise","c":"boissons","p":1}];
+var DRINKS=[{"id":"co","n":"Coca-Cola"},{"id":"cz","n":"Coca Zéro"},{"id":"pe","n":"Pepsi"},{"id":"oa","n":"Oasis Tropical"},{"id":"li","n":"Ice Tea"},{"id":"or","n":"Orangina"},{"id":"cr","n":"Cristaline"},{"id":"sp","n":"San Pellegrino"},{"id":"ck","n":"Coca Cerise"}];
 var DESSERTS=[{"id":"t","n":"Tiramisu (3€)"}];
 var cart=JSON.parse(localStorage.getItem("c")||"[]"),ci=null,cs={},curPage="acc",pendingItem=null,pendingCust="";
 var cmdMode=localStorage.getItem("cmdMode")||"livraison",cmdAddr=localStorage.getItem("cmdAddr")||"";
@@ -15,7 +16,7 @@ var SP=["Cheddar","Mozzarella","Feta"];
 var MSC=["Snickers","M&Ms","KitKat","KitKat White"];
 var MCL=["Coulis chocolat (+0,50€)","Coulis caramel (+0,50€)","Coulis fraise (+0,50€)"];
 var TIR=["Caramel","Chocolat"];
-var IMG={l:"/images/menu-leger.jpg",c:"/images/menu-classique.jpg",g:"/images/menu-gourmand.jpg",t:"/images/tiramisu.jpg",m:"/images/milkshake.jpg",co:"/images/coca.jpg",cz:"/images/zero.jpg",pe:"/images/pepsi.jpg",oa:"/images/oasis.jpg",li:"/images/icetea.jpg",or:"/images/orangina.jpg",cr:"/images/cristaline.jpg",sp:"/images/sanpellegrino.jpg"};
+var IMG={l:"/images/menu-leger.jpg",c:"/images/menu-classique.jpg",g:"/images/menu-gourmand.jpg",t:"/images/tiramisu.jpg",m:"/images/milkshake.jpg",co:"/images/coca.jpg",cz:"/images/zero.jpg",pe:"/images/pepsi.jpg",oa:"/images/oasis.jpg",li:"/images/icetea.jpg",or:"/images/orangina.jpg",cr:"/images/cristaline.jpg",sp:"/images/sanpellegrino.jpg",ck:"/images/coca-cherry.jpg"};
 
 function navTo(p){["acc","menu","ap","con"].forEach(function(x){var e=document.getElementById(x);if(e)e.classList.add("h");});document.getElementById(p).classList.remove("h");document.querySelectorAll(".nv a").forEach(function(x){x.classList.remove("sl");});var n=document.getElementById("na-"+p);if(n)n.classList.add("sl");curPage=p;window.location.hash=p;}
 
@@ -306,8 +307,6 @@ if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js?v=2").
 
 (function(){
   var p=new URLSearchParams(window.location.search);
-  
-  
   if(p.get("payment")==="success"){
     var t=getTotal(),st=getSubtotal(),df=getDelivery();
     var mode=cmdMode==="livraison"?"LIVRAISON ["+cmdAddr+"]":"A EMPORTER";
@@ -316,22 +315,11 @@ if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js?v=2").
       items+=cart[i].q+"x "+cart[i].n+(cart[i].cu?" ("+cart[i].cu.substring(0,50)+")":"")+" - "+(cart[i].p*cart[i].q).toFixed(2)+"EUR\n";
     }
     if(df>0)items+="Livraison: "+df.toFixed(2)+"EUR\n";
-    var total=t.toFixed(2);
-    
-    var msg="";
-    msg+="*NOUVELLE COMMANDE (PAYEE)*\n";
-    msg+="\n";
-    msg+=mode+"\n";
-    msg+="\n";
-    msg+=items;
-    msg+="\n";
-    msg+="Total: "+total+" EUR\nPAYE OK";
-var waUrl="https://wa.me/"+WA_NUMBERS[0]+"?text="+encodeURIComponent(msg);
+    var msg="*NOUVELLE COMMANDE (PAYEE)*\n\n"+mode+"\n\n"+items+"\n\nTotal: "+t.toFixed(2)+"EUR\nPAYE OK";
+    var waUrl="https://wa.me/"+WA_NUMBERS[0]+"?text="+encodeURIComponent(msg);
     try{window.open(waUrl,"_blank");}catch(e){}
-    cart=[];sv();tc();ts("Commande envoyee par WhatsApp !");
+    cart=[];sv();tc();ts("Commande envoyee!");
   }
-;
-
 })();
 var initHash=window.location.hash.replace("#","");
 if(initHash&&["acc","menu","ap","con"].indexOf(initHash)>=0)navTo(initHash);

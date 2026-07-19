@@ -1,5 +1,5 @@
 // Service Worker — FAIS TON S'DALLE v2.0
-const CACHE = 'ftd-v6';
+const CACHE = 'ftd-v7';
 const URLS = ['/', '/index.html', '/style.css', '/app.js', '/manifest.json', '/404.html', '/favicon.ico', '/favicon.png',
   '/images/logo.jpg', '/images/favicon.jpg', '/images/apple-icon.jpg',
   '/images/logo-192.png', '/images/logo-512.png',
