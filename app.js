@@ -308,6 +308,7 @@ document.getElementById("wa-btn").addEventListener("click",function(){window.loc
 if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js?v=2").catch(function(){});navigator.serviceWorker.ready.then(function(r){r.update();});}
 
 
+  var p=new URLSearchParams(window.location.search);
   if(p.get("payment")==="success"){
     var t=getTotal(),st=getSubtotal(),df=getDelivery();
     var mode=cmdMode==="livraison"?"LIVRAISON":"A EMPORTER";
