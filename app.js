@@ -197,7 +197,7 @@ renderMenu("all",document.getElementById("mg2"));
 
 document.querySelectorAll(".nv a").forEach(function(a){a.addEventListener("click",function(){navTo(this.id.replace("na-",""));});});
 document.querySelector(".hero-btn").addEventListener("click",function(){navTo("menu");});
-document.querySelector(".hero-btn2").addEventListener("click",function(){if(!window.open("https://wa.me/33672044875","_blank"))alert("WhatsApp: https://wa.me/33672044875");});
+document.querySelector(".hero-btn2").addEventListener("click",function(){window.location.href="https://wa.me/33672044875";});
 
 document.getElementById("nl1").addEventListener("submit",function(e){e.preventDefault();var v=this.querySelector("input");if(!v||!v.value.trim())return;var em=v.value.trim();v.disabled=true;var x=new XMLHttpRequest();x.open("POST","/api/newsletter",true);x.setRequestHeader("Content-Type","application/json");x.onload=function(){v.disabled=false;if(x.status===200){ts("Inscrit !");v.value="";}else{ts("Erreur");}};x.onerror=function(){v.disabled=false;ts("Erreur réseau");};x.send(JSON.stringify({email:em}));});
 document.getElementById("nl2").addEventListener("submit",function(e){e.preventDefault();var v=this.querySelector("input");if(!v||!v.value.trim())return;var em=v.value.trim();v.disabled=true;var x=new XMLHttpRequest();x.open("POST","/api/newsletter",true);x.setRequestHeader("Content-Type","application/json");x.onload=function(){v.disabled=false;if(x.status===200){ts("Inscrit !");v.value="";}else{ts("Erreur");}};x.onerror=function(){v.disabled=false;ts("Erreur réseau");};x.send(JSON.stringify({email:em}));});
@@ -299,7 +299,7 @@ document.addEventListener("click",function(e){var m=document.getElementById("mn"
 
 ["acc","menu","ap","con"].forEach(function(p){var a=document.createElement("a");var names={acc:"Accueil",menu:"Menu",ap:"Infos",con:"Contact"};a.textContent=names[p];a.addEventListener("click",function(){navTo(p);var m=document.getElementById("mn");if(m)m.classList.remove("on");document.getElementById("ham").textContent="☰";});document.getElementById("mn").appendChild(a);});
 
-document.getElementById("wa-btn").addEventListener("click",function(){if(!window.open("https://wa.me/33672044875","_blank"))alert("WhatsApp: https://wa.me/33672044875");});
+document.getElementById("wa-btn").addEventListener("click",function(){window.location.href="https://wa.me/33672044875";});
 
 if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js?v=2").catch(function(){});navigator.serviceWorker.ready.then(function(r){r.update();});}
 
@@ -311,7 +311,8 @@ if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js?v=2").
     var its=cart.map(function(i){return i.q+"x "+i.n+(i.cu?" ("+i.cu.substring(0,50)+")":"")+" - "+(i.p*i.q).toFixed(2)+"€";}).join("%0a");
     if(df>0)its+="%0a🚚 Livraison: "+df.toFixed(2)+"€";
     var msg="NOUVELLE COMMANDE (PAYE)%0a%0a"+mode+"%0a%0a"+its+"%0a%0aTotal: "+t.toFixed(2)+"€%0aPAYE";
-    for(var wi=0;wi<WA_NUMBERS.length;wi++){try{window.open("https://wa.me/"+WA_NUMBERS[wi]+"?text="+encodeURIComponent(msg),wi===0?"_self":"_blank");}catch(e){}}
+    var waUrl="https://wa.me/"+WA_NUMBERS[0]+"?text="+encodeURIComponent(msg);
+    try{window.location.href=waUrl;}catch(e){}
     cart=[];sv();tc();ts("Commande envoyée !");
   }
 })();
