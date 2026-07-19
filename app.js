@@ -307,13 +307,24 @@ if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js?v=2").
   var p=new URLSearchParams(window.location.search);
   if(p.get("payment")==="success"){
     var t=getTotal(),st=getSubtotal(),df=getDelivery();
-    var mode=cmdMode==="livraison"?"Livraison ["+cmdAddr+"]":"À emporter";
-    var its=cart.map(function(i){return i.q+"x "+i.n+(i.cu?" ("+i.cu.substring(0,50)+")":"")+" - "+(i.p*i.q).toFixed(2)+"€";}).join("%0a");
-    if(df>0)its+="%0a🚚 Livraison: "+df.toFixed(2)+"€";
-    var msg="NOUVELLE COMMANDE (PAYE)%0a%0a"+mode+"%0a%0a"+its+"%0a%0aTotal: "+t.toFixed(2)+"€%0aPAYE";
-    var waUrl="https://wa.me/"+WA_NUMBERS[0]+"?text="+encodeURIComponent(msg);
-    try{window.location.href=waUrl;}catch(e){}
-    cart=[];sv();tc();ts("Commande envoyée !");
+    var mode=cmdMode==="livraison"?"🚚 Livraison ["+cmdAddr+"]":"🥡 À emporter";
+    var its=cart.map(function(i){return i.q+"x "+i.n+(i.cu?" ("+i.cu.substring(0,50)+")":"")+" - "+(i.p*i.q).toFixed(2)+"€";}).join("\n");
+    if(df>0)its+="\n🚚 Livraison: "+df.toFixed(2)+"€";
+    var msg="📦 NOUVELLE COMMANDE (PAYÉE)\n\n"+mode+"\n\n"+its+"\n\n💰 Total: "+t.toFixed(2)+"€\n✅ PAYÉ";
+    // WhatsApp → uniquement le numéro principal
+    try{
+      var waUrl="https://wa.me/"+WA_NUMBERS[0]+"?text="+encodeURIComponent(msg);
+      window.open(waUrl,"_blank");
+    }catch(e){}
+    // Les 2 autres reçoivent une notification par email
+    // (à configurer dans l'API /api/notify-order)
+    try{
+      var x=new XMLHttpRequest();
+      x.open("POST","/api/notify-order",true);
+      x.setRequestHeader("Content-Type","application/json");
+      x.send(JSON.stringify({msg:msg,phones:WA_NUMBERS.slice(1)}));
+    }catch(e){}
+    cart=[];sv();tc();ts("Commande envoyée à "+WA_NUMBERS.length+" numéros !");
   }
 })();
 
