@@ -305,7 +305,7 @@ document.addEventListener("click",function(e){var m=document.getElementById("mn"
 
 document.getElementById("wa-btn").addEventListener("click",function(){window.location.href="https://wa.me/33672044875";});
 
-if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js?v=2").catch(function(){});navigator.serviceWorker.ready.then(function(r){r.update();});}
+if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js?v=1237ff0d").catch(function(){});navigator.serviceWorker.ready.then(function(r){r.update();});}
 
 
   var p=new URLSearchParams(window.location.search);
