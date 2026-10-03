@@ -1,0 +1,19 @@
+{
+  "formatVersion": 1,
+  "description": "Carte de fidélité FAIS TON S'DALLE",
+  "organizationName": "FAIS TON S'DALLE",
+  "passTypeIdentifier": "pass.com.faistonsdalle.fidelite",
+  "teamIdentifier": "NK7HG53G64",
+  "serialNumber": "ftsd-0",
+  "backgroundColor": "rgb(150, 14, 19)",
+  "foregroundColor": "rgb(255, 248, 238)",
+  "labelColor": "rgb(233, 184, 96)",
+  "logoText": "FAIS TON S'DALLE",
+  "storeCard": {
+    "headerFields": [],
+    "primaryFields": [],
+    "secondaryFields": [],
+    "auxiliaryFields": [],
+    "backFields": []
+  }
+}
